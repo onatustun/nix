@@ -35,22 +35,6 @@
         "type": "github"
       }
     },
-    "base16-helix": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1760703920,
-        "narHash": "sha256-m82fGUYns4uHd+ZTdoLX2vlHikzwzdu2s2rYM2bNwzw=",
-        "owner": "tinted-theming",
-        "repo": "base16-helix",
-        "rev": "d646af9b7d14bff08824538164af99d0c521b185",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tinted-theming",
-        "repo": "base16-helix",
-        "type": "github"
-      }
-    },
     "base16-vim": {
       "flake": false,
       "locked": {
@@ -729,7 +713,7 @@
       "inputs": {
         "base16": "base16",
         "base16-fish": "base16-fish",
-        "base16-helix": "base16-helix",
+        "base16-helix": [],
         "base16-vim": "base16-vim",
         "firefox-gnome-theme": "firefox-gnome-theme",
         "flake-parts": [
@@ -746,7 +730,7 @@
         "tinted-foot": [],
         "tinted-kitty": [],
         "tinted-schemes": "tinted-schemes",
-        "tinted-tmux": "tinted-tmux",
+        "tinted-tmux": [],
         "tinted-zed": []
       },
       "locked": {
@@ -791,22 +775,6 @@
       "original": {
         "owner": "tinted-theming",
         "repo": "schemes",
-        "type": "github"
-      }
-    },
-    "tinted-tmux": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1767489635,
-        "narHash": "sha256-e6nnFnWXKBCJjCv4QG4bbcouJ6y3yeT70V9MofL32lU=",
-        "owner": "tinted-theming",
-        "repo": "tinted-tmux",
-        "rev": "3c32729ccae99be44fe8a125d20be06f8d7d8184",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tinted-theming",
-        "repo": "tinted-tmux",
         "type": "github"
       }
     },

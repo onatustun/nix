@@ -57,9 +57,7 @@
           {
             stylix.targets = {
               helix.enable = false;
-              rofi.enable = false;
               tmux.enable = false;
-              waybar.enable = false;
             };
 
             programs.helix.settings.theme = config.stylix.base16Scheme.name;

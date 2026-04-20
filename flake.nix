@@ -129,12 +129,14 @@
       repo = "stylix";
 
       inputs = {
+        base16-helix.follows = "";
         flake-parts.follows = "flake-parts";
         nixpkgs.follows = "nixpkgs";
         nur.follows = "";
         systems.follows = "systems";
         tinted-foot.follows = "";
         tinted-kitty.follows = "";
+        tinted-tmux.follows = "";
         tinted-zed.follows = "";
       };
     };
