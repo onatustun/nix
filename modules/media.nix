@@ -14,9 +14,6 @@
           pavucontrol
           playerctl
           pwvucontrol
-          scdl
-          slsk-batchdl
-          slskd
           yt-dlp
           ;
       };

@@ -63,6 +63,8 @@
                 XDG_SESSION_TYPE = "wayland";
               };
 
+              spawn-at-startup = [ { command = [ "noctalia-shell" ]; } ];
+
               outputs = {
                 # Framework 13
                 "eDP-1" = {

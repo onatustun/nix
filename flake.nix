@@ -78,6 +78,17 @@
       };
     };
 
+    nix-topology = {
+      type = "github";
+      owner = "oddlama";
+      repo = "nix-topology";
+
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+
     home-manager = {
       type = "github";
       owner = "nix-community";
@@ -130,7 +141,6 @@
         nixpkgs.follows = "nixpkgs";
         nur.follows = "";
         systems.follows = "systems";
-        tinted-foot.follows = "";
         tinted-kitty.follows = "";
         tinted-tmux.follows = "";
         tinted-zed.follows = "";

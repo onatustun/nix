@@ -1,4 +1,15 @@
+{ lib, ... }:
+let
+  inherit (lib.lists) singleton;
+in
 {
+  perSystem.topology.modules = singleton {
+    networks.tailscale = {
+      name = "tailscale";
+      cidrv4 = "100.64.0.0/10";
+    };
+  };
+
   flake.modules.nixos.tailscale =
     { config, ... }:
     {
@@ -23,5 +34,6 @@
       };
 
       networking.firewall.trustedInterfaces = [ config.services.tailscale.interfaceName ];
+      topology.self.interfaces.tailscale0.network = "tailscale";
     };
 }

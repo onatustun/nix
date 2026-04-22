@@ -54,6 +54,7 @@
               ++ [
                 (modulesPath + "/installer/scan/not-detected.nix")
                 inputs.nixos-hardware.nixosModules.framework-13-7040-amd
+                inputs.nix-topology.nixosModules.default
               ];
 
             _module.args = {

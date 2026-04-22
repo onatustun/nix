@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
   flake =
     { lib, ... }@flake:
@@ -49,7 +50,10 @@
                   yubikey
                   ;
               }
-              ++ [ (modulesPath + "/installer/scan/not-detected.nix") ];
+              ++ [
+                (modulesPath + "/installer/scan/not-detected.nix")
+                inputs.nix-topology.nixosModules.default
+              ];
 
             _module.args = {
               hostName = "desktop";
@@ -98,6 +102,7 @@
               };
             };
 
+            topology.self.interfaces.eno1.network = "home";
             services.xserver.videoDrivers = [ "nvidia" ];
 
             users.users = {
