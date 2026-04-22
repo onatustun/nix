@@ -49,43 +49,6 @@ $env.config.bracketed_paste = true
 $env.config.edit_mode = "vi"
 $env.config.buffer_editor = "hx"
 
-def toggle-editor [] {
-  let hx_frozen = (
-    job list
-    | where { |r| ($r.tag
-      | default '') == 'hx' and ($r.type
-        | default '') == 'frozen' }
-  )
-
-  if (
-    $hx_frozen
-    | is-empty
-  ) {
-    hx .
-  } else {
-    let id = (
-      $hx_frozen
-      | get id
-      | math max
-    )
-
-    job unfreeze $id
-  }
-}
-
-$env.config.keybindings = [
-  {
-    name: toggle_editor
-    modifier: control
-    keycode: char_z
-    mode: [emacs, vi_insert, vi_normal]
-    event: {
-      send: executehostcommand
-      cmd: "toggle-editor"
-    }
-  }
-]
-
 if (
   $nu.is-interactive
   and (which tmux | length) > 0

@@ -16,7 +16,7 @@ def main [selected?: string] {
       let selected_relative =  $search_dirs
         | each { |dir| ^fd --max-depth 1 --type d -H . $dir }
         | flatten
-        | each { |path| $path | str replace $"($env.HOME)/" "" }
+        | each { |path| $path | str trim --right --char "/" | str replace $"($env.HOME)/" "" }
         | str join (char newline)
         | ^sk --margin 10% --color=bw
 
@@ -33,6 +33,8 @@ def main [selected?: string] {
   if ($selected | is-empty) {
     exit 0
   }
+
+  let selected = $selected | str trim --right --char "/"
 
   let selected_name = $selected
     | path basename
