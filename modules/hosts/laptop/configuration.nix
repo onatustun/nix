@@ -42,7 +42,7 @@
                   noctalia
                   nushell
                   printing
-                  ragenix
+                  agenix
                   ssh
                   stylix
                   tailscale

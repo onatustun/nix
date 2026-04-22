@@ -103,17 +103,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ragenix = {
+    agenix = {
       type = "github";
-      owner = "yaxitech";
-      repo = "ragenix";
+      owner = "ryantm";
+      repo = "agenix";
 
       inputs = {
-        agenix.follows = "dep_agenix";
-        crane.follows = "dep_crane";
-        flake-utils.follows = "dep_flake-utils";
+        darwin.follows = "";
+        home-manager.follows = "home-manager";
         nixpkgs.follows = "nixpkgs";
-        rust-overlay.follows = "dep_rust-overlay";
+        systems.follows = "systems";
       };
     };
 
@@ -203,19 +202,6 @@
       owner = "numtide";
       repo = "flake-utils";
       inputs.systems.follows = "systems";
-    };
-
-    dep_agenix = {
-      type = "github";
-      owner = "ryantm";
-      repo = "agenix";
-
-      inputs = {
-        darwin.follows = "";
-        home-manager.follows = "home-manager";
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-      };
     };
 
     dep_crane = {
