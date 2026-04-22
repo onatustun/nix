@@ -25,4 +25,5 @@ result/
 !.gitignore
 !LICENSE
 !network.svg
+!README.md
 !west.yml
