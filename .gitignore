@@ -14,6 +14,7 @@ result/
 !*.nix
 !*.nu
 !*.scm
+!*.toml
 
 !cradio.conf
 !cradio.keymap
