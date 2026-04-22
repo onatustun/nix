@@ -5,16 +5,12 @@
     commit-lockfile-summary = "chore: update `flake.lock`";
 
     extra-substituters = [
-      "https://ghostty.cachix.org"
-      "https://helix.cachix.org"
       "https://niri.cachix.org"
       "https://nix-community.cachix.org"
       "https://noctalia.cachix.org"
     ];
 
     extra-trusted-public-keys = [
-      "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="
-      "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
       "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
@@ -141,35 +137,11 @@
       };
     };
 
-    helix = {
-      type = "github";
-      owner = "mattwparas";
-      repo = "helix";
-      ref = "steel-event-system";
-
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        rust-overlay.follows = "dep_rust-overlay";
-      };
-    };
-
     oil-hx = {
       type = "github";
       owner = "Ra77a3l3-jar";
       repo = "oil.hx";
       flake = false;
-    };
-
-    nixd = {
-      type = "github";
-      owner = "nix-community";
-      repo = "nixd";
-
-      inputs = {
-        flake-parts.follows = "flake-parts";
-        nixpkgs.follows = "nixpkgs";
-        treefmt-nix.follows = "dep_treefmt-nix";
-      };
     };
 
     xwayland-satellite = {
@@ -206,21 +178,6 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         noctalia-qs.follows = "dep_noctalia-qs";
-      };
-    };
-
-    ghostty = {
-      type = "github";
-      owner = "ghostty-org";
-      repo = "ghostty";
-
-      inputs = {
-        flake-compat.follows = "";
-        home-manager.follows = "home-manager";
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-        zig.follows = "dep_zig-overlay";
-        zon2nix.follows = "dep_zon2nix";
       };
     };
 
@@ -291,30 +248,6 @@
         nixpkgs.follows = "nixpkgs";
         systems.follows = "systems";
         treefmt-nix.follows = "dep_treefmt-nix";
-      };
-    };
-
-    dep_zig-overlay = {
-      type = "github";
-      owner = "mitchellh";
-      repo = "zig-overlay";
-
-      inputs = {
-        flake-compat.follows = "";
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-      };
-    };
-
-    dep_zon2nix = {
-      type = "github";
-      owner = "nix-community";
-      repo = "zon2nix";
-
-      inputs = {
-        flake-parts.follows = "flake-parts";
-        nixpkgs.follows = "nixpkgs";
-        zig-overlay.follows = "dep_zig-overlay";
       };
     };
   };

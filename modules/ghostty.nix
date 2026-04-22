@@ -1,52 +1,33 @@
-{ moduleWithSystem, ... }:
 {
-  flake =
-    { config, ... }:
+  flake.modules.homeManager.ghostty =
+    { lib, config, ... }:
+    let
+      inherit (lib.meta) getExe;
+    in
     {
-      modules = {
-        nixos.ghostty = {
-          nix.settings = {
-            extra-substituters = [ "https://ghostty.cachix.org" ];
-            extra-trusted-public-keys = [ "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns=" ];
-          };
+      home.sessionVariables.TERMINAL = getExe config.programs.ghostty.package;
 
-          home-manager.sharedModules = [ config.modules.homeManager.ghostty ];
+      programs.ghostty = {
+        enable = true;
+        installVimSyntax = true;
+
+        settings = {
+          command = "${config.home.sessionVariables.SHELL} --login";
+          confirm-close-surface = false;
+          mouse-hide-while-typing = true;
+          shell-integration-features = "no-cursor";
+          bold-is-bright = true;
+          gtk-titlebar = false;
+          window-decoration = "auto";
+          window-padding-x = 0;
+          window-padding-y = 0;
+
+          font-feature = [
+            "-calt"
+            "-liga"
+            "-dlig"
+          ];
         };
-
-        homeManager.ghostty = moduleWithSystem (
-          { inputs', ... }:
-          { lib, config, ... }:
-          let
-            inherit (lib.meta) getExe;
-          in
-          {
-            home.sessionVariables.TERMINAL = getExe inputs'.ghostty.packages.default;
-
-            programs.ghostty = {
-              enable = true;
-              package = inputs'.ghostty.packages.default;
-              installVimSyntax = true;
-
-              settings = {
-                command = "${config.home.sessionVariables.SHELL} --login";
-                confirm-close-surface = false;
-                mouse-hide-while-typing = true;
-                shell-integration-features = "no-cursor";
-                bold-is-bright = true;
-                gtk-titlebar = false;
-                window-decoration = "auto";
-                window-padding-x = 0;
-                window-padding-y = 0;
-
-                font-feature = [
-                  "-calt"
-                  "-liga"
-                  "-dlig"
-                ];
-              };
-            };
-          }
-        );
       };
     };
 }

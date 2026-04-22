@@ -28,9 +28,7 @@
                   core
                   fonts
                   gdm
-                  ghostty
                   graphics
-                  helix
                   home-manager
                   keyring
                   loader
@@ -128,8 +126,10 @@
                 fastfetch
                 fish
                 gh
+                ghostty
                 git
                 helium
+                helix
                 jujutsu
                 media
                 nh
@@ -145,6 +145,7 @@
                 wl-clipboard
                 xdg
                 xwayland
+                yazi
                 zathura
                 zoxide
                 zsh

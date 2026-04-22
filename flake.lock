@@ -203,56 +203,6 @@
         "type": "github"
       }
     },
-    "dep_zig-overlay": {
-      "inputs": {
-        "flake-compat": [],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "systems": [
-          "systems"
-        ]
-      },
-      "locked": {
-        "lastModified": 1774873836,
-        "narHash": "sha256-ckWKNQ+YvUJJhCCugRyzt4F5ed3LT4fAkbNf41MuaBY=",
-        "owner": "mitchellh",
-        "repo": "zig-overlay",
-        "rev": "7809b029b86797452aed074e6ad048c512aa6c74",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mitchellh",
-        "repo": "zig-overlay",
-        "type": "github"
-      }
-    },
-    "dep_zon2nix": {
-      "inputs": {
-        "flake-parts": [
-          "flake-parts"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "zig-overlay": [
-          "dep_zig-overlay"
-        ]
-      },
-      "locked": {
-        "lastModified": 1770337306,
-        "narHash": "sha256-Nxe1MvrNNc9LN34NJeAQ91SDE6mW710G2xRSmI0hq4M=",
-        "owner": "nix-community",
-        "repo": "zon2nix",
-        "rev": "8c2ef6d376727cd5dc768a851ccded47161e65fb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "zon2nix",
-        "type": "github"
-      }
-    },
     "deploy-rs": {
       "inputs": {
         "flake-compat": [],
@@ -357,39 +307,6 @@
         "type": "github"
       }
     },
-    "ghostty": {
-      "inputs": {
-        "flake-compat": [],
-        "home-manager": [
-          "home-manager"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "systems": [
-          "systems"
-        ],
-        "zig": [
-          "dep_zig-overlay"
-        ],
-        "zon2nix": [
-          "dep_zon2nix"
-        ]
-      },
-      "locked": {
-        "lastModified": 1774823056,
-        "narHash": "sha256-LUZpQtsHGBOxJBGrKQnmHI1lOnAhNfJ+ezUjn+lvnjo=",
-        "owner": "ghostty-org",
-        "repo": "ghostty",
-        "rev": "5540f5f249db0f5e8c1e5f47ee9339f4fe1786f0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ghostty-org",
-        "repo": "ghostty",
-        "type": "github"
-      }
-    },
     "gnome-shell": {
       "flake": false,
       "locked": {
@@ -426,30 +343,6 @@
       "original": {
         "owner": "amaanq",
         "repo": "helium-flake",
-        "type": "github"
-      }
-    },
-    "helix": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "rust-overlay": [
-          "dep_rust-overlay"
-        ]
-      },
-      "locked": {
-        "lastModified": 1776313770,
-        "narHash": "sha256-pmMsgiKQavlqqdPk6tfz1Y+3JHFT6LUXiOuVMH0I12k=",
-        "owner": "mattwparas",
-        "repo": "helix",
-        "rev": "cba44fdf36d1c728468da73a5373348c7d831fb7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mattwparas",
-        "ref": "steel-event-system",
-        "repo": "helix",
         "type": "github"
       }
     },
@@ -546,32 +439,6 @@
       "original": {
         "owner": "nix-community",
         "repo": "nix-index-database",
-        "type": "github"
-      }
-    },
-    "nixd": {
-      "inputs": {
-        "flake-parts": [
-          "flake-parts"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "treefmt-nix": [
-          "dep_treefmt-nix"
-        ]
-      },
-      "locked": {
-        "lastModified": 1773634079,
-        "narHash": "sha256-49qb4QNMv77VOeEux+sMd0uBhPvvHgVc0r938Bulvbo=",
-        "owner": "nix-community",
-        "repo": "nixd",
-        "rev": "8ecf93d4d93745e05ea53534e8b94f5e9506e6bd",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nixd",
         "type": "github"
       }
     },
@@ -683,21 +550,16 @@
         "dep_noctalia-qs": "dep_noctalia-qs",
         "dep_rust-overlay": "dep_rust-overlay",
         "dep_treefmt-nix": "dep_treefmt-nix",
-        "dep_zig-overlay": "dep_zig-overlay",
-        "dep_zon2nix": "dep_zon2nix",
         "deploy-rs": "deploy-rs",
         "dev-inputs": "dev-inputs",
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",
-        "ghostty": "ghostty",
         "helium": "helium",
-        "helix": "helix",
         "home-manager": "home-manager",
         "input-filter": "input-filter",
         "keys": "keys",
         "niri": "niri",
         "nix-index-database": "nix-index-database",
-        "nixd": "nixd",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "noctalia": "noctalia",
