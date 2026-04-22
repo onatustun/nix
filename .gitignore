@@ -5,6 +5,7 @@ result/
 
 .pre-commit-config.yaml
 
+!assets/
 !dev-inputs/
 
 !modules/
@@ -23,4 +24,5 @@ result/
 !.gitattributes
 !.gitignore
 !LICENSE
+!network.svg
 !west.yml

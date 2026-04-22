@@ -1,2 +1,3 @@
 *.age binary
 *.lock -diff
+*.svg -diff

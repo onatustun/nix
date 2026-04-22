@@ -55,12 +55,6 @@
                 TRANSIENT_PROMPT_MULTILINE_INDICATOR = "";
               };
 
-              shellAliases = {
-                c = "clear";
-                ff = "fastfetch";
-                lt = "eza -T --git-ignore --group-directories-first";
-              };
-
               extraConfig = readFile ./extraConfig.nu;
             };
           };
