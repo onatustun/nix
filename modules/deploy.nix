@@ -16,11 +16,11 @@ in
   };
 
   config.partitions.dev.module.perSystem =
-    { inputs', ... }:
+    { inputs', pkgs, ... }:
     {
       make-shells.default.packages = [
         inputs'.deploy-rs.packages.default
-        inputs'.nixos-anywhere.packages.default
+        pkgs.nixos-anywhere
       ];
     };
 }
