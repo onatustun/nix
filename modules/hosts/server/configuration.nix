@@ -22,8 +22,11 @@
             imports =
               attrValues {
                 inherit (config.modules.nixos)
+                  acme
+                  caddy
                   core
                   home-manager
+                  jellyfin
                   locale
                   networking
                   nix
@@ -62,27 +65,7 @@
               };
             };
 
-            networking.firewall = {
-              enable = true;
-
-              allowedTCPPorts = [
-                80
-                443
-              ];
-            };
-
-            services = {
-              caddy = {
-                enable = true;
-                virtualHosts."jellyfin.onatustun.com".extraConfig = "reverse_proxy localhost:8096";
-              };
-
-              jellyfin = {
-                enable = true;
-                openFirewall = false;
-              };
-            };
-
+            networking.firewall.enable = true;
             home-manager.sharedModules = [ config.modules.homeManager.xdg ];
           }
         );

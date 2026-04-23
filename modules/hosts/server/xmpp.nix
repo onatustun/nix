@@ -12,25 +12,17 @@
       };
     in
     {
-      users.groups.certs.members = [
-        "prosody"
-        "caddy"
-      ];
+      users.groups.certs.members = [ "prosody" ];
 
-      security.acme = {
-        acceptTerms = true;
-        defaults.email = "mail@onatustun.com";
+      security.acme.certs.${domain} = {
+        group = "certs";
+        webroot = "/var/lib/acme/acme-challenge";
+        postRun = "systemctl reload prosody.service";
 
-        certs.${domain} = {
-          group = "certs";
-          webroot = "/var/lib/acme/acme-challenge";
-          postRun = "systemctl reload prosody.service";
-
-          extraDomainNames = [
-            mucDomain
-            uploadDomain
-          ];
-        };
+        extraDomainNames = [
+          mucDomain
+          uploadDomain
+        ];
       };
 
       systemd.services."acme-${domain}" = {
