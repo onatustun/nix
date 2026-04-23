@@ -22,12 +22,12 @@
             imports =
               attrValues {
                 inherit (config.modules.nixos)
-                  agenix
                   core
                   home-manager
                   locale
                   networking
                   nix
+                  ragenix
                   ssh
                   tailscale
                   users

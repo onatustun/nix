@@ -26,7 +26,6 @@
             imports =
               attrValues {
                 inherit (flake.config.modules.nixos)
-                  agenix
                   audio
                   bluetooth
                   core
@@ -44,6 +43,7 @@
                   noctalia
                   nushell
                   printing
+                  ragenix
                   ssh
                   stylix
                   tailscale

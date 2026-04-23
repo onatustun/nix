@@ -1,4 +1,4 @@
-{ inputs, moduleWithSystem, ... }:
+{ inputs, ... }:
 {
   partitions.dev.module.perSystem =
     { inputs', ... }:
@@ -8,7 +8,7 @@
           export RULES="$(git rev-parse --show-toplevel)/secrets.nix"
         '';
 
-        packages = [ inputs'.agenix.packages.default ];
+        packages = [ inputs'.ragenix.packages.default ];
       };
     };
 
@@ -21,22 +21,19 @@
         nixos = {
           core._module.args.keys = import inputs.keys;
 
-          agenix = {
-            imports = [ inputs.agenix.nixosModules.default ];
+          ragenix = {
+            imports = [ inputs.ragenix.nixosModules.default ];
             age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-            home-manager.sharedModules = [ config.modules.homeManager.agenix ];
+            home-manager.sharedModules = [ config.modules.homeManager.ragenix ];
           };
         };
 
-        homeManager.agenix = moduleWithSystem (
-          { inputs', ... }:
+        homeManager.ragenix =
           { config, ... }:
           {
-            imports = [ inputs.agenix.homeManagerModules.default ];
+            imports = [ inputs.ragenix.homeManagerModules.default ];
             age.identityPaths = [ "${config.home.homeDirectory}/.ssh/id_ed25519" ];
-            home.packages = [ inputs'.agenix.packages.default ];
-          }
-        );
+          };
       };
     };
 }
