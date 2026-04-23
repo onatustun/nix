@@ -31,6 +31,7 @@
                   ssh
                   tailscale
                   users
+                  xmpp
                   ;
               }
               ++ [

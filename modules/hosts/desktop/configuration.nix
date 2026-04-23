@@ -135,6 +135,7 @@
                 eza
                 fastfetch
                 fish
+                gajim
                 gh
                 ghostty
                 git

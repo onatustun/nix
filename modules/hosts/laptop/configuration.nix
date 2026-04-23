@@ -105,7 +105,7 @@
               hardware.info = "Framework 13";
 
               interfaces.wlp1s0 = {
-                type = "wireless";
+                type = "wifi";
                 network = "home";
                 physicalConnections = [ (mkConnection "router" "wifi") ];
               };
@@ -149,6 +149,7 @@
                 eza
                 fastfetch
                 fish
+                gajim
                 gh
                 ghostty
                 git
