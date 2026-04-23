@@ -20,11 +20,13 @@
           }:
           let
             inherit (lib.attrsets) attrValues;
+            inherit (config.lib.topology) mkConnection;
           in
           {
             imports =
               attrValues {
                 inherit (flake.config.modules.nixos)
+                  agenix
                   audio
                   bluetooth
                   core
@@ -42,7 +44,6 @@
                   noctalia
                   nushell
                   printing
-                  agenix
                   ssh
                   stylix
                   tailscale
@@ -52,9 +53,9 @@
                   ;
               }
               ++ [
-                (modulesPath + "/installer/scan/not-detected.nix")
                 inputs.nixos-hardware.nixosModules.framework-13-7040-amd
                 inputs.nix-topology.nixosModules.default
+                (modulesPath + "/installer/scan/not-detected.nix")
               ];
 
             _module.args = {
@@ -98,6 +99,16 @@
             hardware = {
               cpu.amd.updateMicrocode = config.hardware.enableRedistributableFirmware;
               framework.enableKmod = true;
+            };
+
+            topology.self = {
+              hardware.info = "Framework 13";
+
+              interfaces.wlp1s0 = {
+                type = "wireless";
+                network = "home";
+                physicalConnections = [ (mkConnection "router" "wifi") ];
+              };
             };
 
             users.users = {

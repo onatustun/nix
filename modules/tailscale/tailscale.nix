@@ -34,6 +34,11 @@ in
       };
 
       networking.firewall.trustedInterfaces = [ config.services.tailscale.interfaceName ];
-      topology.self.interfaces.tailscale0.network = "tailscale";
+
+      topology.self.interfaces.tailscale0 = {
+        type = "wireguard";
+        network = "tailscale";
+        virtual = true;
+      };
     };
 }

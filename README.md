@@ -1,1 +1,1 @@
-![nix topology](./assets/network.svg)
+![nix topology](./assets/main.svg)

@@ -14,8 +14,6 @@ result/
 !*.age
 !*.nix
 !*.nu
-!*.scm
-!*.toml
 
 !cradio.conf
 !cradio.keymap
@@ -23,7 +21,9 @@ result/
 !flake.lock
 !.gitattributes
 !.gitignore
+!gruber-darker.toml
+!init.scm
 !LICENSE
-!network.svg
+!main.svg
 !README.md
 !west.yml

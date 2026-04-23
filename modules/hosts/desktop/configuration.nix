@@ -19,11 +19,13 @@
           }:
           let
             inherit (lib.attrsets) attrValues;
+            inherit (config.lib.topology) mkConnection;
           in
           {
             imports =
               attrValues {
                 inherit (flake.config.modules.nixos)
+                  agenix
                   audio
                   bluetooth
                   core
@@ -41,7 +43,6 @@
                   noctalia
                   nushell
                   printing
-                  agenix
                   ssh
                   stylix
                   tailscale
@@ -51,8 +52,8 @@
                   ;
               }
               ++ [
-                (modulesPath + "/installer/scan/not-detected.nix")
                 inputs.nix-topology.nixosModules.default
+                (modulesPath + "/installer/scan/not-detected.nix")
               ];
 
             _module.args = {
@@ -102,8 +103,12 @@
               };
             };
 
-            topology.self.interfaces.eno1.network = "home";
             services.xserver.videoDrivers = [ "nvidia" ];
+
+            topology.self.interfaces.eno1 = {
+              network = "home";
+              physicalConnections = [ (mkConnection "mesh-booster" "eth1") ];
+            };
 
             users.users = {
               root.openssh.authorizedKeys.keys = keys.ssh.users.admins;

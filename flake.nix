@@ -66,6 +66,29 @@
       flake = false;
     };
 
+    disko = {
+      type = "github";
+      owner = "nix-community";
+      repo = "disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixos-anywhere = {
+      type = "github";
+      owner = "nix-community";
+      repo = "nixos-anywhere";
+
+      inputs = {
+        disko.follows = "disko";
+        flake-parts.follows = "flake-parts";
+        nixos-images.follows = "dep_nixos-images";
+        nixos-stable.follows = "";
+        nixpkgs.follows = "nixpkgs";
+        nix-vm-test.follows = "dep_nix-vm-test";
+        treefmt-nix.follows = "dep_treefmt-nix";
+      };
+    };
+
     deploy-rs = {
       type = "github";
       owner = "serokell";
@@ -202,6 +225,24 @@
       owner = "numtide";
       repo = "flake-utils";
       inputs.systems.follows = "systems";
+    };
+
+    dep_nixos-images = {
+      type = "github";
+      owner = "nix-community";
+      repo = "nixos-images";
+
+      inputs = {
+        nixos-stable.follows = "";
+        nixos-unstable.follows = "nixpkgs";
+      };
+    };
+
+    dep_nix-vm-test = {
+      type = "github";
+      owner = "Enzime";
+      repo = "nix-vm-test";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     dep_crane = {
