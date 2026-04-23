@@ -220,13 +220,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    dep_flake-utils = {
-      type = "github";
-      owner = "numtide";
-      repo = "flake-utils";
-      inputs.systems.follows = "systems";
-    };
-
     dep_nixos-images = {
       type = "github";
       owner = "nix-community";
@@ -243,6 +236,13 @@
       owner = "Enzime";
       repo = "nix-vm-test";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    dep_flake-utils = {
+      type = "github";
+      owner = "numtide";
+      repo = "flake-utils";
+      inputs.systems.follows = "systems";
     };
 
     dep_crane = {

@@ -18,6 +18,7 @@ result/
 !cradio.conf
 !cradio.keymap
 !.envrc
+!facter.json
 !flake.lock
 !.gitattributes
 !.gitignore

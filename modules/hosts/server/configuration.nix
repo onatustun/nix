@@ -11,7 +11,6 @@
         modules = singleton (
           {
             lib,
-            modulesPath,
             keys,
             username,
             ...
@@ -36,9 +35,8 @@
               }
               ++ [
                 config.diskoConfigurations.server
-                inputs.disko.nixosModules.disko
+                inputs.disko.nixosModules.default
                 inputs.nix-topology.nixosModules.default
-                (modulesPath + "/profiles/qemu-guest.nix")
               ];
 
             _module.args = {
@@ -46,23 +44,12 @@
               username = "onat";
             };
 
-            nixpkgs.hostPlatform.system = "x86_64-linux";
-
-            boot = {
-              loader.grub = {
-                enable = true;
-                efiSupport = false;
-              };
-
-              initrd.availableKernelModules = [
-                "ata_piix"
-                "uhci_hcd"
-                "virtio_pci"
-                "sr_mod"
-                "virtio_blk"
-              ];
+            boot.loader.grub = {
+              enable = true;
+              efiSupport = false;
             };
 
+            hardware.facter.reportPath = ./facter.json;
             topology.self.hardware.info = "Netcup VPS";
 
             users.users = {
