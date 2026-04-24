@@ -28,6 +28,7 @@
                   home-manager
                   jellyfin
                   locale
+                  matrix
                   networking
                   nix
                   ragenix
