@@ -23,13 +23,13 @@
               attrValues {
                 inherit (config.modules.nixos)
                   acme
-                  caddy
                   core
                   home-manager
                   jellyfin
                   locale
                   matrix
                   networking
+                  nginx
                   nix
                   ragenix
                   ssh

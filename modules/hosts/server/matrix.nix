@@ -10,23 +10,30 @@
       networking.firewall.allowedTCPPorts = [ 8448 ];
 
       services = {
-        caddy = {
-          extraConfig = ''
-            :8448 {
-              reverse_proxy localhost:${toString port}
-            }
-          '';
+        nginx.virtualHosts = {
+          ${matrixDomain} = {
+            enableACME = true;
+            forceSSL = true;
+            locations."/".proxyPass = "http://localhost:${toString port}";
 
-          virtualHosts = {
-            ${matrixDomain}.extraConfig = ''
-              reverse_proxy localhost:${toString port}
-            '';
-
-            "https://${server_name}".extraConfig = ''
-              handle /.well-known/matrix/* {
-                reverse_proxy localhost:${toString port}
+            listen = [
+              {
+                addr = "0.0.0.0";
+                port = 443;
+                ssl = true;
               }
-            '';
+              {
+                addr = "0.0.0.0";
+                port = 8448;
+                ssl = true;
+              }
+            ];
+          };
+
+          ${server_name} = {
+            enableACME = true;
+            forceSSL = true;
+            locations."/.well-known/matrix/".proxyPass = "http://localhost:${toString port}";
           };
         };
 

@@ -12,8 +12,6 @@
       };
     in
     {
-      users.groups.certs.members = [ "prosody" ];
-
       security.acme.certs.${domain} = {
         group = "certs";
         webroot = "/var/lib/acme/acme-challenge";
@@ -25,11 +23,6 @@
         ];
       };
 
-      systemd.services."acme-${domain}" = {
-        after = [ "caddy.service" ];
-        wants = [ "caddy.service" ];
-      };
-
       networking.firewall.allowedTCPPorts = [
         5222
         5223
@@ -39,28 +32,24 @@
         8010
       ];
 
+      users.groups.certs.members = [ "prosody" ];
+
       services = {
-        caddy.virtualHosts = {
-          "http://${domain}".extraConfig = ''
-            handle /.well-known/acme-challenge/* {
-              root * /var/lib/acme/acme-challenge
-              file_server
-            }
-          '';
+        nginx.virtualHosts = {
+          ${domain} = {
+            useACMEHost = domain;
+            addSSL = true;
+          };
 
-          "http://${mucDomain}".extraConfig = ''
-            handle /.well-known/acme-challenge/* {
-              root * /var/lib/acme/acme-challenge
-              file_server
-            }
-          '';
+          ${mucDomain} = {
+            useACMEHost = domain;
+            addSSL = true;
+          };
 
-          "http://${uploadDomain}".extraConfig = ''
-            handle /.well-known/acme-challenge/* {
-              root * /var/lib/acme/acme-challenge
-              file_server
-            }
-          '';
+          ${uploadDomain} = {
+            useACMEHost = domain;
+            addSSL = true;
+          };
         };
 
         prosody = {

@@ -1,6 +1,10 @@
 {
   flake.modules.nixos.jellyfin.services = {
-    caddy.virtualHosts."jellyfin.onatustun.com".extraConfig = "reverse_proxy localhost:8096";
+    nginx.virtualHosts."jellyfin.onatustun.com" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/".proxyPass = "http://127.0.0.1:8096";
+    };
 
     jellyfin = {
       enable = true;
