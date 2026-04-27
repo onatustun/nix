@@ -36,9 +36,9 @@
     };
 
     systems = {
-      type = "github";
-      owner = "nix-systems";
-      repo = "x86_64-linux";
+      type = "path";
+      path = "./systems.nix";
+      flake = false;
     };
 
     keys = {

@@ -24,7 +24,7 @@ flake-parts: {
           board = "nice_nano@2.0.0//zmk";
           shield = "cradio_%PART%";
 
-          zephyrDepsHash = "sha256-JgUJP/Aa3WCeTz9mgR+oJakFWcnxyg9xkjOuYzry3PY=";
+          zephyrDepsHash = "sha256-14G3J2LTnsu8L47afajd9SICaMR49FOcwQtgKIS5/iY=";
 
           meta = {
             description = "ZMK firmware";
