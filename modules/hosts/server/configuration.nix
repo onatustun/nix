@@ -1,75 +1,68 @@
 { inputs, ... }:
 {
   flake =
-    { lib, config, ... }:
-    let
-      inherit (lib) nixosSystem;
-      inherit (lib.lists) singleton;
-    in
+    { config, ... }:
     {
-      nixosConfigurations.server = nixosSystem {
-        modules = singleton (
-          {
-            lib,
-            keys,
-            username,
-            ...
-          }:
-          let
-            inherit (lib.attrsets) attrValues;
-          in
-          {
-            imports =
-              attrValues {
-                inherit (config.modules.nixos)
-                  acme
-                  core
-                  home-manager
-                  jellyfin
-                  locale
-                  matrix
-                  networking
-                  nginx
-                  nix
-                  ragenix
-                  ssh
-                  tailscale
-                  users
-                  xmpp
-                  ;
-              }
-              ++ [
-                config.diskoConfigurations.server
-                inputs.disko.nixosModules.default
-                inputs.nix-topology.nixosModules.default
-              ];
+      configurations.nixos.server.module =
+        {
+          lib,
+          keys,
+          username,
+          ...
+        }:
+        let
+          inherit (lib.attrsets) attrValues;
+        in
+        {
+          imports =
+            attrValues {
+              inherit (config.modules.nixos)
+                acme
+                core
+                home-manager
+                jellyfin
+                locale
+                matrix
+                networking
+                nginx
+                nix
+                ragenix
+                ssh
+                tailscale
+                users
+                xmpp
+                ;
+            }
+            ++ [
+              config.diskoConfigurations.server
+              inputs.disko.nixosModules.default
+              inputs.nix-topology.nixosModules.default
+            ];
 
-            _module.args = {
-              hostName = "server";
-              username = "onat";
+          _module.args = {
+            hostName = "server";
+            username = "onat";
+          };
+
+          boot.loader.grub = {
+            enable = true;
+            efiSupport = false;
+          };
+
+          hardware.facter.reportPath = ./facter.json;
+          topology.self.hardware.info = "Netcup VPS";
+
+          users.users = {
+            root.openssh.authorizedKeys.keys = keys.ssh.users.admins;
+
+            ${username} = {
+              openssh.authorizedKeys.keys = keys.ssh.users.admins;
+              extraGroups = [ "wheel" ];
             };
+          };
 
-            boot.loader.grub = {
-              enable = true;
-              efiSupport = false;
-            };
-
-            hardware.facter.reportPath = ./facter.json;
-            topology.self.hardware.info = "Netcup VPS";
-
-            users.users = {
-              root.openssh.authorizedKeys.keys = keys.ssh.users.admins;
-
-              ${username} = {
-                openssh.authorizedKeys.keys = keys.ssh.users.admins;
-                extraGroups = [ "wheel" ];
-              };
-            };
-
-            networking.firewall.enable = true;
-            home-manager.sharedModules = [ config.modules.homeManager.xdg ];
-          }
-        );
-      };
+          networking.firewall.enable = true;
+          home-manager.sharedModules = [ config.modules.homeManager.xdg ];
+        };
     };
 }
