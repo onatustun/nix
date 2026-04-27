@@ -384,21 +384,6 @@
         "type": "github"
       }
     },
-    "input-filter": {
-      "locked": {
-        "lastModified": 1775507725,
-        "narHash": "sha256-HK0D+cZ4VQWaF5KgmXHOaYuLAC7+jkmKhPZkquDWHSQ=",
-        "owner": "onatustun",
-        "repo": "input-filter",
-        "rev": "e89cfdb06f8350da232aff0841a5bb606551aea8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "onatustun",
-        "repo": "input-filter",
-        "type": "github"
-      }
-    },
     "keys": {
       "flake": false,
       "locked": {
@@ -598,7 +583,6 @@
         "flake-parts": "flake-parts",
         "helium": "helium",
         "home-manager": "home-manager",
-        "input-filter": "input-filter",
         "keys": "keys",
         "niri": "niri",
         "nix-index-database": "nix-index-database",

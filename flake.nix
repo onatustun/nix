@@ -35,12 +35,6 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
-    input-filter = {
-      type = "github";
-      owner = "onatustun";
-      repo = "input-filter";
-    };
-
     systems = {
       type = "github";
       owner = "nix-systems";
@@ -270,11 +264,11 @@
   };
 
   outputs =
-    { flake-parts, input-filter, ... }@allInputs:
+    { flake-parts, ... }@inputs:
     let
       inherit (flake-parts.lib) mkFlake;
     in
-    mkFlake { inputs = input-filter allInputs; } (
+    mkFlake { inherit inputs; } (
       { lib, ... }:
       let
         inherit (lib.fileset) toList fileFilter;
