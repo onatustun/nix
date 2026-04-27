@@ -6,7 +6,6 @@
         lib,
         config,
         modulesPath,
-        keys,
         username,
         ...
       }:
@@ -103,19 +102,11 @@
           physicalConnections = [ (mkConnection "mesh-booster" "eth1") ];
         };
 
-        users.users = {
-          root.openssh.authorizedKeys.keys = keys.ssh.users.admins;
-
-          ${username} = {
-            openssh.authorizedKeys.keys = keys.ssh.users.admins;
-
-            extraGroups = [
-              "networkmanager"
-              "storage"
-              "wheel"
-            ];
-          };
-        };
+        users.users.${username}.extraGroups = [
+          "networkmanager"
+          "storage"
+          "wheel"
+        ];
 
         home-manager.sharedModules = attrValues {
           inherit (flake.config.modules.homeManager)

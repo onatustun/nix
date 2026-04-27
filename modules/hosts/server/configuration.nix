@@ -4,12 +4,7 @@
     { config, ... }:
     {
       configurations.nixos.server.module =
-        {
-          lib,
-          keys,
-          username,
-          ...
-        }:
+        { lib, username, ... }:
         let
           inherit (lib.attrsets) attrValues;
         in
@@ -51,16 +46,7 @@
 
           hardware.facter.reportPath = ./facter.json;
           topology.self.hardware.info = "Netcup VPS";
-
-          users.users = {
-            root.openssh.authorizedKeys.keys = keys.ssh.users.admins;
-
-            ${username} = {
-              openssh.authorizedKeys.keys = keys.ssh.users.admins;
-              extraGroups = [ "wheel" ];
-            };
-          };
-
+          users.users.${username}.extraGroups = [ "wheel" ];
           networking.firewall.enable = true;
           home-manager.sharedModules = [ config.modules.homeManager.xdg ];
         };

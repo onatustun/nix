@@ -1,10 +1,21 @@
 {
   flake.modules.nixos.ssh =
-    { lib, ... }:
+    {
+      lib,
+      keys,
+      username,
+      ...
+    }:
     let
+      inherit (lib.modules) mkDefault;
       inherit (lib.lists) singleton;
     in
     {
+      users.users = {
+        root.openssh.authorizedKeys.keys = mkDefault keys.ssh.users.admins;
+        ${username}.openssh.authorizedKeys.keys = mkDefault keys.ssh.users.admins;
+      };
+
       services.openssh = {
         enable = true;
         settings.KbdInteractiveAuthentication = false;

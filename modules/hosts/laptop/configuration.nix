@@ -6,7 +6,6 @@
         lib,
         config,
         modulesPath,
-        keys,
         username,
         pkgs,
         ...
@@ -104,20 +103,12 @@
           };
         };
 
-        users.users = {
-          root.openssh.authorizedKeys.keys = keys.ssh.users.admins;
-
-          ${username} = {
-            openssh.authorizedKeys.keys = keys.ssh.users.admins;
-
-            extraGroups = [
-              "networkmanager"
-              "storage"
-              "video"
-              "wheel"
-            ];
-          };
-        };
+        users.users.${username}.extraGroups = [
+          "networkmanager"
+          "storage"
+          "video"
+          "wheel"
+        ];
 
         services = {
           fwupd.enable = true;
