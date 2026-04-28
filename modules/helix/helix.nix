@@ -1,38 +1,5 @@
 {
-  inputs,
-  config,
-  moduleWithSystem,
-  ...
-}:
-{
-  perSystem =
-    { pkgs, lib, ... }:
-    let
-      inherit (pkgs.stdenvNoCC) mkDerivation;
-    in
-    {
-      packages.oil-hx = mkDerivation {
-        pname = "oil.hx";
-        version = "0.1.0";
-        src = inputs.oil-hx;
-
-        installPhase = ''
-          mkdir -p $out/share/steel/cogs/oil
-          cp -r . $out/share/steel/cogs/oil
-        '';
-
-        meta = {
-          license = lib.licenses.mit;
-          platforms = config.systems;
-        };
-      };
-    };
-
-  flake.modules.homeManager.helix = moduleWithSystem (
-    { config, ... }:
-    let
-      perSystem.config = config;
-    in
+  flake.modules.homeManager.helix =
     {
       lib,
       pkgs,
@@ -55,16 +22,9 @@
         };
       };
 
-      xdg = {
-        configFile = {
-          "helix/init.scm".source = ./init.scm;
-          "helix/themes/gruber-darker.toml".source = ./gruber-darker.toml;
-        };
-
-        dataFile."steel/cogs/oil" = {
-          source = "${perSystem.config.packages.oil-hx}/share/steel/cogs/oil";
-          recursive = true;
-        };
+      xdg.configFile = {
+        "helix/init.scm".source = ./init.scm;
+        "helix/themes/gruber-darker.toml".source = ./gruber-darker.toml;
       };
 
       programs.helix = {
@@ -216,6 +176,5 @@
           };
         };
       };
-    }
-  );
+    };
 }
