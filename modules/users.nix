@@ -1,26 +1,20 @@
 {
-  flake.modules.nixos = {
-    core =
-      { username, ... }:
-      {
-        _module.args.homeDir = "/home/${username}";
-      };
+  flake.modules.nixos.users =
+    {
+      lib,
+      username,
+      homeDir,
+      ...
+    }:
+    let
+      inherit (lib.modules) mkDefault;
+    in
+    {
+      _module.args.homeDir = "/home/${username}";
 
-    users =
-      {
-        lib,
-        username,
-        homeDir,
-        ...
-      }:
-      let
-        inherit (lib.modules) mkDefault;
-      in
-      {
-        users.users.${username} = {
-          home = homeDir;
-          isNormalUser = mkDefault true;
-        };
+      users.users.${username} = {
+        home = homeDir;
+        isNormalUser = mkDefault true;
       };
-  };
+    };
 }

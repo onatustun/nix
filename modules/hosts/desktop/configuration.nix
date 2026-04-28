@@ -19,7 +19,6 @@
             inherit (flake.config.modules.nixos)
               audio
               bluetooth
-              core
               fonts
               gdm
               graphics

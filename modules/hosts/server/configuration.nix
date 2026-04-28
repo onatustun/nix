@@ -13,7 +13,6 @@
             attrValues {
               inherit (config.modules.nixos)
                 acme
-                core
                 home-manager
                 jellyfin
                 locale

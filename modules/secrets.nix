@@ -18,14 +18,11 @@
       keys = import inputs.keys;
 
       modules = {
-        nixos = {
-          core._module.args.keys = import inputs.keys;
-
-          ragenix = {
-            imports = [ inputs.ragenix.nixosModules.default ];
-            age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-            home-manager.sharedModules = [ config.modules.homeManager.ragenix ];
-          };
+        nixos.ragenix = {
+          imports = [ inputs.ragenix.nixosModules.default ];
+          _module.args.keys = import inputs.keys;
+          age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+          home-manager.sharedModules = [ config.modules.homeManager.ragenix ];
         };
 
         homeManager.ragenix =
