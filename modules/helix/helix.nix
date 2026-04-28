@@ -29,7 +29,10 @@
     };
 
   flake.modules.homeManager.helix = moduleWithSystem (
-    perSystem:
+    { config, ... }:
+    let
+      perSystem.config = config;
+    in
     {
       lib,
       pkgs,
@@ -169,8 +172,6 @@
                 j = "goto_last_line";
                 k = "goto_file_start";
               };
-
-              space.B = ":sh git show -s --date=format-local:%%d/%%m/%%y --format=\"%%h (%%cn %%cd) %%s\" (git blame -L %{cursor_line},%{cursor_line} --porcelain %{buffer_name} | lines | first | split words | first)";
             };
 
             select = {
