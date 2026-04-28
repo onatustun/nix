@@ -8,13 +8,11 @@
     }:
     let
       inherit (lib.meta) getExe;
+      inherit (lib.lists) singleton;
     in
     {
       home = {
-        packages = [
-          pkgs.nixd
-          pkgs.steel
-        ];
+        packages = [ pkgs.nixd ];
 
         sessionVariables = {
           EDITOR = getExe config.programs.helix.package;
@@ -22,14 +20,8 @@
         };
       };
 
-      xdg.configFile = {
-        "helix/init.scm".source = ./init.scm;
-        "helix/themes/gruber-darker.toml".source = ./gruber-darker.toml;
-      };
-
       programs.helix = {
         enable = true;
-        package = pkgs.steelix;
 
         settings = {
           editor = {
@@ -149,33 +141,22 @@
         };
 
         languages = {
-          language = [
-            {
-              name = "haskell";
+          language = singleton {
+            name = "haskell";
+            formatter = {
+              command = "fourmolu";
 
-              formatter = {
-                command = "fourmolu";
-
-                args = [
-                  "--stdin-input-file"
-                  "%{buffer_name}"
-                ];
-              };
-            }
-            {
-              name = "scheme";
-              language-servers = [ "steel-language-server" ];
-            }
-          ];
-
-          language-server = {
-            rust-analyzer.config = {
-              cargo.features = "all";
-              check.command = "clippy";
-              completion.callable.snippets = "add_parentheses";
+              args = [
+                "--stdin-input-file"
+                "%{buffer_name}"
+              ];
             };
+          };
 
-            steel-language-server.command = "steel-language-server";
+          language-server.rust-analyzer.config = {
+            cargo.features = "all";
+            check.command = "clippy";
+            completion.callable.snippets = "add_parentheses";
           };
         };
       };

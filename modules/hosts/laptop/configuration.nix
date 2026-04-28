@@ -32,6 +32,7 @@
               niri
               nix
               nix-index
+              nixpkgs
               noctalia
               nushell
               printing
@@ -142,6 +143,7 @@
             jujutsu
             media
             nh
+            nixpkgs
             nix-tools
             obsidian
             proton

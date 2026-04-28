@@ -29,10 +29,10 @@
     };
 
   flake.modules.homeManager.helix = moduleWithSystem (
-    { self', ... }:
+    { config, ... }:
     {
       xdg.dataFile."steel/cogs/oil" = {
-        source = "${self'.packages.oil-hx}/share/steel/cogs/oil";
+        source = "${config.packages.oil-hx}/share/steel/cogs/oil";
         recursive = true;
       };
     }

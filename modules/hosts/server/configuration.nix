@@ -21,6 +21,7 @@
                 networking
                 nginx
                 nix
+                nixpkgs
                 ragenix
                 ssh
                 tailscale
@@ -48,7 +49,11 @@
           topology.self.hardware.info = "Netcup VPS";
           users.users.${username}.extraGroups = [ "wheel" ];
           networking.firewall.enable = true;
-          home-manager.sharedModules = [ config.modules.homeManager.xdg ];
+
+          home-manager.sharedModules = [
+            config.modules.homeManager.nixpkgs
+            config.modules.homeManager.xdg
+          ];
         };
     };
 }

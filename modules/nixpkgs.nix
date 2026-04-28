@@ -14,7 +14,7 @@ in
     };
 
   flake.modules = {
-    nixos.core =
+    nixos.nixpkgs =
       { lib, ... }:
       let
         inherit (lib.modules) mkDefault;
@@ -24,7 +24,7 @@ in
         system.stateVersion = mkDefault lib.trivial.release;
       };
 
-    homeManager.home-manager =
+    homeManager.nixpkgs =
       { lib, ... }:
       let
         inherit (lib.modules) mkDefault;
