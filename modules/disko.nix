@@ -3,11 +3,8 @@
   imports = [ inputs.disko.flakeModules.default ];
 
   partitions.dev.module.perSystem =
-    { inputs', pkgs, ... }:
+    { inputs', ... }:
     {
-      make-shells.default.packages = [
-        inputs'.disko.packages.default
-        pkgs.nixos-anywhere
-      ];
+      make-shells.default.packages = [ inputs'.disko.packages.default ];
     };
 }

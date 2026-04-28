@@ -19,12 +19,12 @@
           attrValues {
             inherit (flake.config.modules.nixos)
               bluetooth
+              boot
               fonts
               gdm
               graphics
               home-manager
               keyring
-              loader
               locale
               networking
               niri
@@ -127,7 +127,6 @@
             bash
             bat
             carapace
-            cli
             cursor
             direnv
             eza
@@ -144,11 +143,11 @@
             starship
             swayidle
             tmux
+            utils
             wayvnc
             wl-clipboard
             xdg
             xwayland
-            yazi
             zmkbatx
             zoxide
             zsh

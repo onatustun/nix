@@ -1,5 +1,35 @@
 {
-  flake.modules.homeManager.helix =
+  inputs,
+  config,
+  moduleWithSystem,
+  ...
+}:
+{
+  perSystem =
+    { pkgs, lib, ... }:
+    let
+      inherit (pkgs.stdenvNoCC) mkDerivation;
+    in
+    {
+      packages.oil-hx = mkDerivation {
+        pname = "oil.hx";
+        version = "0.1.0";
+        src = inputs.oil-hx;
+
+        installPhase = ''
+          mkdir -p $out/share/steel/cogs/oil
+          cp -r . $out/share/steel/cogs/oil
+        '';
+
+        meta = {
+          license = lib.licenses.mit;
+          platforms = config.systems;
+        };
+      };
+    };
+
+  flake.modules.homeManager.helix = moduleWithSystem (
+    perSystem:
     {
       lib,
       pkgs,
@@ -8,11 +38,13 @@
     }:
     let
       inherit (lib.meta) getExe;
-      inherit (lib.lists) singleton;
     in
     {
       home = {
-        packages = [ pkgs.nixd ];
+        packages = [
+          pkgs.nixd
+          pkgs.steel
+        ];
 
         sessionVariables = {
           EDITOR = getExe config.programs.helix.package;
@@ -20,8 +52,21 @@
         };
       };
 
+      xdg = {
+        configFile = {
+          "helix/init.scm".source = ./init.scm;
+          "helix/themes/gruber-darker.toml".source = ./gruber-darker.toml;
+        };
+
+        dataFile."steel/cogs/oil" = {
+          source = "${perSystem.config.packages.oil-hx}/share/steel/cogs/oil";
+          recursive = true;
+        };
+      };
+
       programs.helix = {
         enable = true;
+        package = pkgs.steelix;
 
         settings = {
           editor = {
@@ -141,24 +186,35 @@
         };
 
         languages = {
-          language = singleton {
-            name = "haskell";
-            formatter = {
-              command = "fourmolu";
+          language = [
+            {
+              name = "haskell";
+              formatter = {
+                command = "fourmolu";
 
-              args = [
-                "--stdin-input-file"
-                "%{buffer_name}"
-              ];
+                args = [
+                  "--stdin-input-file"
+                  "%{buffer_name}"
+                ];
+              };
+            }
+            {
+              name = "scheme";
+              language-servers = [ "steel-language-server" ];
+            }
+          ];
+
+          language-server = {
+            rust-analyzer.config = {
+              cargo.features = "all";
+              check.command = "clippy";
+              completion.callable.snippets = "add_parentheses";
             };
-          };
 
-          language-server.rust-analyzer.config = {
-            cargo.features = "all";
-            check.command = "clippy";
-            completion.callable.snippets = "add_parentheses";
+            steel-language-server.command = "steel-language-server";
           };
         };
       };
-    };
+    }
+  );
 }

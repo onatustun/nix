@@ -1,11 +1,5 @@
 {
-  partitions.dev.module.perSystem =
-    { pkgs, ... }:
-    {
-      make-shells.default.packages = [ pkgs.vim ];
-    };
-
-  flake.modules.homeManager.cli =
+  flake.modules.homeManager.utils =
     { pkgs, ... }:
     {
       home.packages = [
@@ -16,7 +10,7 @@
       programs = {
         fd.enable = true;
         ripgrep.enable = true;
-        vim.enable = true;
+        yazi.enable = true;
       };
     };
 }

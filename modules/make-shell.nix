@@ -5,9 +5,8 @@
       imports = [ inputs.make-shell.flakeModules.default ];
 
       perSystem =
-        { pkgs, config, ... }:
+        { config, ... }:
         {
-          make-shells.default.stdenv = pkgs.stdenvNoCC;
           devShells.nix-config = config.devShells.default;
         };
     };
