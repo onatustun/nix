@@ -24,6 +24,7 @@
               gdm
               graphics
               home-manager
+              initrd
               keyring
               locale
               networking
@@ -34,6 +35,7 @@
               noctalia
               nushell
               pipewire
+              plymouth
               printing
               ragenix
               ssh
