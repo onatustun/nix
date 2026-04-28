@@ -6,11 +6,6 @@
         nixos.thunar =
           { pkgs, ... }:
           {
-            services = {
-              gvfs.enable = true;
-              tumbler.enable = true;
-            };
-
             programs.thunar = {
               enable = true;
 
@@ -19,6 +14,11 @@
                 pkgs.thunar-media-tags-plugin
                 pkgs.thunar-volman
               ];
+            };
+
+            services = {
+              gvfs.enable = true;
+              tumbler.enable = true;
             };
 
             home-manager.sharedModules = [ config.modules.homeManager.thunar ];

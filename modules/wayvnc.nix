@@ -16,11 +16,6 @@
       };
     in
     {
-      home.packages = [
-        pkgs.remmina
-        pkgs.wayvnc
-      ];
-
       systemd.user.services.wayvnc = {
         Unit = {
           After = [ config.wayland.systemd.target ];

@@ -5,12 +5,12 @@
       powerOnBoot = true;
 
       settings = {
+        Policy.AutoEnable = true;
+
         General = {
           Experimental = true;
           FastConnectable = true;
         };
-
-        Policy.AutoEnable = true;
       };
     };
 

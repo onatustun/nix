@@ -10,8 +10,6 @@
       inherit (lib.meta) getExe' getExe;
     in
     {
-      home.packages = [ pkgs.zmkbatx ];
-
       systemd.user.services.zmkbatx = {
         Unit = {
           After = [ config.wayland.systemd.target ];

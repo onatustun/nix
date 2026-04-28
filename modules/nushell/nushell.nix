@@ -11,25 +11,20 @@
           };
 
         homeManager.nushell =
-          {
-            lib,
-            pkgs,
-            config,
-            ...
-          }:
+          { lib, config, ... }:
           let
             inherit (lib.meta) getExe;
             inherit (lib.strings) readFile;
           in
           {
             home = {
-              packages = [ pkgs.nushell ];
-              sessionVariables.SHELL = getExe pkgs.nushell;
+              sessionVariables.SHELL = getExe config.programs.nushell.package;
               shell.enableShellIntegration = true;
             };
 
             programs.nushell = {
               enable = true;
+              extraConfig = readFile ./extraConfig.nu;
 
               environmentVariables = {
                 inherit (config.home.sessionVariables)
@@ -54,8 +49,6 @@
                 TRANSIENT_PROMPT_INDICATOR_VI_INSERT = "";
                 TRANSIENT_PROMPT_MULTILINE_INDICATOR = "";
               };
-
-              extraConfig = readFile ./extraConfig.nu;
             };
           };
       };

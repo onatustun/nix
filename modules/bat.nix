@@ -1,19 +1,14 @@
 {
   flake.modules.homeManager.bat =
-    { config, pkgs, ... }:
+    { pkgs, ... }:
     {
-      programs = {
-        ghostty.installBatSyntax = config.programs.ghostty.enable;
+      programs.bat = {
+        enable = true;
 
-        bat = {
-          enable = true;
-          config.pager = "less -FR";
-
-          extraPackages = [
-            pkgs.bat-extras.batdiff
-            pkgs.bat-extras.prettybat
-          ];
-        };
+        extraPackages = [
+          pkgs.bat-extras.batdiff
+          pkgs.bat-extras.prettybat
+        ];
       };
     };
 }

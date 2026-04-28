@@ -13,8 +13,6 @@
       inherit (lib.meta) getExe;
     in
     {
-      home.packages = [ pkgs.sway-audio-idle-inhibit ];
-
       services.swayidle = {
         enable = true;
 

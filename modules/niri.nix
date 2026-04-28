@@ -33,7 +33,8 @@
           in
           {
             home.packages = [
-              pkgs.gnome-keyring
+              pkgs.wlrctl
+              pkgs.wlr-randr
               pkgs.xdg-desktop-portal-gnome
               pkgs.xdg-desktop-portal-gtk
             ];

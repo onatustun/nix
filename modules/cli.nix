@@ -6,42 +6,16 @@
     };
 
   flake.modules.homeManager.cli =
-    { lib, pkgs, ... }:
-    let
-      inherit (lib.attrsets) attrValues;
-    in
+    { pkgs, ... }:
     {
-      home.packages = attrValues {
-        inherit (pkgs)
-          appimage-run
-          binutils
-          coreutils-full
-          curl
-          diffutils
-          dust
-          file
-          findutils
-          gawk
-          gnused
-          killall
-          lsof
-          ouch
-          procps
-          rip2
-          wget
-          which
-          yq-go
-          ;
-      };
+      home.packages = [
+        pkgs.nix-search-cli
+        pkgs.noogle-search
+      ];
 
       programs = {
         fd.enable = true;
-        fzf.enable = true;
-        grep.enable = true;
-        jq.enable = true;
-        less.enable = true;
         ripgrep.enable = true;
-        skim.enable = true;
         vim.enable = true;
       };
     };

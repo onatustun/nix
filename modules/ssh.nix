@@ -16,6 +16,8 @@
         ${username}.openssh.authorizedKeys.keys = mkDefault keys.ssh.users.admins;
       };
 
+      programs.ssh.startAgent = false;
+
       services.openssh = {
         enable = true;
         settings.KbdInteractiveAuthentication = false;
@@ -25,7 +27,5 @@
           type = "ed25519";
         };
       };
-
-      programs.ssh.startAgent = false;
     };
 }

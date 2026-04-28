@@ -4,13 +4,12 @@
     {
       networking = {
         inherit hostName;
+        firewall.checkReversePath = "loose";
 
         networkmanager = {
           enable = true;
           wifi.powersave = false;
         };
-
-        firewall.checkReversePath = "loose";
       };
 
       environment.systemPackages = [ pkgs.networkmanagerapplet ];

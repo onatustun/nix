@@ -17,7 +17,6 @@
         imports =
           attrValues {
             inherit (flake.config.modules.nixos)
-              audio
               bluetooth
               fonts
               gdm
@@ -33,6 +32,7 @@
               nixpkgs
               noctalia
               nushell
+              pipewire
               printing
               ragenix
               ssh
@@ -117,10 +117,7 @@
             cursor
             direnv
             eza
-            fastfetch
             fish
-            gajim
-            gh
             ghostty
             git
             helium
@@ -129,20 +126,15 @@
             media
             nh
             nixpkgs
-            nix-tools
             obsidian
-            proton
             starship
             swayidle
             tmux
-            tui
-            wayland
             wayvnc
             wl-clipboard
             xdg
             xwayland
             yazi
-            zathura
             zoxide
             zsh
             ;

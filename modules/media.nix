@@ -10,14 +10,9 @@
           ffmpeg-full
           haruna
           imv
-          nicotine-plus
-          pavucontrol
           playerctl
-          pwvucontrol
           yt-dlp
           ;
       };
-
-      programs.mpv.enable = true;
     };
 }

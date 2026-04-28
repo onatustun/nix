@@ -1,6 +1,9 @@
 {
-  flake.modules.nixos.keyring = {
-    security.pam.services.gdm-password.enableGnomeKeyring = true;
-    programs.seahorse.enable = true;
-  };
+  flake.modules.nixos.keyring =
+    { pkgs, ... }:
+    {
+      security.pam.services.gdm-password.enableGnomeKeyring = true;
+      environment.systemPackages = [ pkgs.gnome-keyring ];
+      programs.seahorse.enable = true;
+    };
 }
