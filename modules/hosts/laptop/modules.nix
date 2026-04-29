@@ -55,6 +55,7 @@
             nh
             nixpkgs
             obsidian
+            radicle
             starship
             swayidle
             tmux
