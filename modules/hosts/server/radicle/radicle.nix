@@ -2,13 +2,15 @@
 {
   flake.configurations.nixos.server.module =
     {
+      lib,
       rootDomain,
       pkgs,
-      keys,
       config,
+      keys,
       ...
     }:
     let
+      inherit (lib.lists) singleton;
       domain = "seed.${rootDomain}";
       explore = "explore.${domain}";
     in
@@ -21,6 +23,17 @@
       };
 
       environment.systemPackages = [ pkgs.radicle-node ];
+
+      system.activationScripts.radicle-setup = {
+        deps = [ "agenix" ];
+
+        text = ''
+          install -m 600 -o radicle -g radicle \
+            ${config.services.radicle.privateKey} /var/lib/radicle/keys/radicle
+          install -m 644 -o radicle -g radicle \
+            ${config.services.radicle.configFile} /var/lib/radicle/config.json
+        '';
+      };
 
       services = {
         nginx.virtualHosts = {
@@ -35,7 +48,14 @@
             forceSSL = true;
 
             locations."/" = {
-              root = pkgs.radicle-explorer;
+              root = pkgs.radicle-explorer.withConfig {
+                preferredSeeds = singleton {
+                  hostname = domain;
+                  port = 443;
+                  scheme = "https";
+                };
+              };
+
               extraConfig = "try_files $uri $uri/ /index.html;";
             };
           };
