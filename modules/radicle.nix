@@ -6,13 +6,21 @@
     };
 
   flake.modules.homeManager.radicle =
-    { pkgs, ... }:
+    {
+      pkgs,
+      username,
+      hostName,
+      ...
+    }:
     {
       home.packages = [
         pkgs.radicle-desktop
         pkgs.radicle-tui
       ];
 
-      programs.radicle.enable = true;
+      programs.radicle = {
+        enable = true;
+        settings.node.alias = "${username}-${hostName}";
+      };
     };
 }

@@ -7,6 +7,8 @@
       pkgs,
       config,
       keys,
+      username,
+      hostName,
       ...
     }:
     let
@@ -22,7 +24,10 @@
         mode = "0400";
       };
 
-      environment.systemPackages = [ pkgs.radicle-node ];
+      environment = {
+        variables.RAD_HOME = "/var/lib/radicle";
+        systemPackages = [ pkgs.radicle-node ];
+      };
 
       system.activationScripts.radicle-setup = {
         deps = [ "agenix" ];
@@ -72,7 +77,7 @@
             publicExplorer = "https://${explore}/nodes/$host/$rid$path";
 
             node = {
-              alias = "onat";
+              alias = "${username}-${hostName}";
               externalAddresses = [ "${domain}:8776" ];
               seedingPolicy.default = "block";
             };
