@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.nginx = {
+  flake.configurations.nixos.server.module = {
     networking.firewall = {
       allowedUDPPorts = [ 443 ];
 

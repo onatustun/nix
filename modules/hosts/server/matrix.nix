@@ -1,9 +1,9 @@
 { inputs, ... }:
 {
-  flake.modules.nixos.matrix =
+  flake.configurations.nixos.server.module =
+    { rootDomain, ... }:
     let
-      server_name = "onatustun.com";
-      matrixDomain = "matrix.${server_name}";
+      matrixDomain = "matrix.${rootDomain}";
       port = 6167;
     in
     {
@@ -30,7 +30,7 @@
             ];
           };
 
-          ${server_name} = {
+          ${rootDomain} = {
             enableACME = true;
             forceSSL = true;
             locations."/.well-known/matrix/".proxyPass = "http://localhost:${toString port}";
@@ -41,7 +41,7 @@
           enable = true;
 
           settings.global = {
-            inherit server_name;
+            server_name = rootDomain;
             port = [ port ];
 
             well_known = {

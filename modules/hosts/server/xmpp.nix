@@ -1,8 +1,9 @@
 { inputs, ... }:
 {
-  flake.modules.nixos.xmpp =
+  flake.configurations.nixos.server.module =
+    { rootDomain, ... }:
     let
-      domain = "xmpp.onatustun.com";
+      domain = "xmpp.${rootDomain}";
       mucDomain = "conference.${domain}";
       uploadDomain = "upload.${domain}";
 
