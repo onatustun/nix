@@ -1,6 +1,11 @@
 {
   flake.modules.nixos.networking =
-    { hostName, pkgs, ... }:
+    {
+      hostName,
+      username,
+      pkgs,
+      ...
+    }:
     {
       networking = {
         inherit hostName;
@@ -12,6 +17,7 @@
         };
       };
 
+      users.users.${username}.extraGroups = [ "networkmanager" ];
       environment.systemPackages = [ pkgs.networkmanagerapplet ];
       services.resolved.enable = true;
     };
