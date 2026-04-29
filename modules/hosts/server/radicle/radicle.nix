@@ -20,6 +20,8 @@
         mode = "0400";
       };
 
+      environment.systemPackages = [ pkgs.radicle-node ];
+
       services = {
         nginx.virtualHosts = {
           ${domain} = {
