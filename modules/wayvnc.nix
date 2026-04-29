@@ -2,18 +2,16 @@
   flake.modules.homeManager.wayvnc =
     {
       lib,
-      pkgs,
       config,
+      pkgs,
+      monitors,
       hostName,
       ...
     }:
     let
       inherit (lib.meta) getExe;
-
-      monitor = {
-        desktop = "HDMI-A-1";
-        laptop = "eDP-1";
-      };
+      inherit (lib.lists) head;
+      inherit (lib.attrsets) attrNames;
     in
     {
       systemd.user.services.wayvnc = {
@@ -23,7 +21,7 @@
         };
 
         Service = {
-          ExecStart = "${getExe pkgs.wayvnc} -Linfo -o ${monitor.${hostName}} ${hostName}.tail32e3ea.ts.net 5901";
+          ExecStart = "${getExe pkgs.wayvnc} -Linfo -o ${head (attrNames monitors.main)} ${hostName}.tail32e3ea.ts.net 5901";
           Restart = "on-failure";
           RestartSec = "1m";
         };
