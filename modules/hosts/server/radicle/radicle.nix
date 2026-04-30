@@ -15,8 +15,8 @@
       explore = "explore.${domain}";
     in
     {
-      age.secrets.private-key = {
-        file = ./private-key.age;
+      age.secrets.radicle-private-key = {
+        file = ./radicle-private-key.age;
         owner = "radicle";
         group = "radicle";
         mode = "0400";
@@ -43,7 +43,7 @@
         radicle = {
           enable = true;
           publicKey = keys.radicle.server;
-          privateKey = config.age.secrets.private-key.path;
+          privateKey = config.age.secrets.radicle-private-key.path;
           node.openFirewall = true;
 
           httpd = {
