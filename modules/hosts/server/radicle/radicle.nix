@@ -29,6 +29,8 @@
 
           locations."/" = {
             root = pkgs.radicle-explorer.withConfig {
+              nodes.fallbackPublicExplorer = "https://${explore}/nodes/$host/$rid$path";
+
               preferredSeeds = singleton {
                 hostname = domain;
                 port = 443;
