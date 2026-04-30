@@ -5,10 +5,8 @@
       lib,
       rootDomain,
       pkgs,
-      config,
       keys,
-      username,
-      hostName,
+      config,
       ...
     }:
     let
@@ -24,45 +22,21 @@
         mode = "0400";
       };
 
-      environment = {
-        variables.RAD_HOME = "/var/lib/radicle";
-        systemPackages = [ pkgs.radicle-node ];
-      };
-
-      system.activationScripts.radicle-setup = {
-        deps = [ "agenix" ];
-
-        text = ''
-          install -m 600 -o radicle -g radicle \
-            ${config.services.radicle.privateKey} /var/lib/radicle/keys/radicle
-          install -m 644 -o radicle -g radicle \
-            ${config.services.radicle.configFile} /var/lib/radicle/config.json
-        '';
-      };
-
       services = {
-        nginx.virtualHosts = {
-          ${domain} = {
-            enableACME = true;
-            forceSSL = true;
-            locations."/".proxyPass = "http://127.0.0.1:8080";
-          };
+        nginx.virtualHosts.${explore} = {
+          enableACME = true;
+          forceSSL = true;
 
-          ${explore} = {
-            enableACME = true;
-            forceSSL = true;
-
-            locations."/" = {
-              root = pkgs.radicle-explorer.withConfig {
-                preferredSeeds = singleton {
-                  hostname = domain;
-                  port = 443;
-                  scheme = "https";
-                };
+          locations."/" = {
+            root = pkgs.radicle-explorer.withConfig {
+              preferredSeeds = singleton {
+                hostname = domain;
+                port = 443;
+                scheme = "https";
               };
-
-              extraConfig = "try_files $uri $uri/ /index.html;";
             };
+
+            extraConfig = "try_files $uri $uri/ /index.html;";
           };
         };
 
@@ -70,17 +44,21 @@
           enable = true;
           publicKey = keys.radicle.server;
           privateKey = config.age.secrets.private-key.path;
-          httpd.enable = true;
           node.openFirewall = true;
 
-          settings = {
-            publicExplorer = "https://${explore}/nodes/$host/$rid$path";
+          httpd = {
+            enable = true;
 
-            node = {
-              alias = "${username}-${hostName}";
-              externalAddresses = [ "${domain}:8776" ];
-              seedingPolicy.default = "block";
+            nginx = {
+              enableACME = true;
+              forceSSL = true;
+              serverName = domain;
             };
+          };
+
+          settings = {
+            node.seedingPolicy.default = "block";
+            publicExplorer = "https://${explore}/nodes/$host/$rid$path";
           };
         };
       };
