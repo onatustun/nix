@@ -11,13 +11,13 @@ result/
 !modules/
 !modules/**/
 
+!cradio.*
+
 !*.age
 !*.nix
 !*.nu
 !*.svg
 
-!cradio.conf
-!cradio.keymap
 !.envrc
 !facter.json
 !flake.lock
