@@ -39,6 +39,7 @@
 
         home-manager.sharedModules = attrValues {
           inherit (flake.config.modules.homeManager)
+            attic
             bash
             bat
             carapace
