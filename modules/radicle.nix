@@ -20,7 +20,15 @@
 
       programs.radicle = {
         enable = true;
-        settings.node.alias = "${username}-${hostName}";
+
+        settings = {
+          publicExplorer = "https://explore.seed.onatustun.com/nodes/$host/$rid$path";
+
+          node = {
+            alias = "${username}-${hostName}";
+            connect = [ "z6Mkq6sSwsAd3nHUNqujqZBga7PoKNDj73bdMHaWtVfDe6L8@seed.onatustun.com:8776" ];
+          };
+        };
       };
     };
 }
