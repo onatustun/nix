@@ -16,11 +16,15 @@
         ${username}.openssh.authorizedKeys.keys = mkDefault keys.ssh.users.admins;
       };
 
-      programs.ssh.startAgent = false;
+      programs.mosh.enable = true;
 
       services.openssh = {
         enable = true;
-        settings.KbdInteractiveAuthentication = false;
+
+        settings = {
+          KbdInteractiveAuthentication = false;
+          PasswordAuthentication = false;
+        };
 
         hostKeys = singleton {
           path = "/etc/ssh/ssh_host_ed25519_key";
