@@ -1,39 +1,32 @@
 { inputs, ... }:
 {
-  flake =
-    { config, ... }:
-    {
-      configurations = {
-        nixos.server.module.imports = [
-          config.configurations.disko.server
-          inputs.disko.nixosModules.default
-        ];
+  flake.configurations.nixos.server.module = {
+    imports = [ inputs.disko.nixosModules.default ];
 
-        disko.server.disko.devices.disk.main = {
-          type = "disk";
-          device = "/dev/vda";
+    disko.devices.disk.main = {
+      type = "disk";
+      device = "/dev/vda";
 
-          content = {
-            type = "gpt";
+      content = {
+        type = "gpt";
 
-            partitions = {
-              boot = {
-                size = "1M";
-                type = "EF02";
-              };
+        partitions = {
+          boot = {
+            size = "1M";
+            type = "EF02";
+          };
 
-              root = {
-                size = "100%";
+          root = {
+            size = "100%";
 
-                content = {
-                  type = "filesystem";
-                  format = "ext4";
-                  mountpoint = "/";
-                };
-              };
+            content = {
+              type = "filesystem";
+              format = "ext4";
+              mountpoint = "/";
             };
           };
         };
       };
     };
+  };
 }
