@@ -1,18 +1,14 @@
 {
-  flake.modules.homeManager.nh =
-    { config, ... }:
+  flake.modules.nixos.nh =
+    { homeDir, ... }:
     {
-      home.sessionVariables = {
-        NH_FLAKE = config.home.sessionVariables.FLAKE;
-        NH_OS_FLAKE = config.home.sessionVariables.NH_FLAKE;
-      };
-
       programs.nh = {
         enable = true;
+        flake = "${homeDir}/nix";
 
         clean = {
           enable = true;
-          extraArgs = "--keep-since 4d --keep 3";
+          extraArgs = "--keep 5 --keep-since 5d";
         };
       };
     };

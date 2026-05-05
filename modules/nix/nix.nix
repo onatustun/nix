@@ -4,7 +4,6 @@
     {
       lib,
       config,
-      username,
       ...
     }:
     let
@@ -21,17 +20,7 @@
 
       nix = {
         channel.enable = false;
-
-        gc = {
-          automatic =
-            if config ? home-manager then
-              !config.home-manager.users.${username}.programs.nh.clean.enable
-            else
-              true;
-
-          options = "--delete-older-than 3d --keep-last 3";
-        };
-
+        gc.automatic = false;
         optimise.automatic = true;
         nixPath = [ "nixpkgs=flake:nixpkgs" ];
         registry.nixpkgs.flake = inputs.nixpkgs;

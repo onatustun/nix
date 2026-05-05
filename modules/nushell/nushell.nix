@@ -33,8 +33,6 @@
                   VISUAL
                   BROWSER
                   FLAKE
-                  NH_FLAKE
-                  NH_OS_FLAKE
                   ;
 
                 NIXPKGS_ALLOW_UNFREE = "1";

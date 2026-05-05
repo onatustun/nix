@@ -18,6 +18,7 @@
             keyring
             locale
             networking
+            nh
             niri
             nix
             nix-index
@@ -53,7 +54,6 @@
             helix
             jujutsu
             media
-            nh
             nixpkgs
             obsidian
             radicle

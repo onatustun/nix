@@ -13,6 +13,7 @@
               home-manager
               locale
               networking
+              nh
               nix
               nixpkgs
               ragenix
