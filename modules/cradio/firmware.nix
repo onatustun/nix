@@ -39,9 +39,18 @@ flake-parts: {
     };
 
   partitions.dev.module.perSystem =
-    { config, inputs', ... }:
+    {
+      config,
+      inputs',
+      pkgs,
+      ...
+    }:
     {
       checks = { inherit (config.packages) firmware flash update; };
-      make-shells.default.inputsFrom = [ inputs'.zmk-nix.devShells.default ];
+
+      make-shells.default = {
+        inputsFrom = [ inputs'.zmk-nix.devShells.default ];
+        packages = [ pkgs.keymap-drawer ];
+      };
     };
 }
