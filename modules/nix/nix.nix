@@ -1,11 +1,7 @@
 { inputs, ... }:
 {
   flake.modules.nixos.nix =
-    {
-      lib,
-      config,
-      ...
-    }:
+    { lib, config, ... }:
     let
       inherit (lib.lists) singleton;
       inherit (lib.modules) mkDefault;

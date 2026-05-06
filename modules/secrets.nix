@@ -12,25 +12,13 @@
       };
     };
 
-  flake =
-    { config, ... }:
-    {
-      keys = import inputs.keys;
+  flake = {
+    keys = import inputs.keys;
 
-      modules = {
-        nixos.ragenix = {
-          imports = [ inputs.ragenix.nixosModules.default ];
-          _module.args.keys = import inputs.keys;
-          age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-          home-manager.sharedModules = [ config.modules.homeManager.ragenix ];
-        };
-
-        homeManager.ragenix =
-          { config, ... }:
-          {
-            imports = [ inputs.ragenix.homeManagerModules.default ];
-            age.identityPaths = [ "${config.home.homeDirectory}/.ssh/id_ed25519" ];
-          };
-      };
+    modules.nixos.ragenix = {
+      imports = [ inputs.ragenix.nixosModules.default ];
+      _module.args.keys = import inputs.keys;
+      home-manager.sharedModules = [ inputs.ragenix.homeManagerModules.default ];
     };
+  };
 }
