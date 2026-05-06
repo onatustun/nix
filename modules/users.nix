@@ -14,6 +14,7 @@
 
       users.users.${username} = {
         home = homeDir;
+        createHome = true;
         isNormalUser = mkDefault true;
       };
     };

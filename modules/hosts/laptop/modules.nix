@@ -23,7 +23,6 @@
             nix
             nix-index
             nixpkgs
-            noctalia
             nushell
             pipewire
             plymouth
@@ -55,6 +54,7 @@
             jujutsu
             media
             nixpkgs
+            noctalia
             obsidian
             radicle
             starship
