@@ -61,6 +61,11 @@
           settings = {
             node.seedingPolicy.default = "block";
             publicExplorer = "https://${explore}/nodes/$host/$rid$path";
+
+            web = {
+              description = "https://${rootDomain}";
+              pinned.repositories = [ ];
+            };
           };
         };
       };
