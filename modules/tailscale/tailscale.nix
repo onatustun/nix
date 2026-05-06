@@ -13,8 +13,8 @@ in
   flake.modules.nixos.tailscale =
     { config, ... }:
     {
-      age.secrets.authkey = {
-        file = ./authkey.age;
+      age.secrets.tailscale-authkey = {
+        file = ./tailscale-authkey.age;
         owner = "root";
         group = "root";
         mode = "0400";
@@ -25,7 +25,7 @@ in
 
         tailscale = {
           enable = true;
-          authKeyFile = config.age.secrets.authkey.path;
+          authKeyFile = config.age.secrets.tailscale-authkey.path;
           useRoutingFeatures = "both";
           openFirewall = true;
           extraUpFlags = [ "--ssh" ];
