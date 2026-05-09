@@ -28,11 +28,12 @@
 
               environmentVariables = {
                 inherit (config.home.sessionVariables)
-                  SHELL
-                  EDITOR
-                  VISUAL
                   BROWSER
+                  EDITOR
                   FLAKE
+                  NH_FLAKE
+                  SHELL
+                  VISUAL
                   ;
 
                 NIXPKGS_ALLOW_UNFREE = "1";
