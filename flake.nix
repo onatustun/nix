@@ -21,6 +21,7 @@
     extra-experimental-features = [
       "flakes"
       "nix-command"
+      "pipe-operators"
     ];
   };
 
@@ -273,10 +274,10 @@
     mkFlake { inherit inputs; } (
       { lib, ... }:
       let
-        inherit (lib.fileset) toList fileFilter;
+        inherit (lib.fileset) fileFilter toList;
       in
       {
-        imports = toList (fileFilter (file: file.hasExt "nix") ./modules);
+        imports = ./modules |> fileFilter (file: file.hasExt "nix") |> toList;
       }
     );
 }

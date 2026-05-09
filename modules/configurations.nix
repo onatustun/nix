@@ -39,6 +39,6 @@ in
       inherit (lib.attrsets) mapAttrs;
     in
     {
-      nixosConfigurations = mapAttrs (_: value: value.result) config.configurations.nixos;
+      nixosConfigurations = config.configurations.nixos |> mapAttrs (_: host: host.result);
     };
 }
