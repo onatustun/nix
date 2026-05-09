@@ -8,6 +8,7 @@
           { inputs', ... }:
           {
             imports = [ inputs.niri.nixosModules.niri ];
+            niri-flake.cache.enable = false;
 
             programs.niri = {
               enable = true;
@@ -36,16 +37,10 @@
             home.packages = [
               pkgs.wlrctl
               pkgs.wlr-randr
-              pkgs.xdg-desktop-portal-gnome
               pkgs.xdg-desktop-portal-gtk
             ];
 
             systemd.user.services.xwayland-satellite.Install.WantedBy = [ "niri.service" ];
-
-            xdg.portal = {
-              extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-              configPackages = [ inputs'.niri.packages.niri-unstable ];
-            };
 
             programs.niri.settings = {
               environment = {
@@ -254,11 +249,6 @@
               xwayland-satellite = {
                 enable = true;
                 path = getExe inputs'.xwayland-satellite.packages.xwayland-satellite;
-              };
-
-              cursor = {
-                theme = config.home.pointerCursor.name;
-                inherit (config.home.pointerCursor) size;
               };
 
               input = {
