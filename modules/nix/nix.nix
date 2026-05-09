@@ -29,9 +29,10 @@
           extra-trusted-public-keys = singleton "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=";
 
           experimental-features = [
+            "cgroups"
             "flakes"
             "nix-command"
-            "cgroups"
+            "pipe-operators"
           ];
 
           flake-registry = "";
