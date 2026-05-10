@@ -12,7 +12,7 @@ in
         profiles.system = {
           user = "root";
           sshUser = "root";
-          path = activate.nixos config.configurations.nixos.laptop.result;
+          path = activate.nixos config.configurations.nixos.laptop;
         };
       };
     };
