@@ -1,14 +1,17 @@
-{ lib, ... }:
-let
-  inherit (lib.lists) singleton;
-in
 {
-  perSystem.topology.modules = singleton {
-    networks.tailscale = {
-      name = "tailscale";
-      cidrv4 = "100.64.0.0/10";
+  perSystem =
+    { lib, ... }:
+    let
+      inherit (lib.lists) singleton;
+    in
+    {
+      topology.modules = singleton {
+        networks.tailscale = {
+          name = "tailscale";
+          cidrv4 = "100.64.0.0/10";
+        };
+      };
     };
-  };
 
   flake.modules.nixos.tailscale =
     { config, ... }:

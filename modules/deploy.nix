@@ -15,9 +15,25 @@ in
     };
   };
 
-  config.partitions.dev.module.perSystem =
-    { inputs', ... }:
+  config.partitions.dev.module =
+    { inputs, config, ... }:
     {
-      make-shells.default.packages = [ inputs'.deploy-rs.packages.default ];
+      perSystem =
+        {
+          lib,
+          system,
+          inputs',
+          ...
+        }:
+        let
+          inherit (lib.modules) mkIf;
+        in
+        {
+          checks = mkIf (inputs.deploy-rs.lib ? ${system}) (
+            inputs.deploy-rs.lib.${system}.deployChecks config.flake.deploy
+          );
+
+          make-shells.default.packages = [ inputs'.deploy-rs.packages.default ];
+        };
     };
 }

@@ -1,10 +1,4 @@
 {
-  partitions.dev.module.perSystem =
-    { pkgs, ... }:
-    {
-      make-shells.default.packages = [ pkgs.git ];
-    };
-
   flake.modules.homeManager.git =
     { config, ... }:
     {
