@@ -2,8 +2,8 @@
   flake.modules.homeManager.zmkbatx =
     {
       lib,
-      pkgs,
       config,
+      pkgs,
       ...
     }:
     let
