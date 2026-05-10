@@ -12,7 +12,7 @@ in
     });
 
     default = { };
-    apply = mapAttrs (_: host: nixosSystem { modules = [ host.module ]; });
+    apply = mapAttrs (_: { module, ... }: nixosSystem { modules = [ module ]; });
   };
 
   config.flake =
