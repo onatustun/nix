@@ -43,11 +43,11 @@ def main [selected?: string] {
     | str replace --regex --all "_{2,}" "_"
     | str trim --right --char "_"
 
-  let session_check = do { ^tmux has-session -t $selected_name } | complete
+  let session_check = do { ^tmux has-session -t $"=($selected_name)" } | complete
 
   if $session_check.exit_code != 0 {
     ^tmux new-session -ds $selected_name -c $selected
   }
 
-  ^tmux switch-client -t $selected_name
+  ^tmux switch-client -t $"=($selected_name)"
 }
