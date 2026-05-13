@@ -2,7 +2,7 @@
   partitions.dev.module =
     { inputs, ... }:
     {
-      imports = [ inputs.git-hooks.flakeModule ];
+      imports = [ (inputs.git-hooks + "/flake-module.nix") ];
 
       perSystem =
         { config, ... }:

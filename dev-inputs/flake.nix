@@ -25,24 +25,7 @@
       type = "github";
       owner = "cachix";
       repo = "git-hooks.nix";
-
-      inputs = {
-        flake-compat.follows = "";
-        gitignore.follows = "dep_gitignore";
-        nixpkgs.follows = "dep_nixpkgs";
-      };
-    };
-
-    dep_nixpkgs = {
-      type = "tarball";
-      url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
-    };
-
-    dep_gitignore = {
-      type = "github";
-      owner = "hercules-ci";
-      repo = "gitignore.nix";
-      inputs.nixpkgs.follows = "dep_nixpkgs";
+      flake = false;
     };
   };
 
