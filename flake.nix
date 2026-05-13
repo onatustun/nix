@@ -165,7 +165,7 @@
 
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        rust-overlay.follows = "dep_rust-overlay";
+        rust-overlay.follows = "";
       };
     };
 
@@ -218,7 +218,7 @@
         darwin.follows = "";
         home-manager.follows = "home-manager";
         nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
+        systems.follows = "";
       };
     };
 
@@ -235,13 +235,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    dep_treefmt-nix = {
-      type = "github";
-      owner = "numtide";
-      repo = "treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     dep_niri-unstable = {
       type = "github";
       owner = "niri-wm";
@@ -249,7 +242,7 @@
 
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        rust-overlay.follows = "dep_rust-overlay";
+        rust-overlay.follows = "";
       };
     };
 
@@ -261,7 +254,7 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         systems.follows = "systems";
-        treefmt-nix.follows = "dep_treefmt-nix";
+        treefmt-nix.follows = "";
       };
     };
   };

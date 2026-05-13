@@ -61,9 +61,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "systems": [
-          "systems"
-        ]
+        "systems": []
       },
       "locked": {
         "lastModified": 1770165109,
@@ -119,9 +117,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "rust-overlay": [
-          "dep_rust-overlay"
-        ]
+        "rust-overlay": []
       },
       "locked": {
         "lastModified": 1777733745,
@@ -145,9 +141,7 @@
         "systems": [
           "systems"
         ],
-        "treefmt-nix": [
-          "dep_treefmt-nix"
-        ]
+        "treefmt-nix": []
       },
       "locked": {
         "lastModified": 1777773024,
@@ -180,26 +174,6 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "type": "github"
-      }
-    },
-    "dep_treefmt-nix": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1775636079,
-        "narHash": "sha256-pc20NRoMdiar8oPQceQT47UUZMBTiMdUuWrYu2obUP0=",
-        "owner": "numtide",
-        "repo": "treefmt-nix",
-        "rev": "790751ff7fd3801feeaf96d7dc416a8d581265ba",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "treefmt-nix",
         "type": "github"
       }
     },
@@ -575,7 +549,6 @@
         "dep_niri-unstable": "dep_niri-unstable",
         "dep_noctalia-qs": "dep_noctalia-qs",
         "dep_rust-overlay": "dep_rust-overlay",
-        "dep_treefmt-nix": "dep_treefmt-nix",
         "deploy-rs": "deploy-rs",
         "dev-inputs": "dev-inputs",
         "disko": "disko",
@@ -668,9 +641,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "rust-overlay": [
-          "dep_rust-overlay"
-        ]
+        "rust-overlay": []
       },
       "locked": {
         "lastModified": 1773622265,
