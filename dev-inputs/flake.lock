@@ -1,39 +1,7 @@
 {
   "nodes": {
-    "dep_gitignore": {
-      "inputs": {
-        "nixpkgs": [
-          "dep_nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1762808025,
-        "narHash": "sha256-XmjITeZNMTQXGhhww6ed/Wacy2KzD6svioyCX7pkUu4=",
-        "owner": "hercules-ci",
-        "repo": "gitignore.nix",
-        "rev": "cb5e3fdca1de58ccbc3ef53de65bd372b48f567c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "gitignore.nix",
-        "type": "github"
-      }
-    },
-    "dep_nixpkgs": {
-      "locked": {
-        "lastModified": 1777954456,
-        "narHash": "sha256-qeRNZKcA0igTdRVnBe6hyo49CqxME92s4G8Sr78ARJw=",
-        "rev": "549bd84d6279f9852cae6225e372cc67fb91a4c1",
-        "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.05pre992384.549bd84d6279/nixexprs.tar.xz"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz"
-      }
-    },
     "flake-root": {
+      "flake": false,
       "locked": {
         "lastModified": 1723604017,
         "narHash": "sha256-rBtQ8gg+Dn4Sx/s+pvjdq3CB2wQNzx9XGFq/JVGCB6k=",
@@ -49,21 +17,13 @@
       }
     },
     "git-hooks": {
-      "inputs": {
-        "flake-compat": [],
-        "gitignore": [
-          "dep_gitignore"
-        ],
-        "nixpkgs": [
-          "dep_nixpkgs"
-        ]
-      },
+      "flake": false,
       "locked": {
-        "lastModified": 1776796298,
-        "narHash": "sha256-PcRvlWayisPSjd0UcRQbhG8Oqw78AcPE6x872cPRHN8=",
+        "lastModified": 1778507602,
+        "narHash": "sha256-kTwur1wV+01SdqskVMSo6JMEpg71ps3HpbFY2GsflKs=",
         "owner": "cachix",
         "repo": "git-hooks.nix",
-        "rev": "3cfd774b0a530725a077e17354fbdb87ea1c4aad",
+        "rev": "61ab0e80d9c7ab14c256b5b453d8b3fb0189ba0a",
         "type": "github"
       },
       "original": {
@@ -73,9 +33,7 @@
       }
     },
     "make-shell": {
-      "inputs": {
-        "flake-compat": []
-      },
+      "flake": false,
       "locked": {
         "lastModified": 1733933815,
         "narHash": "sha256-9JjM7eT66W4NJAXpGUsdyAFXhBxFWR2Z9LZwUa7Hli0=",
@@ -92,8 +50,6 @@
     },
     "root": {
       "inputs": {
-        "dep_gitignore": "dep_gitignore",
-        "dep_nixpkgs": "dep_nixpkgs",
         "flake-root": "flake-root",
         "git-hooks": "git-hooks",
         "make-shell": "make-shell",
@@ -101,11 +57,7 @@
       }
     },
     "treefmt-nix": {
-      "inputs": {
-        "nixpkgs": [
-          "dep_nixpkgs"
-        ]
-      },
+      "flake": false,
       "locked": {
         "lastModified": 1775636079,
         "narHash": "sha256-pc20NRoMdiar8oPQceQT47UUZMBTiMdUuWrYu2obUP0=",
