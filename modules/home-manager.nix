@@ -27,21 +27,11 @@
       );
 
       homeManager.home-manager =
-        {
-          username,
-          homeDir,
-          config,
-          ...
-        }:
+        { username, homeDir, ... }:
         {
           home = {
             inherit username;
             homeDirectory = homeDir;
-
-            sessionVariables = {
-              FLAKE = "${homeDir}/nix";
-              NH_FLAKE = config.home.sessionVariables.FLAKE;
-            };
           };
 
           programs.home-manager.enable = true;

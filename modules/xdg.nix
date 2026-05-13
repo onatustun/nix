@@ -2,7 +2,10 @@
   flake.modules.homeManager.xdg =
     { pkgs, ... }:
     {
-      home.packages = [ pkgs.xdg-user-dirs ];
+      home = {
+        preferXdgDirectories = true;
+        packages = [ pkgs.xdg-user-dirs ];
+      };
 
       xdg = {
         enable = true;

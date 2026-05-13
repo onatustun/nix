@@ -30,8 +30,6 @@
                 inherit (config.home.sessionVariables)
                   BROWSER
                   EDITOR
-                  FLAKE
-                  NH_FLAKE
                   SHELL
                   VISUAL
                   ;
