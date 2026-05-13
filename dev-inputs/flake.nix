@@ -4,7 +4,7 @@
       type = "github";
       owner = "nicknovitski";
       repo = "make-shell";
-      inputs.flake-compat.follows = "";
+      flake = false;
     };
 
     flake-root = {
