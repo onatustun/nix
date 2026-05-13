@@ -2,7 +2,7 @@
   partitions.dev.module =
     { inputs, ... }:
     {
-      imports = [ inputs.flake-root.flakeModule ];
+      imports = [ (inputs.flake-root + "/flake-module.nix") ];
 
       perSystem =
         { config, ... }:
