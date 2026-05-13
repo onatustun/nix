@@ -18,7 +18,7 @@
       type = "github";
       owner = "numtide";
       repo = "treefmt-nix";
-      inputs.nixpkgs.follows = "dep_nixpkgs";
+      flake = false;
     };
 
     git-hooks = {
