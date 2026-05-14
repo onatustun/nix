@@ -1,12 +1,5 @@
 {
   inputs = {
-    make-shell = {
-      type = "github";
-      owner = "nicknovitski";
-      repo = "make-shell";
-      flake = false;
-    };
-
     flake-root = {
       type = "github";
       owner = "srid";
@@ -25,6 +18,13 @@
       type = "github";
       owner = "cachix";
       repo = "git-hooks.nix";
+      flake = false;
+    };
+
+    make-shell = {
+      type = "github";
+      owner = "nicknovitski";
+      repo = "make-shell";
       flake = false;
     };
   };
