@@ -6,7 +6,9 @@ result*/
 .pre-commit-config.yaml
 
 !assets/
-!dev-inputs/
+
+!inputs/
+!inputs/**/
 
 !modules/
 !modules/**/

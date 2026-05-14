@@ -201,18 +201,6 @@
         "type": "github"
       }
     },
-    "dev-inputs": {
-      "flake": false,
-      "locked": {
-        "path": "./dev-inputs",
-        "type": "path"
-      },
-      "original": {
-        "path": "./dev-inputs",
-        "type": "path"
-      },
-      "parent": []
-    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -246,22 +234,6 @@
       "original": {
         "owner": "rafaelmardojai",
         "repo": "firefox-gnome-theme",
-        "type": "github"
-      }
-    },
-    "flake-compat": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1767039857,
-        "narHash": "sha256-vNpUSpF5Nuw8xvDLj2KCwwksIbjua2LZCqhV1LNRDns=",
-        "owner": "edolstra",
-        "repo": "flake-compat",
-        "rev": "5edf11c44bc78a0d334f6334cdaf7d60d732daab",
-        "type": "github"
-      },
-      "original": {
-        "owner": "edolstra",
-        "repo": "flake-compat",
         "type": "github"
       }
     },
@@ -565,9 +537,7 @@
         "dep_noctalia-qs": "dep_noctalia-qs",
         "dep_rust-overlay": "dep_rust-overlay",
         "deploy-rs": "deploy-rs",
-        "dev-inputs": "dev-inputs",
         "disko": "disko",
-        "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",
         "helium": "helium",
         "home-manager": "home-manager",

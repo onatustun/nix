@@ -12,13 +12,15 @@
       };
     };
 
-  flake = {
-    keys = import inputs.keys;
+  flake =
+    { config, ... }:
+    {
+      keys = import inputs.keys;
 
-    modules.nixos.ragenix = {
-      imports = [ inputs.ragenix.nixosModules.default ];
-      _module.args.keys = import inputs.keys;
-      home-manager.sharedModules = [ inputs.ragenix.homeManagerModules.default ];
+      modules.nixos.ragenix = {
+        imports = [ inputs.ragenix.nixosModules.default ];
+        _module.args = { inherit (config) keys; };
+        home-manager.sharedModules = [ inputs.ragenix.homeManagerModules.default ];
+      };
     };
-  };
 }

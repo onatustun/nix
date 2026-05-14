@@ -56,19 +56,6 @@
       flake = false;
     };
 
-    flake-compat = {
-      type = "github";
-      owner = "edolstra";
-      repo = "flake-compat";
-      flake = false;
-    };
-
-    dev-inputs = {
-      type = "path";
-      path = "./dev-inputs";
-      flake = false;
-    };
-
     disko = {
       type = "github";
       owner = "nix-community";

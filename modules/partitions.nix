@@ -7,6 +7,5 @@
     devShells = "dev";
   };
 
-  partitions.dev.extraInputs =
-    (import inputs.flake-compat { src = inputs.dev-inputs; }).outputs.inputs;
+  partitions.dev.extraInputsFlake = ../inputs/dev;
 }
