@@ -50,31 +50,6 @@
       flake = false;
     };
 
-    keys = {
-      type = "path";
-      path = "./keys.nix";
-      flake = false;
-    };
-
-    disko = {
-      type = "github";
-      owner = "nix-community";
-      repo = "disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    deploy-rs = {
-      type = "github";
-      owner = "serokell";
-      repo = "deploy-rs";
-
-      inputs = {
-        flake-compat.follows = "";
-        nixpkgs.follows = "nixpkgs";
-        utils.follows = "dep_flake-utils";
-      };
-    };
-
     nix-topology = {
       type = "github";
       owner = "oddlama";
@@ -100,6 +75,32 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    oil-hx = {
+      type = "github";
+      owner = "Ra77a3l3-jar";
+      repo = "oil.hx";
+      flake = false;
+    };
+
+    deploy-rs = {
+      type = "github";
+      owner = "serokell";
+      repo = "deploy-rs";
+
+      inputs = {
+        flake-compat.follows = "";
+        nixpkgs.follows = "nixpkgs";
+        utils.follows = "dep_flake-utils";
+      };
+    };
+
+    disko = {
+      type = "github";
+      owner = "nix-community";
+      repo = "disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     ragenix = {
       type = "github";
       owner = "yaxitech";
@@ -114,17 +115,23 @@
       };
     };
 
-    nix-index-database = {
-      type = "github";
-      owner = "nix-community";
-      repo = "nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
+    keys = {
+      type = "path";
+      path = "./keys.nix";
+      flake = false;
     };
 
     nixos-hardware = {
       type = "github";
       owner = "nixos";
       repo = "nixos-hardware";
+    };
+
+    nix-index-database = {
+      type = "github";
+      owner = "nix-community";
+      repo = "nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     stylix = {
@@ -142,13 +149,6 @@
         tinted-tmux.follows = "";
         tinted-zed.follows = "";
       };
-    };
-
-    oil-hx = {
-      type = "github";
-      owner = "Ra77a3l3-jar";
-      repo = "oil.hx";
-      flake = false;
     };
 
     xwayland-satellite = {
