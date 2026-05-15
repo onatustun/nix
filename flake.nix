@@ -54,11 +54,7 @@
       type = "github";
       owner = "oddlama";
       repo = "nix-topology";
-
-      inputs = {
-        flake-parts.follows = "flake-parts";
-        nixpkgs.follows = "nixpkgs";
-      };
+      flake = false;
     };
 
     home-manager = {

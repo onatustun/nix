@@ -6,7 +6,7 @@
       inherit (config.lib.topology) mkConnection;
     in
     {
-      imports = [ inputs.nix-topology.nixosModules.default ];
+      imports = [ (inputs.nix-topology + "/nixos/module.nix") ];
 
       topology.self = {
         hardware.info = "Framework 13";
