@@ -1,10 +1,4 @@
 {
-  partitions.dev.module.perSystem =
-    { pkgs, ... }:
-    {
-      make-shells.default.packages = [ pkgs.radicle-node ];
-    };
-
   flake.modules.homeManager.radicle =
     {
       pkgs,
