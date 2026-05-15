@@ -12,17 +12,11 @@
           make-shells.default.inputsFrom = [ config.treefmt.build.devShell ];
           pre-commit.settings.hooks.treefmt.enable = true;
 
-          treefmt = {
-            enableDefaultExcludes = true;
-            flakeCheck = true;
-            flakeFormatter = true;
-
-            programs = {
-              deadnix.enable = true;
-              nixfmt.enable = true;
-              shellcheck.enable = true;
-              statix.enable = true;
-            };
+          treefmt.programs = {
+            deadnix.enable = true;
+            nixfmt.enable = true;
+            shellcheck.enable = true;
+            statix.enable = true;
           };
         };
     };

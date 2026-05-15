@@ -66,7 +66,6 @@
               wayvnc
               wl-clipboard
               xdg
-              xwayland
               zmkbatx
               zoxide
               zsh

@@ -40,8 +40,6 @@
               pkgs.xdg-desktop-portal-gtk
             ];
 
-            systemd.user.services.xwayland-satellite.Install.WantedBy = [ "niri.service" ];
-
             programs.niri.settings = {
               environment = {
                 CLUTTER_BACKEND = "wayland";

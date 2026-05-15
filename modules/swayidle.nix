@@ -3,12 +3,13 @@
   flake.modules.homeManager.swayidle = moduleWithSystem (
     { inputs', ... }:
     {
-      lib,
       config,
+      lib,
       pkgs,
       ...
     }:
     let
+      inherit (config.wayland.systemd) target;
       inherit (lib.lists) singleton;
       inherit (lib.meta) getExe;
     in
@@ -24,8 +25,10 @@
 
       systemd.user.services.sway-audio-idle-inhibit = {
         Unit = {
-          After = [ config.wayland.systemd.target ];
-          PartOf = [ config.wayland.systemd.target ];
+          After = [ target ];
+          PartOf = [ target ];
+          BindsTo = [ target ];
+          Requisite = [ target ];
         };
 
         Service = {
@@ -34,7 +37,7 @@
           Restart = "on-failure";
         };
 
-        Install.WantedBy = [ config.wayland.systemd.target ];
+        Install.WantedBy = [ target ];
       };
     }
   );

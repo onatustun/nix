@@ -1,4 +1,8 @@
 let
+  flip =
+    f: a: b:
+    f b a;
+
   inherit (builtins)
     attrValues
     concatMap
@@ -13,7 +17,9 @@ let
 
   flattenTree =
     tree:
-    attrValues (removeAttrs tree [ "__functor" ])
+    tree
+    |> flip removeAttrs [ "__functor" ]
+    |> attrValues
     |> concatMap (
       node:
       if isString node && node != "" then
@@ -28,7 +34,7 @@ let
 
   mkTree =
     tree:
-    mapAttrs (_: node: if isString node || isList node then node else mkTree node) tree
+    (tree |> mapAttrs (_: node: if isString node || isList node then node else mkTree node))
     // {
       __functor = self: _: flattenTree self;
     };
@@ -55,7 +61,7 @@ let
     radicle.server = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ43Y56T1aCI1maMsRbe+z8xLzxijMDwgyA4ZPzhEv3R radicle";
   };
 
-  types = removeAttrs keys.ssh [ "__functor" ];
+  types = keys.ssh |> flip removeAttrs [ "__functor" ];
 
   adminDevices = [
     "desktop"
@@ -74,11 +80,13 @@ let
     );
 
   deviceKeys =
-    attrNames types
-    |> foldl' (devices: type: devices // removeAttrs types.${type} [ "__functor" ]) { }
+    types
+    |> attrNames
+    |> foldl' (devices: type: devices // (types.${type} |> flip removeAttrs [ "__functor" ])) { }
     |> mapAttrs (
       device: _:
-      attrNames types
+      types
+      |> attrNames
       |> filter (type: keys.ssh.${type} ? ${device})
       |> map (type: keys.ssh.${type}.${device})
     );

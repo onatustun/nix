@@ -7,15 +7,8 @@
       perSystem =
         { config, ... }:
         {
-          make-shells.default = {
-            inputsFrom = [ config.pre-commit.devShell ];
-            shellHook = config.pre-commit.installationScript;
-          };
-
-          pre-commit = {
-            check.enable = true;
-            settings.hooks.flake-checker.enable = true;
-          };
+          make-shells.default.inputsFrom = [ config.pre-commit.devShell ];
+          pre-commit.settings.hooks.flake-checker.enable = true;
         };
     };
 }
