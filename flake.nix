@@ -61,7 +61,7 @@
       type = "github";
       owner = "nix-community";
       repo = "home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      flake = false;
     };
 
     zmk-nix = {

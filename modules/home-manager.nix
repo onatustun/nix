@@ -1,13 +1,13 @@
 { inputs, ... }:
 {
-  imports = [ inputs.home-manager.flakeModules.home-manager ];
+  imports = [ (inputs.home-manager + "/flake-module.nix") ];
 
   flake = flake: {
     modules = {
       nixos.home-manager =
         { username, config, ... }:
         {
-          imports = [ inputs.home-manager.nixosModules.home-manager ];
+          imports = [ (inputs.home-manager + "/nixos") ];
 
           home-manager = {
             users.${username}.imports = [ flake.config.modules.homeManager.home-manager ];
