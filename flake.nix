@@ -127,7 +127,7 @@
       type = "github";
       owner = "nix-community";
       repo = "nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
+      flake = false;
     };
 
     stylix = {
