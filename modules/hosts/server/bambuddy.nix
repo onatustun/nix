@@ -1,0 +1,41 @@
+{ inputs, ... }:
+{
+  flake.configurations.nixos.server.module =
+    {
+      rootDomain,
+      config,
+      lib,
+      ...
+    }:
+    let
+      domain = "bambuddy.${rootDomain}";
+      inherit (config.services.bambuddy) port;
+      inherit (lib.lists) singleton;
+    in
+    {
+      imports = [ (inputs.bambuddy + "/nixos-module.nix") ];
+
+      services = {
+        nginx.virtualHosts.${domain} = {
+          enableACME = true;
+          forceSSL = true;
+          locations."/".proxyPass = "http://localhost:${toString port}";
+        };
+
+        postgresql = {
+          ensureDatabases = [ "bambuddy" ];
+
+          ensureUsers = singleton {
+            name = "bambuddy";
+            ensureDBOwnership = true;
+          };
+        };
+
+        bambuddy = {
+          enable = true;
+          port = 8002;
+          database.url = "postgresql+asyncpg:///bambuddy?host=/run/postgresql";
+        };
+      };
+    };
+}

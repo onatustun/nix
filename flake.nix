@@ -123,6 +123,12 @@
       repo = "nixos-hardware";
     };
 
+    bambuddy = {
+      type = "git";
+      url = "https://seed.onatustun.com/zVH7U6HxxwtdWd2WwHBBK7uUEn4Q.git";
+      flake = false;
+    };
+
     nix-index-database = {
       type = "github";
       owner = "nix-community";
