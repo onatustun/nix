@@ -37,5 +37,11 @@
           database.url = "postgresql+asyncpg:///bambuddy?host=/run/postgresql";
         };
       };
+
+      topology.self.services.bambuddy = {
+        name = "BamBuddy";
+        icon = inputs.self + "/assets/bambu.svg";
+        info = domain;
+      };
     };
 }
