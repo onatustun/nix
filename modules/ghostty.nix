@@ -10,7 +10,7 @@
       programs.ghostty = {
         enable = true;
         installBatSyntax = config.programs.bat.enable;
-        installVimSyntax = config.programs.vim.enable;
+        installVimSyntax = true;
 
         settings = {
           command = "${config.home.sessionVariables.SHELL} --login";

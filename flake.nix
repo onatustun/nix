@@ -205,8 +205,8 @@
 
       inputs = {
         darwin.follows = "";
-        home-manager.follows = "home-manager";
-        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "";
+        nixpkgs.follows = "";
         systems.follows = "";
       };
     };
@@ -221,7 +221,7 @@
       type = "github";
       owner = "oxalica";
       repo = "rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "";
     };
 
     dep_niri-unstable = {

@@ -55,12 +55,8 @@
     "dep_agenix": {
       "inputs": {
         "darwin": [],
-        "home-manager": [
-          "home-manager"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
+        "home-manager": [],
+        "nixpkgs": [],
         "systems": []
       },
       "locked": {
@@ -159,9 +155,7 @@
     },
     "dep_rust-overlay": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": []
       },
       "locked": {
         "lastModified": 1777950921,
