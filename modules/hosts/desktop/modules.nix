@@ -51,6 +51,7 @@
               fish
               ghostty
               git
+              github
               helium
               helix
               jujutsu
