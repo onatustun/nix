@@ -1,6 +1,5 @@
 *
 
-.direnv/
 result*/
 
 .pre-commit-config.yaml
@@ -20,7 +19,6 @@ result*/
 !*.nu
 !*.svg
 
-!.envrc
 !facter.json
 !flake.lock
 !.gitattributes
