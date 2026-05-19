@@ -4,7 +4,7 @@
     lfs.enable = true;
 
     settings = {
-      commit.verbose = true;
+      init.defaultBranch = "main";
 
       user = {
         email = "git@onatustun.com";
