@@ -138,16 +138,19 @@
 
     stylix = {
       type = "github";
-      owner = "danth";
+      owner = "nix-community";
       repo = "stylix";
 
       inputs = {
         base16-helix.follows = "";
+        base16-vim.follows = "";
+        firefox-gnome-theme.follows = "";
         flake-parts.follows = "flake-parts";
         nixpkgs.follows = "nixpkgs";
         nur.follows = "";
         systems.follows = "systems";
         tinted-kitty.follows = "";
+        tinted-schemes.follows = "";
         tinted-tmux.follows = "";
         tinted-zed.follows = "";
       };
