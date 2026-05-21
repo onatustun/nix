@@ -38,12 +38,6 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
-    import-tree = {
-      type = "github";
-      owner = "vic";
-      repo = "import-tree";
-    };
-
     systems = {
       type = "path";
       path = "./systems.nix";
@@ -258,9 +252,17 @@
   };
 
   outputs =
-    { flake-parts, import-tree, ... }@inputs:
+    { flake-parts, ... }@inputs:
     let
       inherit (flake-parts.lib) mkFlake;
     in
-    mkFlake { inherit inputs; } (import-tree ./modules);
+    mkFlake { inherit inputs; } (
+      { lib, ... }:
+      let
+        inherit (lib.fileset) fileFilter toList;
+      in
+      {
+        imports = ./modules |> fileFilter (file: file.hasExt "nix") |> toList;
+      }
+    );
 }
