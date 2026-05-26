@@ -39,9 +39,8 @@ flake-parts: {
     };
 
   partitions.dev.module.perSystem =
-    { config, pkgs, ... }:
+    { config, ... }:
     {
       checks = { inherit (config.packages) firmware flash update; };
-      make-shells.default.packages = [ pkgs.keymap-drawer ];
     };
 }

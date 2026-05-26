@@ -1,7 +1,5 @@
 { inputs, ... }:
 {
-  imports = [ (inputs.home-manager + "/flake-module.nix") ];
-
   flake = flake: {
     modules = {
       nixos.home-manager =

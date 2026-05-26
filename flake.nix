@@ -51,13 +51,6 @@
       flake = false;
     };
 
-    home-manager = {
-      type = "github";
-      owner = "nix-community";
-      repo = "home-manager";
-      flake = false;
-    };
-
     zmk-nix = {
       type = "github";
       owner = "lilyinstarlight";
@@ -84,13 +77,6 @@
       };
     };
 
-    disko = {
-      type = "github";
-      owner = "nix-community";
-      repo = "disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     ragenix = {
       type = "github";
       owner = "yaxitech";
@@ -111,10 +97,24 @@
       flake = false;
     };
 
+    disko = {
+      type = "github";
+      owner = "nix-community";
+      repo = "disko";
+      flake = false;
+    };
+
     nixos-hardware = {
       type = "github";
       owner = "nixos";
       repo = "nixos-hardware";
+    };
+
+    home-manager = {
+      type = "github";
+      owner = "nix-community";
+      repo = "home-manager";
+      flake = false;
     };
 
     bambuddy = {

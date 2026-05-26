@@ -161,7 +161,7 @@
               "config_converterpath = '${getExe' cfg.calibrePackage "ebook-convert"}'"
               "config_binariesdir = '${cfg.calibrePackage}/bin/'"
             ]
-            ++ optional cfg.options.enableKepubify "config_kepubifypath = '${getExe pkgs.kepubify}'"
+            ++ optional cfg.options.enableKepubify "config_kepubifypath = '${getExe' pkgs.kepubify "kepubify"}'"
           );
         in
         {
@@ -197,11 +197,7 @@
             services.calibre-web = {
               description = "Web app for browsing, reading and downloading eBooks stored in a Calibre database";
               wantedBy = [ "multi-user.target" ];
-
-              after = [
-                "network-online.target"
-                "network.target"
-              ];
+              after = [ "network.target" ];
 
               # book cover cache defaults to a path under /nix/store/ without this
               environment.CACHE_DIR = "/var/cache/calibre-web";

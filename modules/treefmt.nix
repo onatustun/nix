@@ -14,8 +14,8 @@
 
           treefmt.programs = {
             deadnix.enable = true;
+            nixf-diagnose.enable = true;
             nixfmt.enable = true;
-            shellcheck.enable = true;
             statix.enable = true;
           };
         };
