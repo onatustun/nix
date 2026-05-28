@@ -28,7 +28,7 @@ flake-parts: {
 
           meta = {
             description = "ZMK firmware";
-            license = lib.licenses.mit;
+            inherit (inputs'.zmk-nix.packages.firmware.meta) license;
             platforms = flake-parts.config.systems;
           };
         };
