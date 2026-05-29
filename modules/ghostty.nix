@@ -22,12 +22,6 @@
           window-decoration = "auto";
           window-padding-x = 0;
           window-padding-y = 0;
-
-          font-feature = [
-            "-calt"
-            "-liga"
-            "-dlig"
-          ];
         };
       };
     };
