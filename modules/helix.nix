@@ -1,35 +1,23 @@
 {
-  flake.modules.homeManager.helix =
+  partitions.dev.module.perSystem =
+    { pkgs, ... }:
     {
-      lib,
-      pkgs,
-      config,
-      ...
-    }:
+      make-shells.default.packages = [ pkgs.nixd ];
+    };
+
+  flake.modules.homeManager.helix =
+    { lib, config, ... }:
     let
       inherit (lib.meta) getExe;
     in
     {
-      home = {
-        packages = [
-          pkgs.nixd
-          pkgs.steel
-        ];
-
-        sessionVariables = {
-          EDITOR = getExe config.programs.helix.package;
-          VISUAL = config.home.sessionVariables.EDITOR;
-        };
-      };
-
-      xdg.configFile = {
-        "helix/init.scm".source = ./init.scm;
-        "helix/themes/gruber-darker.toml".source = ./gruber-darker.toml;
+      home.sessionVariables = {
+        EDITOR = getExe config.programs.helix.package;
+        VISUAL = config.home.sessionVariables.EDITOR;
       };
 
       programs.helix = {
         enable = true;
-        package = pkgs.steelix;
 
         settings = {
           editor = {
@@ -44,14 +32,12 @@
             completion-replace = true;
             bufferline = "multiple";
             color-modes = true;
-            insert-final-newline = false;
             end-of-line-diagnostics = "warning";
             lsp.display-inlay-hints = true;
             cursor-shape.insert = "bar";
             file-picker.hidden = false;
             auto-save = false;
             inline-diagnostics.cursor-line = "warning";
-            indent-guides.render = false;
             jump-label-alphabet = "jkl;hfdsagbceimnopqrtuvwxyz";
 
             shell = [
@@ -60,14 +46,6 @@
             ];
 
             statusline = {
-              left = [
-                "mode"
-                "spinner"
-                "file-name"
-                "read-only-indicator"
-                "file-modification-indicator"
-              ];
-
               right = [
                 "version-control"
                 "diagnostics"
@@ -122,57 +100,12 @@
 
               x = "select_line_below";
               X = "select_line_above";
-
-              G = {
-                j = "@vgj<esc>";
-                k = "@vgk<esc>";
-              };
-
-              g = {
-                j = "goto_last_line";
-                k = "goto_file_start";
-              };
             };
 
             select = {
               x = "select_line_below";
               X = "select_line_above";
-
-              g = {
-                j = "goto_last_line";
-                k = "goto_file_start";
-              };
             };
-          };
-        };
-
-        languages = {
-          language = [
-            {
-              name = "haskell";
-              formatter = {
-                command = "fourmolu";
-
-                args = [
-                  "--stdin-input-file"
-                  "%{buffer_name}"
-                ];
-              };
-            }
-            {
-              name = "scheme";
-              language-servers = [ "steel-language-server" ];
-            }
-          ];
-
-          language-server = {
-            rust-analyzer.config = {
-              cargo.features = "all";
-              check.command = "clippy";
-              completion.callable.snippets = "add_parentheses";
-            };
-
-            steel-language-server.command = "steel-language-server";
           };
         };
       };

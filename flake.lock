@@ -441,22 +441,6 @@
         "type": "github"
       }
     },
-    "oil-hx": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1777193170,
-        "narHash": "sha256-sTY+d7m9e0PRmFIAJmCL8VAQ7nj9Em9a8ouXs38E1Wg=",
-        "owner": "Ra77a3l3-jar",
-        "repo": "oil.hx",
-        "rev": "89a2ec348e822debd216a95b6c1d548884f39e25",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Ra77a3l3-jar",
-        "repo": "oil.hx",
-        "type": "github"
-      }
-    },
     "ragenix": {
       "inputs": {
         "agenix": [
@@ -510,7 +494,6 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "noctalia": "noctalia",
-        "oil-hx": "oil-hx",
         "ragenix": "ragenix",
         "stylix": "stylix",
         "systems": "systems",

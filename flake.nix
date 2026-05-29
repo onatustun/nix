@@ -58,13 +58,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    oil-hx = {
-      type = "github";
-      owner = "Ra77a3l3-jar";
-      repo = "oil.hx";
-      flake = false;
-    };
-
     deploy-rs = {
       type = "github";
       owner = "serokell";
