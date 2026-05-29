@@ -1,27 +1,32 @@
 { lib, ... }:
 let
-  inherit (lib.attrsets) optionalAttrs;
+  inherit (lib.attrsets) genAttrs;
+  inherit (lib.lists) optional;
 in
 {
-  partitionedAttrs = {
-    allSystems = "dev";
-    debug = "dev";
-  }
-  // optionalAttrs (builtins ? currentSystem) {
-    currentSystem = "dev";
-  };
+  partitionedAttrs =
+    (_: "dev")
+    |> genAttrs (
+      [
+        "allSystems"
+        "debug"
+      ]
+      ++ optional (builtins ? currentSystem) "currentSystem"
+    );
 
-  partitions.dev.module = {
-    debug = true;
+  partitions.dev.module =
+    { getSystem, ... }:
+    {
+      debug = true;
 
-    flake =
-      { lib, config, ... }:
-      let
-        inherit (lib.attrsets) optionalAttrs;
-        inherit (lib.modules) mkForce;
-      in
-      optionalAttrs (builtins ? currentSystem) {
-        currentSystem = mkForce config.allSystems.${builtins.currentSystem};
-      };
-  };
+      flake =
+        { lib, ... }:
+        let
+          inherit (lib.attrsets) optionalAttrs;
+          inherit (lib.modules) mkForce;
+        in
+        optionalAttrs (builtins ? currentSystem) {
+          currentSystem = mkForce (getSystem builtins.currentSystem).debug;
+        };
+    };
 }
