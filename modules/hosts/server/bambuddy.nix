@@ -19,7 +19,7 @@
         nginx.virtualHosts.${domain} = {
           enableACME = true;
           forceSSL = true;
-          locations."/".proxyPass = "http://localhost:${toString port}";
+          locations."/".proxyPass = "http://127.0.0.1:${toString port}";
         };
 
         postgresql = {
@@ -33,7 +33,6 @@
 
         bambuddy = {
           enable = true;
-          port = 8002;
           database.url = "postgresql+asyncpg:///bambuddy?host=/run/postgresql";
         };
       };
