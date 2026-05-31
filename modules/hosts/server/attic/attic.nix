@@ -9,7 +9,7 @@
     let
       inherit (lib.lists) singleton;
       domain = "cache.${rootDomain}";
-      listen = "[::1]:8080";
+      listen = "127.0.0.1:8081";
     in
     {
       age.secrets.attic-env = {

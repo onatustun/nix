@@ -19,7 +19,7 @@
             extraConfig = "large_client_header_buffers 4 16k;";
 
             locations."/" = {
-              proxyPass = "http://[${ip}]:${toString port}";
+              proxyPass = "http://${ip}:${toString port}";
 
               extraConfig = ''
                 client_max_body_size    0;
@@ -34,6 +34,7 @@
 
           calibre-web = {
             enable = true;
+            listen.ip = "127.0.0.1";
 
             options = {
               calibreLibrary = "/var/lib/calibre-web/library";
