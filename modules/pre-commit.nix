@@ -9,7 +9,11 @@
 
       pre-commit.settings = {
         package = pkgs.prek;
-        hooks.flake-checker.enable = true;
+
+        hooks = {
+          commitizen.enable = true;
+          flake-checker.enable = true;
+        };
       };
     };
 }
