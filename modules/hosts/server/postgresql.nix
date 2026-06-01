@@ -1,1 +1,1 @@
-{ flake.configurations.nixos.server.module.services.postgresql.enable = true; }
+{ flake.nixosConfigurations.server.module.services.postgresql.enable = true; }

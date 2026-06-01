@@ -2,7 +2,7 @@
   flake =
     { config, ... }:
     {
-      configurations.nixos.desktop.module =
+      nixosConfigurations.desktop.module =
         { lib, ... }:
         let
           inherit (lib.attrsets) attrValues;

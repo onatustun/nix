@@ -1,1 +1,1 @@
-{ flake.configurations.nixos.server.module.hardware.facter.reportPath = ./facter.json; }
+{ flake.nixosConfigurations.server.module.hardware.facter.reportPath = ./facter.json; }

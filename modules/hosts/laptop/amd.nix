@@ -1,1 +1,1 @@
-{ flake.configurations.nixos.laptop.module.boot.kernelModules = [ "kvm-amd" ]; }
+{ flake.nixosConfigurations.laptop.module.boot.kernelModules = [ "kvm-amd" ]; }

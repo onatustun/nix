@@ -1,5 +1,5 @@
 {
-  flake.configurations.nixos.desktop.module._module.args.monitors = {
+  flake.nixosConfigurations.desktop.module._module.args.monitors = {
     main."HDMI-A-1" = {
       focus-at-startup = true;
       scale = 1;

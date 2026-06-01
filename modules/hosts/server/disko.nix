@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.configurations.nixos.server.module = {
+  flake.nixosConfigurations.server.module = {
     imports = [ (inputs.disko + "/module.nix") ];
 
     disko.devices.disk.main = {

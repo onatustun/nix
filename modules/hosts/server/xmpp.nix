@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.configurations.nixos.server.module =
+  flake.nixosConfigurations.server.module =
     { rootDomain, ... }:
     let
       domain = "xmpp.${rootDomain}";

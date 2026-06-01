@@ -1,5 +1,5 @@
 {
-  flake.configurations.nixos.desktop.module =
+  flake.nixosConfigurations.desktop.module =
     { username, ... }:
     {
       users.users.${username}.extraGroups = [

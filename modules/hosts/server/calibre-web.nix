@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   flake = flake: {
-    configurations.nixos.server.module =
+    nixosConfigurations.server.module =
       { config, rootDomain, ... }:
       let
         cfg = config.services.calibre-web;

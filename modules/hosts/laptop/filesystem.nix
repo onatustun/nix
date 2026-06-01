@@ -1,5 +1,5 @@
 {
-  flake.configurations.nixos.laptop.module = {
+  flake.nixosConfigurations.laptop.module = {
     fileSystems = {
       "/" = {
         device = "/dev/disk/by-uuid/506db6ea-c537-4c30-a710-1aafaef3cf8a";

@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.configurations.nixos.laptop.module =
+  flake.nixosConfigurations.laptop.module =
     { config, ... }:
     let
       inherit (config.lib.topology) mkConnection;

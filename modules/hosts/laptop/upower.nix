@@ -1,1 +1,1 @@
-{ flake.configurations.nixos.laptop.module.services.upower.enable = true; }
+{ flake.nixosConfigurations.laptop.module.services.upower.enable = true; }

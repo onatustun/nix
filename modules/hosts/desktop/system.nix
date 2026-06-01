@@ -1,1 +1,1 @@
-{ flake.configurations.nixos.desktop.module.nixpkgs.hostPlatform.system = "x86_64-linux"; }
+{ flake.nixosConfigurations.desktop.module.nixpkgs.hostPlatform.system = "x86_64-linux"; }

@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, inputs, ... }:
 let
   inherit (lib.options) mkOption;
   inherit (lib.types) lazyAttrsOf submodule deferredModule;
@@ -6,7 +6,9 @@ let
   inherit (lib) nixosSystem;
 in
 {
-  options.flake.configurations.nixos = mkOption {
+  disabledModules = [ inputs.flake-parts.flakeModules.nixosConfigurations ];
+
+  options.flake.nixosConfigurations = mkOption {
     type = lazyAttrsOf (submodule {
       options.module = mkOption { type = deferredModule; };
     });
@@ -14,10 +16,4 @@ in
     default = { };
     apply = mapAttrs (_: { module, ... }: nixosSystem { modules = [ module ]; });
   };
-
-  config.flake =
-    { config, ... }:
-    {
-      nixosConfigurations = config.configurations.nixos;
-    };
 }

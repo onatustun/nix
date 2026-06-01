@@ -1,5 +1,5 @@
 {
-  flake.configurations.nixos.server.module =
+  flake.nixosConfigurations.server.module =
     { rootDomain, ... }:
     {
       services = {

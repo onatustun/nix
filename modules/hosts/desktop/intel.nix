@@ -1,5 +1,5 @@
 {
-  flake.configurations.nixos.desktop.module =
+  flake.nixosConfigurations.desktop.module =
     { config, ... }:
     {
       boot.kernelModules = [ "kvm-intel" ];

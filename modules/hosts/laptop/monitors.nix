@@ -1,5 +1,5 @@
 {
-  flake.configurations.nixos.laptop.module._module.args.monitors = {
+  flake.nixosConfigurations.laptop.module._module.args.monitors = {
     # Framework 13
     main."eDP-1" = {
       focus-at-startup = true;
