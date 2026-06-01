@@ -1,23 +1,18 @@
+{ inputs, ... }:
 {
-  partitionedAttrs.formatter = "dev";
+  imports = [ (inputs.treefmt-nix + "/flake-module.nix") ];
 
-  partitions.dev.module =
-    { inputs, ... }:
+  perSystem =
+    { config, ... }:
     {
-      imports = [ (inputs.treefmt-nix + "/flake-module.nix") ];
+      make-shells.default.inputsFrom = [ config.treefmt.build.devShell ];
+      pre-commit.settings.hooks.treefmt.enable = true;
 
-      perSystem =
-        { config, ... }:
-        {
-          make-shells.default.inputsFrom = [ config.treefmt.build.devShell ];
-          pre-commit.settings.hooks.treefmt.enable = true;
-
-          treefmt.programs = {
-            deadnix.enable = true;
-            nixf-diagnose.enable = true;
-            nixfmt.enable = true;
-            statix.enable = true;
-          };
-        };
+      treefmt.programs = {
+        deadnix.enable = true;
+        nixf-diagnose.enable = true;
+        nixfmt.enable = true;
+        statix.enable = true;
+      };
     };
 }

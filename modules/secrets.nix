@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  partitions.dev.module.perSystem =
+  perSystem =
     { inputs', ... }:
     {
       make-shells.default = {

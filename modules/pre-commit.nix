@@ -1,18 +1,15 @@
+{ inputs, ... }:
 {
-  partitions.dev.module =
-    { inputs, ... }:
+  imports = [ (inputs.git-hooks + "/flake-module.nix") ];
+
+  perSystem =
+    { config, pkgs, ... }:
     {
-      imports = [ (inputs.git-hooks + "/flake-module.nix") ];
+      make-shells.default.inputsFrom = [ config.pre-commit.devShell ];
 
-      perSystem =
-        { config, pkgs, ... }:
-        {
-          make-shells.default.inputsFrom = [ config.pre-commit.devShell ];
-
-          pre-commit.settings = {
-            package = pkgs.prek;
-            hooks.flake-checker.enable = true;
-          };
-        };
+      pre-commit.settings = {
+        package = pkgs.prek;
+        hooks.flake-checker.enable = true;
+      };
     };
 }

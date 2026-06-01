@@ -6,9 +6,6 @@ result*/
 
 !assets/
 
-!inputs/
-!inputs/**/
-
 !modules/
 !modules/**/
 

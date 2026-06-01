@@ -1,5 +1,5 @@
 {
-  partitions.dev.module.perSystem =
+  perSystem =
     { pkgs, ... }:
     {
       make-shells.default.packages = [ pkgs.nixd ];

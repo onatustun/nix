@@ -36,11 +36,7 @@ flake-parts: {
         inherit (inputs'.zmk-nix.packages) update;
         flash = inputs'.zmk-nix.packages.flash.override { inherit (config.packages) firmware; };
       };
-    };
 
-  partitions.dev.module.perSystem =
-    { config, ... }:
-    {
       checks = { inherit (config.packages) firmware flash update; };
     };
 }
