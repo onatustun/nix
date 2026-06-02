@@ -27,7 +27,6 @@
               nixpkgs
               nushell
               pipewire
-              plymouth
               printing
               ragenix
               ssh
