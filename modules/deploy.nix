@@ -15,14 +15,14 @@
     in
     {
       options.deploy = mkOption {
-        default = { };
-
         type = submodule {
           options.nodes = mkOption {
             default = { };
             type = lazyAttrsOf anything;
           };
         };
+
+        default = { };
       };
     };
 }
