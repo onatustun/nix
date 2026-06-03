@@ -9,7 +9,6 @@
 
       programs.ghostty = {
         enable = true;
-        installBatSyntax = config.programs.bat.enable;
         installVimSyntax = true;
 
         settings = {

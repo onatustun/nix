@@ -1,21 +1,16 @@
 {
-  flake.modules.homeManager.xdg =
-    { pkgs, ... }:
-    {
-      home = {
-        preferXdgDirectories = true;
-        packages = [ pkgs.xdg-user-dirs ];
-      };
+  flake.modules.homeManager.xdg = {
+    home.preferXdgDirectories = true;
 
-      xdg = {
+    xdg = {
+      enable = true;
+      mimeApps.enable = true;
+      configFile."mimeapps.list".force = true;
+
+      userDirs = {
         enable = true;
-        mimeApps.enable = true;
-        configFile."mimeapps.list".force = true;
-
-        userDirs = {
-          enable = true;
-          createDirectories = true;
-        };
+        createDirectories = true;
       };
     };
+  };
 }

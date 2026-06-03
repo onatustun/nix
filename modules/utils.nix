@@ -1,17 +1,8 @@
 {
-  flake.modules.homeManager.utils =
-    { pkgs, ... }:
-    {
-      home.packages = [
-        pkgs.nix-search-cli
-        pkgs.noogle-search
-      ];
-
-      programs = {
-        fd.enable = true;
-        ripgrep.enable = true;
-        skim.enable = true;
-        yazi.enable = true;
-      };
-    };
+  flake.modules.homeManager.utils.programs = {
+    fd.enable = true;
+    ripgrep.enable = true;
+    skim.enable = true;
+    yazi.enable = true;
+  };
 }

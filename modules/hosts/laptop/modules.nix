@@ -43,11 +43,9 @@
             inherit (config.modules.homeManager)
               attic
               bash
-              bat
               carapace
               cursor
               direnv
-              eza
               fish
               ghostty
               git

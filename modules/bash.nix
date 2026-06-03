@@ -1,6 +1,1 @@
-{
-  flake.modules.homeManager.bash.programs.bash = {
-    enable = true;
-    enableCompletion = true;
-  };
-}
+{ flake.modules.homeManager.bash.programs.bash.enable = true; }

@@ -1,21 +1,15 @@
 {
-  flake.modules.nixos.boot =
-    { pkgs, ... }:
-    {
-      boot = {
-        tmp.cleanOnBoot = true;
+  flake.modules.nixos.boot.boot = {
+    tmp.cleanOnBoot = true;
 
-        loader = {
-          efi.canTouchEfiVariables = true;
-          timeout = 3;
+    loader = {
+      efi.canTouchEfiVariables = true;
+      timeout = 3;
 
-          systemd-boot = {
-            enable = true;
-            configurationLimit = 5;
-          };
-        };
+      systemd-boot = {
+        enable = true;
+        configurationLimit = 5;
       };
-
-      environment.systemPackages = [ pkgs.efibootmgr ];
     };
+  };
 }

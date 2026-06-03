@@ -2,10 +2,7 @@
   flake.modules.homeManager.cursor =
     { config, ... }:
     {
-      home.pointerCursor = {
-        enable = true;
-        gtk.enable = true;
-      };
+      home.pointerCursor.enable = true;
 
       gtk = {
         enable = true;
