@@ -388,22 +388,6 @@
         "type": "github"
       }
     },
-    "nix-index-database": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1778393439,
-        "narHash": "sha256-mOtQxUjtKaPHLeoLOY/YEDctmud1X9KwJr4kE1MJ3Wc=",
-        "owner": "nix-community",
-        "repo": "nix-index-database",
-        "rev": "01466c414c7357ae2ce32be4a272a7c69e94ab5f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nix-index-database",
-        "type": "github"
-      }
-    },
     "nix-topology": {
       "flake": false,
       "locked": {
@@ -522,7 +506,6 @@
         "keys": "keys",
         "make-shell": "make-shell",
         "niri": "niri",
-        "nix-index-database": "nix-index-database",
         "nix-topology": "nix-topology",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",

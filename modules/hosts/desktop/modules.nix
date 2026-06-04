@@ -23,11 +23,9 @@
               nh
               niri
               nix
-              nix-index
               nixpkgs
               nushell
               pipewire
-              printing
               ragenix
               ssh
               stylix
@@ -41,11 +39,8 @@
           home-manager.sharedModules = attrValues {
             inherit (config.modules.homeManager)
               attic
-              bash
-              carapace
               cursor
               direnv
-              fish
               ghostty
               git
               github
@@ -65,7 +60,6 @@
               wl-clipboard
               xdg
               zoxide
-              zsh
               ;
           };
         };

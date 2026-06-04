@@ -146,13 +146,6 @@
       flake = false;
     };
 
-    nix-index-database = {
-      type = "github";
-      owner = "nix-community";
-      repo = "nix-index-database";
-      flake = false;
-    };
-
     stylix = {
       type = "github";
       owner = "nix-community";
