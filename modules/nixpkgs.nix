@@ -2,11 +2,12 @@
 let
   config = {
     allowBroken = true;
-    allowUnfreePredicate = _: true;
     allowUnfree = true;
   };
 in
 {
+  disabledModules = [ inputs.flake-parts.flakeModules.nixpkgs ];
+
   perSystem =
     { system, ... }:
     {
