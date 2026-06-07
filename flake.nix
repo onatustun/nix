@@ -2,8 +2,6 @@
   description = "Nix config";
 
   nixConfig = {
-    commit-lockfile-summary = "chore: update `flake.lock`";
-
     extra-substituters = [
       "https://nix-community.cachix.org"
       "https://cache.onatustun.com/zmk"
@@ -38,6 +36,13 @@
       owner = "hercules-ci";
       repo = "flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+
+    import-tree = {
+      type = "github";
+      owner = "denful";
+      repo = "import-tree";
+      flake = false;
     };
 
     systems = {
@@ -131,6 +136,7 @@
       type = "github";
       owner = "nixos";
       repo = "nixos-hardware";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager = {
@@ -152,6 +158,7 @@
       repo = "stylix";
 
       inputs = {
+        base16-fish.follows = "";
         base16-helix.follows = "";
         base16-vim.follows = "";
         firefox-gnome-theme.follows = "";
@@ -268,17 +275,9 @@
   };
 
   outputs =
-    { flake-parts, ... }@inputs:
+    { flake-parts, import-tree, ... }@inputs:
     let
       inherit (flake-parts.lib) mkFlake;
     in
-    mkFlake { inherit inputs; } (
-      { lib, ... }:
-      let
-        inherit (lib.fileset) fileFilter toList;
-      in
-      {
-        imports = ./modules |> fileFilter (file: file.hasExt "nix") |> toList;
-      }
-    );
+    mkFlake { inherit inputs; } (import import-tree ./modules);
 }
