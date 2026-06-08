@@ -1,28 +1,10 @@
 {
-  flake.modules.nixos.nh =
-    {
-      lib,
-      config,
-      pkgs,
-      ...
-    }:
-    let
-      inherit (lib.meta) getExe;
-    in
-    {
-      systemd = {
-        services.nh-clean = {
-          description = "nh clean";
-          startAt = "weekly";
-          path = [ config.nix.package ];
+  flake.modules.nixos.nh.programs.nh = {
+    enable = true;
 
-          serviceConfig = {
-            Type = "oneshot";
-            ExecStart = "${getExe pkgs.nh} clean all --keep 5 --keep-since 5d";
-          };
-        };
-
-        timers.nh-clean.timerConfig.Persistent = true;
-      };
+    clean = {
+      enable = true;
+      extraArgs = "--keep 5 --keep-since 3d";
     };
+  };
 }
