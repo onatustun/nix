@@ -134,7 +134,7 @@
       type = "github";
       owner = "nixos";
       repo = "nixos-hardware";
-      inputs.nixpkgs.follows = "nixpkgs";
+      flake = false;
     };
 
     home-manager = {
