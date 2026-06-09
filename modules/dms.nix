@@ -17,22 +17,12 @@
         };
 
         homeManager.dms =
-          {
-            config,
-            lib,
-            pkgs,
-            ...
-          }:
+          { lib, ... }:
           let
-            inherit (config.stylix) fonts base16Scheme;
-            inherit (lib.attrsets) genAttrs;
-            inherit (lib.strings) toJSON;
-            inherit (pkgs.writers) writeText;
             inherit (lib.lists) singleton;
           in
           {
             imports = [ inputs.dms.homeModules.dank-material-shell ];
-            stylix.targets.dank-material-shell.enable = false;
 
             programs = {
               dank-material-shell = {
@@ -40,18 +30,12 @@
                 systemd.enable = true;
 
                 settings = {
-                  currentThemeName = "custom";
                   dockAutoHide = true;
-                  dockBorderEnabled = true;
-                  dockBorderOpacity = 0.25;
                   dockGroupByApp = true;
                   dockIsolateDisplays = true;
                   dockOpenOnOverview = true;
-                  dockTransparency = 0.85;
-                  fontFamily = fonts.sansSerif.name;
                   launcherLogoMode = "os";
                   launcherStyle = "spotlight";
-                  monoFontFamily = fonts.monospace.name;
                   nightModeEnabled = true;
                   notificationCompactMode = true;
                   notificationFocusedMonitor = true;
@@ -59,35 +43,6 @@
                   showDock = true;
                   showOccupiedWorkspacesOnly = true;
                   useAutoLocation = true;
-
-                  customThemeFile =
-                    (_: {
-                      inherit (base16Scheme) name;
-                      primary = base16Scheme.base0D;
-                      primaryText = base16Scheme.base00;
-                      primaryContainer = base16Scheme.base0C;
-                      secondary = base16Scheme.base0E;
-                      surface = base16Scheme.base01;
-                      surfaceText = base16Scheme.base05;
-                      surfaceVariant = base16Scheme.base02;
-                      surfaceVariantText = base16Scheme.base04;
-                      surfaceTint = base16Scheme.base0D;
-                      background = base16Scheme.base00;
-                      backgroundText = base16Scheme.base05;
-                      outline = base16Scheme.base03;
-                      surfaceContainer = base16Scheme.base01;
-                      surfaceContainerHigh = base16Scheme.base02;
-                      surfaceContainerHighest = base16Scheme.base03;
-                      error = base16Scheme.base08;
-                      warning = base16Scheme.base0A;
-                      info = base16Scheme.base0C;
-                    })
-                    |> genAttrs [
-                      "dark"
-                      "light"
-                    ]
-                    |> toJSON
-                    |> writeText "custom-color-theme.json";
 
                   barConfigs = singleton {
                     id = "default";
