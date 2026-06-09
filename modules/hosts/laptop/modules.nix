@@ -12,8 +12,8 @@
             inherit (config.modules.nixos)
               bluetooth
               boot
+              dms
               fonts
-              gdm
               graphics
               home-manager
               initrd
@@ -50,11 +50,9 @@
               jujutsu
               media
               nixpkgs
-              noctalia
               obsidian
               radicle
               starship
-              swayidle
               tmux
               utils
               wayvnc

@@ -12,7 +12,7 @@
             base16 = import (
               runCommand "base16-to-nix" {
                 nativeBuildInputs = [ pkgs.yaml2nix ];
-              } "yaml2nix ${pkgs.base16-schemes + "/share/themes/gruber.yaml"} > $out"
+              } "yaml2nix ${pkgs.base16-schemes + "/share/themes/catppuccin-mocha.yaml"} > $out"
             );
           in
           {
@@ -23,7 +23,7 @@
               polarity = base16.variant;
 
               base16Scheme = base16.palette // {
-                name = "gruber-darker";
+                name = "catppuccin_mocha";
               };
 
               fonts = {

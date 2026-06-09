@@ -7,7 +7,6 @@
       "https://cache.onatustun.com/zmk"
       "https://crane.cachix.org"
       "https://niri.cachix.org"
-      "https://noctalia.cachix.org"
     ];
 
     extra-trusted-public-keys = [
@@ -15,7 +14,6 @@
       "zmk:zQgRE8h8eHNmG2btJWg4p6Hl2tuYwhkmfqsaxC5ju6I="
       "crane.cachix.org-1:8Scfpmn9w+hGdXH/Q9tTLiYAE/2dnJYRJP7kl80GuRk="
       "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
-      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
     ];
 
     extra-experimental-features = [
@@ -199,14 +197,14 @@
       };
     };
 
-    noctalia = {
+    dms = {
       type = "github";
-      owner = "noctalia-dev";
-      repo = "noctalia-shell";
+      owner = "avengemedia";
+      repo = "dankmaterialshell";
 
       inputs = {
+        flake-compat.follows = "";
         nixpkgs.follows = "nixpkgs";
-        noctalia-qs.follows = "dep_noctalia-qs";
       };
     };
 
@@ -258,18 +256,6 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         rust-overlay.follows = "";
-      };
-    };
-
-    dep_noctalia-qs = {
-      type = "github";
-      owner = "noctalia-dev";
-      repo = "noctalia-qs";
-
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-        treefmt-nix.follows = "";
       };
     };
   };

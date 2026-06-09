@@ -111,30 +111,6 @@
         "type": "github"
       }
     },
-    "dep_noctalia-qs": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "systems": [
-          "systems"
-        ],
-        "treefmt-nix": []
-      },
-      "locked": {
-        "lastModified": 1780799499,
-        "narHash": "sha256-YloRtLqJabzYUWvdLyh67zH4DZrR3kQj+dlQJwLPmPM=",
-        "owner": "noctalia-dev",
-        "repo": "noctalia-qs",
-        "rev": "f308426239665e3bc3d624014e9295b2ae2f58ff",
-        "type": "github"
-      },
-      "original": {
-        "owner": "noctalia-dev",
-        "repo": "noctalia-qs",
-        "type": "github"
-      }
-    },
     "dep_rust-overlay": {
       "inputs": {
         "nixpkgs": []
@@ -190,6 +166,27 @@
       "original": {
         "owner": "nix-community",
         "repo": "disko",
+        "type": "github"
+      }
+    },
+    "dms": {
+      "inputs": {
+        "flake-compat": [],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1780868844,
+        "narHash": "sha256-YnqjsE6AcA2FTl0t/YnC9oWq72CqPjEZBrnYP9nMnoI=",
+        "owner": "avengemedia",
+        "repo": "dankmaterialshell",
+        "rev": "d08c7c5e5528133d84aac80f34935931ae3423c9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "avengemedia",
+        "repo": "dankmaterialshell",
         "type": "github"
       }
     },
@@ -436,29 +433,6 @@
         "url": "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz"
       }
     },
-    "noctalia": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "noctalia-qs": [
-          "dep_noctalia-qs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1780803063,
-        "narHash": "sha256-pthUzeY81Gx1PTKCP4gYTwZYUxNpKZh2pOLPa9ZyofI=",
-        "owner": "noctalia-dev",
-        "repo": "noctalia-shell",
-        "rev": "5311e14d2000af2f523789c76a3d869dcb42f130",
-        "type": "github"
-      },
-      "original": {
-        "owner": "noctalia-dev",
-        "repo": "noctalia-shell",
-        "type": "github"
-      }
-    },
     "ragenix": {
       "inputs": {
         "agenix": [
@@ -498,10 +472,10 @@
         "dep_crane": "dep_crane",
         "dep_flake-utils": "dep_flake-utils",
         "dep_niri-unstable": "dep_niri-unstable",
-        "dep_noctalia-qs": "dep_noctalia-qs",
         "dep_rust-overlay": "dep_rust-overlay",
         "deploy-rs": "deploy-rs",
         "disko": "disko",
+        "dms": "dms",
         "flake-parts": "flake-parts",
         "flake-root": "flake-root",
         "git-hooks": "git-hooks",
@@ -514,7 +488,6 @@
         "nix-topology": "nix-topology",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
-        "noctalia": "noctalia",
         "ragenix": "ragenix",
         "stylix": "stylix",
         "systems": "systems",

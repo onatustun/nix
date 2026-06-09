@@ -23,14 +23,14 @@
         homeManager.niri = moduleWithSystem (
           { inputs', ... }:
           {
-            pkgs,
             lib,
+            pkgs,
             config,
             monitors,
             ...
           }:
           let
-            inherit (lib.meta) getExe getExe';
+            inherit (lib.meta) getExe;
             inherit (lib.lists) singleton;
           in
           {
@@ -58,8 +58,8 @@
                 XDG_SESSION_TYPE = "wayland";
               };
 
-              spawn-at-startup = [ { command = [ "noctalia-shell" ]; } ];
               outputs = (removeAttrs monitors [ "main" ]) // monitors.main;
+              overview.backdrop-color = config.stylix.base16Scheme.base01;
 
               layout = {
                 always-center-single-column = true;
@@ -77,14 +77,6 @@
               };
 
               binds = {
-                "Mod+D".action.spawn = [
-                  "noctalia-shell"
-                  "ipc"
-                  "call"
-                  "launcher"
-                  "toggle"
-                ];
-
                 "Mod+Q".action.spawn = [
                   config.home.sessionVariables.SHELL
                   "-c"
@@ -164,65 +156,6 @@
                 "Mod+Shift+7".action.move-column-to-workspace = 7;
                 "Mod+Shift+8".action.move-column-to-workspace = 8;
                 "Mod+Shift+0".action.move-column-to-workspace = 10;
-
-                "Mod+Shift+L".action.spawn = [
-                  "noctalia-shell"
-                  "ipc"
-                  "call"
-                  "lockScreen"
-                  "lock"
-                ];
-
-                "XF86AudioMute".action.spawn = [
-                  "noctalia-shell"
-                  "ipc"
-                  "call"
-                  "volume"
-                  "muteOutput"
-                ];
-
-                "XF86AudioMicMute".action.spawn = [
-                  (getExe' pkgs.wireplumber "wpctl")
-                  "set-mute"
-                  "@DEFAULT_AUDIO_SOURCE@"
-                  "toggle"
-                ];
-
-                "XF86AudioPlay".action.spawn = [
-                  (getExe pkgs.playerctl)
-                  "play-pause"
-                ];
-
-                "XF86AudioStop".action.spawn = [
-                  (getExe pkgs.playerctl)
-                  "pause"
-                ];
-
-                "XF86AudioPrev".action.spawn = [
-                  (getExe pkgs.playerctl)
-                  "previous"
-                ];
-
-                "XF86AudioNext".action.spawn = [
-                  (getExe pkgs.playerctl)
-                  "next"
-                ];
-
-                "XF86AudioRaiseVolume".action.spawn = [
-                  "noctalia-shell"
-                  "ipc"
-                  "call"
-                  "volume"
-                  "increase"
-                ];
-
-                "XF86AudioLowerVolume".action.spawn = [
-                  "noctalia-shell"
-                  "ipc"
-                  "call"
-                  "volume"
-                  "decrease"
-                ];
               };
 
               window-rules = singleton {
