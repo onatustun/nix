@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "bambuddy": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1780866409,
-        "narHash": "sha256-Bh2zZv0NszYZaevu2BVXwdK03fETzBEifFXh5HsOYn4=",
-        "ref": "refs/heads/main",
-        "rev": "f0aaf61b2f1a915331befbb394a2239b9dd18a49",
-        "revCount": 17,
-        "type": "git",
-        "url": "https://seed.onatustun.com/zVH7U6HxxwtdWd2WwHBBK7uUEn4Q.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://seed.onatustun.com/zVH7U6HxxwtdWd2WwHBBK7uUEn4Q.git"
-      }
-    },
     "base16": {
       "inputs": {
         "fromYaml": "fromYaml"
@@ -467,7 +451,6 @@
     },
     "root": {
       "inputs": {
-        "bambuddy": "bambuddy",
         "dep_agenix": "dep_agenix",
         "dep_crane": "dep_crane",
         "dep_flake-utils": "dep_flake-utils",
