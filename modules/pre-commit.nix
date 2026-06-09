@@ -12,7 +12,15 @@
 
         hooks = {
           commitizen.enable = true;
-          flake-checker.enable = true;
+
+          flake-checker = {
+            enable = true;
+
+            args = [
+              "--condition"
+              "numDaysOld < 12"
+            ];
+          };
         };
       };
     };
