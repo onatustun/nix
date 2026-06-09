@@ -2,16 +2,15 @@
   flake.nixosConfigurations.desktop.module =
     { config, homeDir, ... }:
     let
-      service = "jellyfin";
-      cfg = config.services.${service};
       mediaDir = "/srv/media";
       musicDir = "${mediaDir}/music";
       mode = "0755";
+      cfg = config.services.jellyfin;
     in
     {
-      services.${service}.enable = true;
+      services.jellyfin.enable = true;
 
-      systemd.tmpfiles.settings.${service} = {
+      systemd.tmpfiles.settings.jellyfin = {
         ${mediaDir}.d = {
           inherit mode;
           inherit (cfg) user group;
