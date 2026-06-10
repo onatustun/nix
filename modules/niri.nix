@@ -69,20 +69,15 @@
                 default-column-width.proportion = 0.5;
 
                 struts = {
-                  left = 16;
-                  right = 16;
-                  top = 0;
-                  bottom = 0;
+                  left = 8;
+                  right = 8;
+                  top = 8;
+                  bottom = 8;
                 };
               };
 
               binds = {
-                "Mod+Q".action.spawn = [
-                  config.home.sessionVariables.SHELL
-                  "-c"
-                  config.home.sessionVariables.TERMINAL
-                ];
-
+                "Mod+Q".action.spawn = config.home.sessionVariables.TERMINAL;
                 "Mod+E".action.spawn = getExe pkgs.thunar;
                 "Mod+Z".action.spawn = config.home.sessionVariables.BROWSER;
                 "Mod+C".action.close-window = [ ];
@@ -163,10 +158,10 @@
                 draw-border-with-background = false;
 
                 geometry-corner-radius = {
-                  bottom-left = 8.0;
-                  bottom-right = 8.0;
-                  top-left = 8.0;
-                  top-right = 8.0;
+                  bottom-left = 16.0;
+                  bottom-right = 16.0;
+                  top-left = 16.0;
+                  top-right = 16.0;
                 };
               };
 
