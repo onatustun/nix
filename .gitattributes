@@ -1,4 +1,4 @@
 *.age binary
-*.json -diff
-*.lock -diff
-*.svg -diff
+*.json linguist-generated
+*.lock linguist-generated
+*.svg linguist-generated
