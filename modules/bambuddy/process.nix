@@ -10,7 +10,7 @@
     }:
     let
       dbName = "bambuddy";
-      inherit (pkgs) writeShellApplication;
+      inherit (pkgs.writers) writeNuBin;
       inherit (lib.meta) getExe;
       inherit (config.packages) bambuddy;
     in
@@ -24,36 +24,28 @@
         };
 
         settings.processes.bambuddy = {
-          command = writeShellApplication {
-            name = "bambuddy-dev";
-            runtimeInputs = [ pkgs.coreutils ];
+          command = writeNuBin "bambuddy-dev" /* nu */ ''
+            let data_dir = $"($env.PWD)/data/bambuddy"
+            let log_dir = $"($data_dir)/log"
 
-            text = ''
-              set -euo pipefail
+            mkdir $log_dir
 
-              run_dir="$(mktemp -d)"
-              trap 'rm -rf "$run_dir"' EXIT
-
-              mkdir -p "$run_dir/bambuddy/log"
-              export DATA_DIR="$run_dir/bambuddy"
-              export LOG_DIR="$run_dir/bambuddy/log"
-
-              DATABASE_URL="$(
-                printf '%s' "${config.services.postgres.pg.connectionURI { inherit dbName; }}" \
-                  | sed 's|^postgres://|postgresql+asyncpg://|'
-              )"
-              export DATABASE_URL
-
-              exec ${getExe bambuddy}
-            '';
-          };
+            with-env {
+              DATA_DIR: $data_dir
+              LOG_DIR: $log_dir
+              DATABASE_URL: ("${
+                config.services.postgres.pg.connectionURI { inherit dbName; }
+              }" | str replace postgres postgresql+asyncpg)
+            } {
+              ^${getExe bambuddy}
+            }
+          '';
 
           depends_on.pg.condition = "process_healthy";
 
           readiness_probe.http_get = {
             host = "127.0.0.1";
             port = 8000;
-            path = "/";
           };
         };
       };
