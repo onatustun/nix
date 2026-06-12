@@ -77,6 +77,20 @@
       flake = false;
     };
 
+    process-compose-flake = {
+      type = "github";
+      owner = "platonic-systems";
+      repo = "process-compose-flake";
+      flake = false;
+    };
+
+    services-flake = {
+      type = "github";
+      owner = "juspay";
+      repo = "services-flake";
+      flake = false;
+    };
+
     nix-topology = {
       type = "github";
       owner = "oddlama";

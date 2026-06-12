@@ -413,6 +413,22 @@
         "url": "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz"
       }
     },
+    "process-compose-flake": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1767863885,
+        "narHash": "sha256-XXekPAxzbv1DmHFo3Elmj/vDnvWc1V0jdDUvM0/Wf7k=",
+        "owner": "platonic-systems",
+        "repo": "process-compose-flake",
+        "rev": "99bea96cf269cfd235833ebdf645b567069fd398",
+        "type": "github"
+      },
+      "original": {
+        "owner": "platonic-systems",
+        "repo": "process-compose-flake",
+        "type": "github"
+      }
+    },
     "ragenix": {
       "inputs": {
         "agenix": [
@@ -467,12 +483,30 @@
         "nix-topology": "nix-topology",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
+        "process-compose-flake": "process-compose-flake",
         "ragenix": "ragenix",
+        "services-flake": "services-flake",
         "stylix": "stylix",
         "systems": "systems",
         "treefmt-nix": "treefmt-nix",
         "xwayland-satellite": "xwayland-satellite",
         "zmk-nix": "zmk-nix"
+      }
+    },
+    "services-flake": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1780343091,
+        "narHash": "sha256-WPuSxRtCk9Qe0jWMbGMRZjFBhyFDxcrOiBIXS9feZrQ=",
+        "owner": "juspay",
+        "repo": "services-flake",
+        "rev": "0855711d53039af2ffb725a6b00d3ad0f88880e3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "juspay",
+        "repo": "services-flake",
+        "type": "github"
       }
     },
     "stylix": {
