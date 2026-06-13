@@ -20,6 +20,7 @@
 
           node = {
             alias = "${username}-${hostName}";
+            listen = [ "0.0.0.0:8776" ];
             connect = [ "z6Mkq6sSwsAd3nHUNqujqZBga7PoKNDj73bdMHaWtVfDe6L8@seed.onatustun.com:8776" ];
           };
         };
