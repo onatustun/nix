@@ -7,10 +7,7 @@
       ...
     }:
     {
-      home.packages = [
-        pkgs.radicle-desktop
-        pkgs.radicle-tui
-      ];
+      home.packages = [ pkgs.radicle-desktop ];
 
       programs.radicle = {
         enable = true;
