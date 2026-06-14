@@ -7,13 +7,13 @@
       inherit (lib.attrsets) attrValues;
       inherit (lib.meta) getExe';
 
-      version = "0.2.4.6";
+      version = "0.2.4.7";
 
       src = fetchFromGitHub {
         owner = "maziggy";
         repo = "bambuddy";
         tag = "v${version}";
-        hash = "sha256-AyvmsO9/ZK3/Gya1WR93iDceUYKVAnwFRqd3v18xKbA=";
+        hash = "sha256-7aPCgV+U+5RJwS4xfP5vtfClTAqnqAbNKVPc7WivvbE=";
       };
 
       frontend = buildNpmPackage {
@@ -21,7 +21,7 @@
         inherit version src;
 
         sourceRoot = "${src.name}/frontend";
-        npmDepsHash = "sha256-M7SRTRsw1RDU4UC19WAL/WgjJAQ7frR8Y9gC6YXpVKU=";
+        npmDepsHash = "sha256-vEHtR/6q2UVOkBpIcwrb7fZKvgIsCXmw4PdQxhKt7ag=";
 
         preBuild = "chmod -R u+w ../static";
 
