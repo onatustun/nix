@@ -3,9 +3,9 @@
     {
       config,
       lib,
+      nixosConfig,
       pkgs,
       monitors,
-      hostName,
       ...
     }:
     let
@@ -13,6 +13,7 @@
       inherit (lib.meta) getExe;
       inherit (lib.attrsets) attrNames;
       inherit (lib.lists) head;
+      inherit (nixosConfig.networking) hostName;
     in
     {
       systemd.user.services.wayvnc = {

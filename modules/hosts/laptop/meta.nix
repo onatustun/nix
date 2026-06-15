@@ -1,6 +1,6 @@
 {
-  flake.nixosConfigurations.laptop.module._module.args = {
-    hostName = "laptop";
-    username = "onat";
+  flake.nixosConfigurations.laptop.module = {
+    _module.args.username = "onat";
+    networking.hostName = "laptop";
   };
 }

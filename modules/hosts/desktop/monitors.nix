@@ -1,6 +1,7 @@
 {
   flake.nixosConfigurations.desktop.module._module.args.monitors = {
-    main."HDMI-A-1" = {
+    # Alienware
+    main.HDMI-A-1 = {
       focus-at-startup = true;
       scale = 1;
 
@@ -16,7 +17,8 @@
       };
     };
 
-    "DP-2" = {
+    # Koorui
+    DP-2 = {
       scale = 1;
 
       mode = {

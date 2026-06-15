@@ -1,26 +1,20 @@
-{ inputs, ... }:
-{
-  perSystem =
-    { inputs', ... }:
-    {
-      make-shells.default = {
-        shellHook = ''
-          export RULES="$(git rev-parse --show-toplevel)/secrets.nix"
-        '';
+{ inputs, ... }: {
+  perSystem = { inputs', ... }: {
+    make-shells.default = {
+      shellHook = ''
+        export RULES="$(git rev-parse --show-toplevel)/secrets.nix"
+      '';
 
-        packages = [ inputs'.ragenix.packages.default ];
-      };
+      packages = [ inputs'.ragenix.packages.default ];
     };
+  };
 
-  flake =
-    { config, ... }:
-    {
-      keys = import inputs.keys;
+  flake = { config, ... }: {
+    keys = import inputs.keys;
 
-      modules.nixos.ragenix = {
-        imports = [ inputs.ragenix.nixosModules.default ];
-        _module.args = { inherit (config) keys; };
-        home-manager.sharedModules = [ inputs.ragenix.homeManagerModules.default ];
-      };
+    modules.nixos.ragenix = {
+      imports = [ inputs.ragenix.nixosModules.default ];
+      _module.args = { inherit (config) keys; };
     };
+  };
 }

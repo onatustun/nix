@@ -1,5 +1,4 @@
-{ inputs, ... }:
-{
+{ inputs, ... }: {
   flake.nixosConfigurations.server.module = {
     imports = [ (inputs.disko + "/module.nix") ];
 

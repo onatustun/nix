@@ -1,30 +1,19 @@
-{ inputs, ... }:
-{
+{ inputs, ... }: {
   flake = flake: {
     modules = {
-      nixos.home-manager =
-        { username, config, ... }:
-        {
-          imports = [ (inputs.home-manager + "/nixos") ];
+      nixos.home-manager = { config, username, ... }: {
+        imports = [ (inputs.home-manager + "/nixos") ];
 
-          home-manager = {
-            users.${username}.imports = [ flake.config.modules.homeManager.home-manager ];
-            extraSpecialArgs = config._module.args // config._module.specialArgs;
-            useUserPackages = true;
-            backupFileExtension = "hmBackup";
-          };
+        home-manager = {
+          extraSpecialArgs = config._module.args // config._module.specialArgs;
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          users.${username} = { };
+          sharedModules = [ flake.config.modules.homeManager.nixpkgs ];
         };
+      };
 
-      homeManager.home-manager =
-        { username, homeDir, ... }:
-        {
-          home = {
-            inherit username;
-            homeDirectory = homeDir;
-          };
-
-          programs.home-manager.enable = true;
-        };
+      homeManager.nixpkgs = { lib, ... }: { home.stateVersion = lib.trivial.release; };
     };
   };
 }

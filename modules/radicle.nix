@@ -1,11 +1,14 @@
 {
   flake.modules.homeManager.radicle =
     {
+      nixosConfig,
       pkgs,
       username,
-      hostName,
       ...
     }:
+    let
+      inherit (nixosConfig.networking) hostName;
+    in
     {
       home.packages = [ pkgs.radicle-desktop ];
 

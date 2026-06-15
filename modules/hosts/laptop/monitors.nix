@@ -1,7 +1,7 @@
 {
   flake.nixosConfigurations.laptop.module._module.args.monitors = {
     # Framework 13
-    main."eDP-1" = {
+    main.eDP-1 = {
       focus-at-startup = true;
       scale = 1.5;
 
@@ -18,7 +18,7 @@
     };
 
     # Xreal 1S
-    "DP-3" = {
+    DP-3 = {
       scale = 1.6;
 
       mode = {

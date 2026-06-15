@@ -1,13 +1,9 @@
 {
   flake.nixosConfigurations.server.module =
-    {
-      lib,
-      rootDomain,
-      config,
-      ...
-    }:
+    { lib, config, ... }:
     let
       inherit (lib.lists) singleton;
+      rootDomain = config.networking.domain;
       domain = "cache.${rootDomain}";
       listen = "127.0.0.1:8081";
     in

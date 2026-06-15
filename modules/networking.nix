@@ -1,18 +1,15 @@
 {
-  flake.modules.nixos.networking =
-    { hostName, username, ... }:
-    {
-      networking = {
-        inherit hostName;
-        firewall.checkReversePath = "loose";
+  flake.modules.nixos.networking = { username, ... }: {
+    networking = {
+      firewall.checkReversePath = "loose";
 
-        networkmanager = {
-          enable = true;
-          wifi.powersave = false;
-        };
+      networkmanager = {
+        enable = true;
+        wifi.powersave = false;
       };
-
-      users.users.${username}.extraGroups = [ "networkmanager" ];
-      services.resolved.enable = true;
     };
+
+    users.users.${username}.extraGroups = [ "networkmanager" ];
+    services.resolved.enable = true;
+  };
 }

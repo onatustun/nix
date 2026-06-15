@@ -1,8 +1,11 @@
 {
   flake.nixosConfigurations.server.module =
-    { rootDomain, ... }:
+    { config, ... }:
+    let
+      inherit (config.networking) domain;
+    in
     {
-      services.nginx.virtualHosts."jellyfin.${rootDomain}" = {
+      services.nginx.virtualHosts."jellyfin.${domain}" = {
         enableACME = true;
         forceSSL = true;
 

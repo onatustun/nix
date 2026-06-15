@@ -1,27 +1,24 @@
-{ inputs, ... }:
-{
+{ inputs, ... }: {
   imports = [ (inputs.git-hooks + "/flake-module.nix") ];
 
-  perSystem =
-    { config, pkgs, ... }:
-    {
-      make-shells.default.inputsFrom = [ config.pre-commit.devShell ];
+  perSystem = { config, pkgs, ... }: {
+    make-shells.default.inputsFrom = [ config.pre-commit.devShell ];
 
-      pre-commit.settings = {
-        package = pkgs.prek;
+    pre-commit.settings = {
+      package = pkgs.prek;
 
-        hooks = {
-          commitizen.enable = true;
+      hooks = {
+        commitizen.enable = true;
 
-          flake-checker = {
-            enable = true;
+        flake-checker = {
+          enable = true;
 
-            args = [
-              "--condition"
-              "numDaysOld < 12"
-            ];
-          };
+          args = [
+            "--condition"
+            "numDaysOld < 12"
+          ];
         };
       };
     };
+  };
 }

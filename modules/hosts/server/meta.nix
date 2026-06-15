@@ -1,7 +1,1 @@
-{
-  flake.nixosConfigurations.server.module._module.args = {
-    hostName = "server";
-    username = "onat";
-    rootDomain = "onatustun.com";
-  };
-}
+{ flake.nixosConfigurations.server.module._module.args.username = "onat"; }

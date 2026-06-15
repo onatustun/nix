@@ -1,10 +1,10 @@
-{ inputs, ... }:
+{ inputs, ... }: with inputs.flake-parts.flakeModules;
 {
-  imports = [ inputs.flake-parts.flakeModules.modules ];
+  imports = [ modules ];
 
   disabledModules = [
-    inputs.flake-parts.flakeModules.apps
-    inputs.flake-parts.flakeModules.nixosModules
-    inputs.flake-parts.flakeModules.overlays
+    apps
+    nixosModules
+    overlays
   ];
 }

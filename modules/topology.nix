@@ -1,5 +1,4 @@
-{ inputs, config, ... }:
-{
+{ inputs, config, ... }: {
   imports = [ (inputs.nix-topology + "/flake-module.nix") ];
 
   perSystem =

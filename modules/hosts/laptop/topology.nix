@@ -1,5 +1,4 @@
-{ inputs, ... }:
-{
+{ inputs, ... }: {
   flake.nixosConfigurations.laptop.module =
     { config, ... }:
     let

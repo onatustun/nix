@@ -1,12 +1,12 @@
-{ moduleWithSystem, inputs, ... }:
-{
+{ moduleWithSystem, inputs, ... }: {
   flake.nixosConfigurations.server.module = moduleWithSystem (
     { config, ... }:
-    { lib, rootDomain, ... }@nixos:
+    { lib, ... }@nixos:
     let
       inherit (lib.lists) singleton;
       inherit (lib.modules) mkForce;
       inherit (lib.meta) getExe;
+      rootDomain = nixos.config.networking.domain;
       domain = "bambuddy.${rootDomain}";
       user = "bambuddy";
       group = "bambuddy";

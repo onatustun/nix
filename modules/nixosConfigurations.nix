@@ -1,5 +1,4 @@
-{ inputs, ... }:
-{
+{ inputs, ... }: {
   disabledModules = [ inputs.flake-parts.flakeModules.nixosConfigurations ];
 
   flake =

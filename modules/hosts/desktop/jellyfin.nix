@@ -1,11 +1,12 @@
 {
   flake.nixosConfigurations.desktop.module =
-    { config, homeDir, ... }:
+    { config, username, ... }:
     let
       mediaDir = "/srv/media";
       musicDir = "${mediaDir}/music";
       mode = "0755";
       cfg = config.services.jellyfin;
+      inherit (config.users.users.${username}) home;
     in
     {
       services.jellyfin.enable = true;
@@ -23,7 +24,7 @@
       };
 
       fileSystems.${musicDir} = {
-        device = "${homeDir}/Music";
+        device = "${home}/Music";
         fsType = "none";
         options = [ "bind" ];
       };

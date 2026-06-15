@@ -4,7 +4,6 @@
     let
       inherit (pkgs) stdenv fetchFromGitHub buildNpmPackage;
       inherit (stdenv) mkDerivation;
-      inherit (lib.attrsets) attrValues;
       inherit (lib.meta) getExe';
 
       version = "0.2.4.7";
@@ -36,46 +35,43 @@
       };
 
       python = pkgs.python3.withPackages (
-        ps:
-        attrValues {
-          inherit (ps)
-            aiofiles
-            aioftp
-            aiosqlite
-            asyncpg
-            asyncssh
-            bcrypt
-            cryptography
-            curl-cffi
-            defusedxml
-            fastapi
-            fast-simplification
-            greenlet
-            httpx
-            ldap3
-            matplotlib
-            numpy
-            opencv4
-            openpyxl
-            paho-mqtt
-            passlib
-            pillow
-            psutil
-            pydantic
-            pydantic-settings
-            pyftpdlib
-            pyjwt
-            pyotp
-            python-multipart
-            pywebpush
-            qrcode
-            reportlab
-            sqlalchemy
-            trimesh
-            uvicorn
-            websockets
-            ;
-        }
+        ps: with ps; [
+          aiofiles
+          aioftp
+          aiosqlite
+          asyncpg
+          asyncssh
+          bcrypt
+          cryptography
+          curl-cffi
+          defusedxml
+          fastapi
+          fast-simplification
+          greenlet
+          httpx
+          ldap3
+          matplotlib
+          numpy
+          opencv4
+          openpyxl
+          paho-mqtt
+          passlib
+          pillow
+          psutil
+          pydantic
+          pydantic-settings
+          pyftpdlib
+          pyjwt
+          pyotp
+          python-multipart
+          pywebpush
+          qrcode
+          reportlab
+          sqlalchemy
+          trimesh
+          uvicorn
+          websockets
+        ]
       );
     in
     {

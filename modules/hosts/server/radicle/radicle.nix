@@ -1,16 +1,15 @@
-{ inputs, ... }:
-{
+{ inputs, ... }: {
   flake.nixosConfigurations.server.module =
     {
       lib,
-      rootDomain,
+      config,
       pkgs,
       keys,
-      config,
       ...
     }:
     let
       inherit (lib.lists) singleton;
+      rootDomain = config.networking.domain;
       domain = "seed.${rootDomain}";
       explore = "explore.${domain}";
     in

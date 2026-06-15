@@ -1,18 +1,10 @@
 {
-  flake.modules.homeManager.media =
-    { lib, pkgs, ... }:
-    let
-      inherit (lib.attrsets) attrValues;
-    in
-    {
-      home.packages = attrValues {
-        inherit (pkgs)
-          ffmpeg-full
-          haruna
-          imv
-          playerctl
-          yt-dlp
-          ;
-      };
-    };
+  flake.modules.homeManager.media = { pkgs, ... }: {
+    home.packages = with pkgs; [
+      ffmpeg-full
+      haruna
+      imv
+      playerctl
+    ];
+  };
 }

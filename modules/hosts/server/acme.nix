@@ -1,10 +1,13 @@
 {
   flake.nixosConfigurations.server.module =
-    { rootDomain, ... }:
+    { config, ... }:
+    let
+      inherit (config.networking) domain;
+    in
     {
       security.acme = {
         acceptTerms = true;
-        defaults.email = "mail@${rootDomain}";
+        defaults.email = "mail@${domain}";
       };
     };
 }

@@ -1,17 +1,16 @@
-{ inputs, ... }:
-{
+{ inputs, ... }: {
   flake.nixosConfigurations.server.module =
     {
       lib,
       pkgs,
-      rootDomain,
+      config,
       ...
     }:
     let
       inherit (lib.meta) getExe getExe';
       inherit (lib.strings) concatStringsSep;
       inherit (pkgs) writeShellScript;
-
+      rootDomain = config.networking.domain;
       domain = "books.${rootDomain}";
       ip = "127.0.0.1";
       port = 8083;

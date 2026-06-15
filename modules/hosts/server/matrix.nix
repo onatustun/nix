@@ -1,9 +1,9 @@
-{ inputs, ... }:
-{
+{ inputs, ... }: {
   flake.nixosConfigurations.server.module =
-    { rootDomain, ... }:
+    { config, ... }:
     let
-      matrixDomain = "matrix.${rootDomain}";
+      inherit (config.networking) domain;
+      matrixDomain = "matrix.${domain}";
       port = 6167;
     in
     {
@@ -48,7 +48,7 @@
             ];
           };
 
-          ${rootDomain} = {
+          ${domain} = {
             enableACME = true;
             forceSSL = true;
             locations."/.well-known/matrix/".proxyPass = "http://127.0.0.1:${toString port}";
@@ -59,7 +59,7 @@
           enable = true;
 
           settings.global = {
-            server_name = rootDomain;
+            server_name = domain;
             port = [ port ];
 
             well_known = {
