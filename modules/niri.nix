@@ -5,6 +5,7 @@
         { inputs', ... }: {
           imports = [ inputs.niri.nixosModules.niri ];
           niri-flake.cache.enable = false;
+          hardware.graphics.enable32Bit = true;
 
           programs.niri = {
             enable = true;

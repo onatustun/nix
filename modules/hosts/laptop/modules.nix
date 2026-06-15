@@ -5,7 +5,6 @@
         bluetooth
         boot
         dms
-        graphics
         home-manager
         locale
         networking
