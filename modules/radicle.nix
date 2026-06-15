@@ -10,7 +10,7 @@
       inherit (nixosConfig.networking) hostName;
     in
     {
-      home.packages = [ pkgs.radicle-desktop ];
+      home.packages = with pkgs; [ radicle-desktop ];
 
       programs.radicle = {
         enable = true;

@@ -7,8 +7,6 @@
         dms
         graphics
         home-manager
-        initrd
-        keyring
         locale
         networking
         nh
@@ -19,6 +17,7 @@
         pipewire
         plymouth
         ragenix
+        seahorse
         ssh
         stylix
         tailscale

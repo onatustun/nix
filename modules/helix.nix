@@ -1,5 +1,5 @@
 {
-  perSystem = { pkgs, ... }: { make-shells.default.packages = [ pkgs.nixd ]; };
+  perSystem = { pkgs, ... }: { make-shells.default.packages = with pkgs; [ nixd ]; };
 
   flake.modules.homeManager.helix =
     { lib, config, ... }:

@@ -1,5 +1,5 @@
 {
-  flake.nixosConfigurations.desktop.module._module.args.monitors = {
+  flake.nixosConfigurations.desktop.module.home-manager.extraSpecialArgs.monitors = {
     # Alienware
     main.HDMI-A-1 = {
       focus-at-startup = true;

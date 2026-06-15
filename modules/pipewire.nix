@@ -2,19 +2,14 @@
   flake.modules.nixos.pipewire = {
     security.rtkit.enable = true;
 
-    services = {
-      pulseaudio.enable = false;
+    services.pipewire = {
+      enable = true;
+      jack.enable = true;
+      pulse.enable = true;
 
-      pipewire = {
+      alsa = {
         enable = true;
-        jack.enable = true;
-        pulse.enable = true;
-        wireplumber.enable = true;
-
-        alsa = {
-          enable = true;
-          support32Bit = true;
-        };
+        support32Bit = true;
       };
     };
   };

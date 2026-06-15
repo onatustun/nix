@@ -11,7 +11,6 @@
             package = inputs'.niri.packages.niri-unstable;
           };
 
-          xdg.portal.wlr.enable = true;
           home-manager.sharedModules = [ config.modules.homeManager.niri ];
         }
       );
@@ -20,9 +19,9 @@
         { inputs', ... }:
         {
           lib,
-          pkgs,
           config,
           monitors,
+          pkgs,
           ...
         }:
         let
@@ -30,12 +29,6 @@
           inherit (lib.lists) singleton;
         in
         {
-          home.packages = with pkgs; [
-            wlrctl
-            wlr-randr
-            xdg-desktop-portal-gtk
-          ];
-
           programs.niri.settings = {
             environment = {
               CLUTTER_BACKEND = "wayland";

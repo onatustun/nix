@@ -1,15 +1,15 @@
 { inputs, ... }: {
-  flake = flake: {
+  flake = { config, ... }: {
     modules = {
-      nixos.home-manager = { config, username, ... }: {
+      nixos.home-manager = { keys, username, ... }: {
         imports = [ (inputs.home-manager + "/nixos") ];
 
         home-manager = {
-          extraSpecialArgs = config._module.args // config._module.specialArgs;
+          extraSpecialArgs = { inherit keys username; };
           useGlobalPkgs = true;
           useUserPackages = true;
           users.${username} = { };
-          sharedModules = [ flake.config.modules.homeManager.nixpkgs ];
+          sharedModules = [ config.modules.homeManager.nixpkgs ];
         };
       };
 

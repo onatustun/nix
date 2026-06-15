@@ -1,6 +1,6 @@
 {
   flake.modules.homeManager.wl-clipboard = { pkgs, ... }: {
-    home.packages = [ pkgs.wl-clipboard ];
+    home.packages = with pkgs; [ wl-clipboard ];
     programs.helix.settings.editor.clipboard-provider = "wayland";
 
     services = {

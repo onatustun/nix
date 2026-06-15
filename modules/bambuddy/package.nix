@@ -82,7 +82,7 @@
         strictDeps = true;
         __structuredAttrs = true;
 
-        nativeBuildInputs = [ pkgs.makeWrapper ];
+        nativeBuildInputs = with pkgs; [ makeWrapper ];
 
         installPhase = ''
           runHook preInstall
