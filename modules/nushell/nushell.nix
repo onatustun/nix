@@ -1,12 +1,18 @@
 {
-  flake = { config, ... }: {
-    modules = {
-      nixos.nushell = { username, pkgs, ... }: {
-        users.users.${username}.shell = pkgs.nushell;
-        home-manager.sharedModules = [ config.modules.homeManager.nushell ];
-      };
+  flake.modules.nixos.nushell =
+    {
+      lib,
+      username,
+      pkgs,
+      ...
+    }:
+    let
+      inherit (lib.lists) singleton;
+    in
+    {
+      users.users.${username}.shell = pkgs.nushell;
 
-      homeManager.nushell =
+      home-manager.sharedModules = singleton (
         { lib, config, ... }:
         let
           inherit (lib.meta) getExe;
@@ -43,7 +49,7 @@
               TRANSIENT_PROMPT_MULTILINE_INDICATOR = "";
             };
           };
-        };
+        }
+      );
     };
-  };
 }

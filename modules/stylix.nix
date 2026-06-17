@@ -1,67 +1,64 @@
 { inputs, ... }: {
-  flake = { config, ... }: {
-    modules = {
-      nixos.stylix =
-        { pkgs, ... }:
-        let
-          inherit (pkgs) runCommand;
+  flake.modules.nixos.stylix =
+    { lib, pkgs, ... }:
+    let
+      inherit (lib.lists) singleton;
+      inherit (pkgs) runCommand;
 
-          base16 = import (
-            runCommand "base16-to-nix" {
-              nativeBuildInputs = with pkgs; [ yaml2nix ];
-            } "yaml2nix ${pkgs.base16-schemes + "/share/themes/catppuccin-mocha.yaml"} > $out"
-          );
-        in
-        {
-          imports = [ inputs.stylix.nixosModules.stylix ];
+      base16 = import (
+        runCommand "base16-to-nix" {
+          nativeBuildInputs = with pkgs; [ yaml2nix ];
+        } "yaml2nix ${pkgs.base16-schemes + "/share/themes/catppuccin-mocha.yaml"} > $out"
+      );
+    in
+    {
+      imports = [ inputs.stylix.nixosModules.stylix ];
 
-          stylix = {
-            enable = true;
-            polarity = base16.variant;
+      stylix = {
+        enable = true;
+        polarity = base16.variant;
 
-            base16Scheme = base16.palette // {
-              name = "catppuccin_mocha";
-            };
+        base16Scheme = base16.palette // {
+          name = "catppuccin_mocha";
+        };
 
-            fonts = {
-              sizes.terminal = 14;
+        fonts = {
+          sizes.terminal = 14;
 
-              monospace = {
-                package = pkgs.nerd-fonts.jetbrains-mono;
-                name = "JetBrainsMono Nerd Font Mono";
-              };
-            };
+          monospace = {
+            package = pkgs.nerd-fonts.jetbrains-mono;
+            name = "JetBrainsMono Nerd Font Mono";
+          };
+        };
 
-            cursor = {
-              package = pkgs.bibata-cursors;
-              name = "Bibata-Modern-Ice";
-              size = 24;
-            };
+        cursor = {
+          package = pkgs.bibata-cursors;
+          name = "Bibata-Modern-Ice";
+          size = 24;
+        };
 
-            icons = {
-              enable = true;
-              package = pkgs.adwaita-icon-theme;
-              dark = "Adwaita-Dark";
-              light = "Adwaita-Light";
-            };
+        icons = {
+          enable = true;
+          package = pkgs.adwaita-icon-theme;
+          dark = "Adwaita-Dark";
+          light = "Adwaita-Light";
+        };
+      };
+
+      fonts.packages = with pkgs; [
+        font-awesome
+        nerd-fonts.symbols-only
+      ];
+
+      home-manager.sharedModules = singleton (
+        { config, ... }: {
+          stylix.targets = {
+            helix.enable = false;
+            tmux.enable = false;
           };
 
-          fonts.packages = with pkgs; [
-            font-awesome
-            nerd-fonts.symbols-only
-          ];
-
-          home-manager.sharedModules = [ config.modules.homeManager.stylix ];
-        };
-
-      homeManager.stylix = { config, ... }: {
-        stylix.targets = {
-          helix.enable = false;
-          tmux.enable = false;
-        };
-
-        programs.helix.settings.theme = config.stylix.base16Scheme.name;
-      };
+          programs.helix.settings.theme = config.stylix.base16Scheme.name;
+        }
+      );
     };
-  };
 }
