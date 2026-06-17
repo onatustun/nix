@@ -2,6 +2,7 @@
   flake = { config, ... }: {
     nixosConfigurations.desktop.module = {
       imports = with config.modules.nixos; [
+        audio
         bluetooth
         boot
         dms
@@ -13,7 +14,6 @@
         nix
         nixpkgs
         nushell
-        pipewire
         plymouth
         ragenix
         seahorse
