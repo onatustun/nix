@@ -17,10 +17,14 @@
     ];
 
     extra-experimental-features = [
+      "cgroups"
       "flakes"
       "nix-command"
       "pipe-operators"
     ];
+
+    flake-registry = "";
+    use-cgroups = true;
   };
 
   inputs = {

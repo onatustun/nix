@@ -2,8 +2,9 @@
   flake.modules.nixos.nix =
     { lib, config, ... }:
     let
+      inherit (lib.attrsets) mapAttrsToList mapAttrs;
       inherit (lib.lists) singleton;
-      inherit (lib.modules) mkDefault;
+      registryInputs = { inherit (inputs) flake-parts nixpkgs; };
     in
     {
       age.secrets.github-token = {
@@ -13,17 +14,21 @@
         mode = "0400";
       };
 
+      system.disableInstallerTools = true;
+
       nix = {
         channel.enable = false;
-        gc.automatic = false;
-        optimise.automatic = true;
-        nixPath = [ "nixpkgs=flake:nixpkgs" ];
-        registry.nixpkgs.flake = inputs.nixpkgs;
+        nixPath = registryInputs |> mapAttrsToList (name: flake: "${name}=${flake}");
+        registry = registryInputs |> mapAttrs (_: flake: { inherit flake; });
         extraOptions = "!include ${config.age.secrets.github-token.path}";
 
         settings = {
           auto-optimise-store = true;
-          builders-use-substitutes = true;
+          flake-registry = "/etc/nix/registry.json";
+          keep-outputs = true;
+          show-trace = true;
+          use-cgroups = true;
+          warn-dirty = false;
           extra-substituters = [ "https://nix-community.cachix.org" ];
           extra-trusted-public-keys = singleton "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=";
 
@@ -34,21 +39,10 @@
             "pipe-operators"
           ];
 
-          flake-registry = "";
-          http-connections = 50;
-          max-jobs = mkDefault "auto";
-          show-trace = true;
-
           trusted-users = [
-            "@build"
-            "@wheel"
             "root"
+            "@wheel"
           ];
-
-          warn-dirty = false;
-          keep-derivations = true;
-          keep-outputs = true;
-          use-cgroups = true;
         };
       };
     };
