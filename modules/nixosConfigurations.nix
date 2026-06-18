@@ -7,6 +7,7 @@
       inherit (lib.options) mkOption;
       inherit (lib.types) lazyAttrsOf submodule deferredModule;
       inherit (lib.attrsets) mapAttrs;
+      inherit (lib.trivial) const;
       inherit (lib) nixosSystem;
     in
     {
@@ -16,7 +17,7 @@
         });
 
         default = { };
-        apply = mapAttrs (_: { module, ... }: nixosSystem { modules = [ module ]; });
+        apply = mapAttrs <| const ({ module, ... }: nixosSystem { modules = [ module ]; });
       };
     };
 }
