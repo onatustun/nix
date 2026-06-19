@@ -46,13 +46,6 @@
       flake = false;
     };
 
-    flake-root = {
-      type = "github";
-      owner = "srid";
-      repo = "flake-root";
-      flake = false;
-    };
-
     treefmt-nix = {
       type = "github";
       owner = "numtide";
