@@ -9,10 +9,8 @@
         home-manager
         locale
         networking
-        nh
         niri
         nix
-        nixpkgs
         nushell
         plymouth
         ragenix

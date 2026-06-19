@@ -1,13 +1,31 @@
-{ inputs, ... }: {
+{ inputs, ... }:
+let
+  nixpkgs.config = {
+    allowBroken = true;
+    allowUnfree = true;
+  };
+in
+{
+  disabledModules = [ inputs.flake-parts.flakeModules.nixpkgs ];
+
+  perSystem = { system, ... }: {
+    _module.args.pkgs = import inputs.nixpkgs {
+      inherit (nixpkgs) config;
+      inherit system;
+    };
+  };
+
   flake.modules.nixos.nix =
     { lib, config, ... }:
     let
+      inherit (lib.trivial) release const;
       inherit (lib.attrsets) mapAttrsToList mapAttrs;
-      inherit (lib.trivial) const;
       inherit (lib.lists) singleton;
       registryInputs = { inherit (inputs) flake-parts nixpkgs; };
     in
     {
+      inherit nixpkgs;
+
       age.secrets.github-token = {
         file = ./github-token.age;
         owner = "root";
@@ -15,7 +33,19 @@
         mode = "0400";
       };
 
-      system.disableInstallerTools = true;
+      system = {
+        disableInstallerTools = true;
+        stateVersion = release;
+      };
+
+      programs.nh = {
+        enable = true;
+
+        clean = {
+          enable = true;
+          extraArgs = "--keep 5 --keep-since 3d";
+        };
+      };
 
       nix = {
         channel.enable = false;
