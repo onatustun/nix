@@ -40,13 +40,6 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
-    import-tree = {
-      type = "github";
-      owner = "denful";
-      repo = "import-tree";
-      flake = false;
-    };
-
     systems = {
       type = "path";
       path = "./systems.nix";

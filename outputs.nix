@@ -3,9 +3,11 @@ let
   inherit (flake-parts.lib) mkFlake;
 in
 mkFlake { inherit inputs; } (
-  { inputs, ... }:
+  { lib, ... }:
   let
-    inherit (inputs) import-tree;
+    inherit (lib.fileset) toList fileFilter;
   in
-  import import-tree ./modules
+  {
+    imports = ./modules |> fileFilter (file: file.hasExt "nix") |> toList;
+  }
 )
