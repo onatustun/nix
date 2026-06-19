@@ -7,17 +7,13 @@
     pre-commit.settings = {
       package = pkgs.prek;
 
-      hooks = {
-        commitizen.enable = true;
+      hooks.flake-checker = {
+        enable = true;
 
-        flake-checker = {
-          enable = true;
-
-          args = [
-            "--condition"
-            "numDaysOld < 12"
-          ];
-        };
+        args = [
+          "--condition"
+          "numDaysOld < 12"
+        ];
       };
     };
   };
