@@ -18,7 +18,6 @@
       cpu.intel.updateMicrocode = config.hardware.enableRedistributableFirmware;
 
       nvidia = {
-        modesetting.enable = true;
         open = false;
         package = config.boot.kernelPackages.nvidiaPackages.beta;
       };
