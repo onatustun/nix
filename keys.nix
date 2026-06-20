@@ -18,7 +18,7 @@ let
     f: a: b:
     f b a;
 
-  const = x: _y: x;
+  const = x: _: x;
   genAttrs' = xs: f: listToAttrs <| map f xs;
   nameValuePair = name: value: { inherit name value; };
   genAttrs = names: f: genAttrs' names (n: nameValuePair n <| f n);

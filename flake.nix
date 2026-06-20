@@ -24,7 +24,6 @@
     ];
 
     flake-registry = "";
-    use-cgroups = true;
   };
 
   inputs = {
