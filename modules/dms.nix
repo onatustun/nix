@@ -13,8 +13,9 @@
         compositor.name = "niri";
       };
 
-      home-manager.sharedModules = singleton (
-        moduleWithSystem (
+      home-manager.sharedModules =
+        singleton
+        <| moduleWithSystem (
           { inputs', ... }:
           { lib, ... }:
           let
@@ -148,7 +149,6 @@
               };
             };
           }
-        )
-      );
+        );
     };
 }

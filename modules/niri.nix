@@ -15,8 +15,9 @@
         package = inputs'.niri.packages.niri-unstable;
       };
 
-      home-manager.sharedModules = singleton (
-        moduleWithSystem (
+      home-manager.sharedModules =
+        singleton
+        <| moduleWithSystem (
           { inputs', ... }:
           {
             lib,
@@ -180,8 +181,7 @@
               };
             };
           }
-        )
-      );
+        );
     }
   );
 }
