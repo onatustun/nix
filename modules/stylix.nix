@@ -2,14 +2,15 @@
   flake.modules.nixos.stylix =
     { lib, pkgs, ... }:
     let
-      inherit (lib.lists) singleton;
       inherit (pkgs) runCommand;
+      inherit (lib.meta) getExe;
+      inherit (lib.lists) singleton;
 
-      base16 = import (
-        runCommand "base16-to-nix" {
+      base16 =
+        import
+        <| runCommand "base16-to-nix" {
           nativeBuildInputs = with pkgs; [ yaml2nix ];
-        } "yaml2nix ${pkgs.base16-schemes + "/share/themes/catppuccin-mocha.yaml"} > $out"
-      );
+        } "${getExe pkgs.yaml2nix} ${pkgs.base16-schemes + "/share/themes/catppuccin-mocha.yaml"} > $out";
     in
     {
       imports = [ inputs.stylix.nixosModules.stylix ];

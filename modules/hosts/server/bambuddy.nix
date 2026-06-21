@@ -4,7 +4,6 @@
     { lib, ... }@nixos:
     let
       inherit (lib.lists) singleton;
-      inherit (lib.modules) mkForce;
       inherit (lib.meta) getExe;
       rootDomain = nixos.config.networking.domain;
       domain = "bambuddy.${rootDomain}";
@@ -77,7 +76,7 @@
             User = user;
             Group = group;
             WorkingDirectory = dataDir;
-            ExecStart = mkForce (getExe config.packages.bambuddy);
+            ExecStart = getExe config.packages.bambuddy;
             Restart = "on-failure";
             RestartSec = "5";
             TimeoutStopSec = "10";

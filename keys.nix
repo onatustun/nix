@@ -19,7 +19,7 @@ let
     f b a;
 
   const = x: _: x;
-  genAttrs' = xs: f: listToAttrs <| map f xs;
+  genAttrs' = xs: f: map f xs |> listToAttrs;
   nameValuePair = name: value: { inherit name value; };
   genAttrs = names: f: genAttrs' names (n: nameValuePair n <| f n);
   unique = foldl' (acc: e: if elem e acc then acc else acc ++ [ e ]) [ ];

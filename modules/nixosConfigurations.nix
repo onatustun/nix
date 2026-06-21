@@ -12,10 +12,7 @@
     in
     {
       options.nixosConfigurations = mkOption {
-        type = lazyAttrsOf (submodule {
-          options.module = mkOption { type = deferredModule; };
-        });
-
+        type = lazyAttrsOf <| submodule { options.module = mkOption { type = deferredModule; }; };
         default = { };
         apply = mapAttrs <| const ({ module, ... }: nixosSystem { modules = [ module ]; });
       };

@@ -1,20 +1,4 @@
-{ inputs, ... }:
-let
-  nixpkgs.config = {
-    allowBroken = true;
-    allowUnfree = true;
-  };
-in
-{
-  disabledModules = [ inputs.flake-parts.flakeModules.nixpkgs ];
-
-  perSystem = { system, ... }: {
-    _module.args.pkgs = import inputs.nixpkgs {
-      inherit (nixpkgs) config;
-      inherit system;
-    };
-  };
-
+{ inputs, ... }: {
   flake.modules.nixos.nix =
     { lib, config, ... }:
     let
@@ -24,13 +8,16 @@ in
       registryInputs = { inherit (inputs) flake-parts nixpkgs; };
     in
     {
-      inherit nixpkgs;
-
       age.secrets.github-token = {
         file = ./github-token.age;
         owner = "root";
         group = "root";
         mode = "0400";
+      };
+
+      nixpkgs.config = {
+        allowBroken = true;
+        allowUnfree = true;
       };
 
       system = {

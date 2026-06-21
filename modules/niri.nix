@@ -26,6 +26,7 @@
             ...
           }:
           let
+            inherit (lib.trivial) flip;
             inherit (lib.meta) getExe;
             inherit (lib.lists) singleton;
           in
@@ -48,7 +49,7 @@
                 XDG_SESSION_TYPE = "wayland";
               };
 
-              outputs = (removeAttrs monitors [ "main" ]) // monitors.main;
+              outputs = (monitors |> flip removeAttrs [ "main" ]) // monitors.main;
               overview.backdrop-color = config.stylix.base16Scheme.base01;
 
               layout = {
