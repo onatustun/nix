@@ -46,7 +46,6 @@
           bind-key -r K resize-pane -U 5
           bind-key -r L resize-pane -R 5
 
-          bind-key f display-popup -w 80% -h 80% -E ${getExe (writeNuBin "sessionizer" (readFile ./sessionizer.nu))}
           bind-key g neww -n "jj" -S ${getExe pkgs.jjui}
           bind-key G run-shell -b ${getExe (writeNuBin "github" (readFile ./github.nu))}
           bind-key t display-popup -w 80% -h 80% -d '#{pane_current_path}' ${config.home.sessionVariables.SHELL} --login

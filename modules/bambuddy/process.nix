@@ -22,7 +22,7 @@
         };
 
         settings.processes.bambuddy = {
-          command = writeNuBin "bambuddy-dev" /* nu */ ''
+          command = writeNuBin "bambuddy-dev.nu" /* nu */ ''
             let data_dir = ($env.PWD)/data/bambuddy
             let log_dir = ($data_dir)/log
 
