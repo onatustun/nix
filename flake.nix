@@ -211,7 +211,9 @@
       repo = "helium-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+  };
 
+  inputs = {
     dep_flake-utils = {
       type = "github";
       owner = "numtide";
