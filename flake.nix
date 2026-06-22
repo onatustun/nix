@@ -113,7 +113,6 @@
 
       inputs = {
         agenix.follows = "dep_agenix";
-        crane.follows = "dep_crane";
         flake-utils.follows = "dep_flake-utils";
         nixpkgs.follows = "nixpkgs";
         rust-overlay.follows = "dep_rust-overlay";
@@ -232,12 +231,6 @@
         nixpkgs.follows = "";
         systems.follows = "";
       };
-    };
-
-    dep_crane = {
-      type = "github";
-      owner = "ipetkov";
-      repo = "crane";
     };
 
     dep_rust-overlay = {
