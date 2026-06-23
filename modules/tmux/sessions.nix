@@ -54,12 +54,17 @@
             | str trim --right --char "_"
 
             let session_check = do { ^${tmux} has-session -t $"=($selected_name)" } | complete
+            let current_session = do { ^${tmux} display-message -p "#S" } | complete | get stdout | str trim
 
-            if $session_check.exit_code != 0 {
-              ^${tmux} new-session -ds $selected_name -c $selected
+            if $current_session == $selected_name {
+              ^${tmux} send-keys $"cd ($selected)" Enter
+            } else {
+              if $session_check.exit_code != 0 {
+                ^${tmux} new-session -ds $selected_name -c $selected
+              }
+
+              ^${tmux} switch-client -t $"=($selected_name)"
             }
-
-            ^${tmux} switch-client -t $"=($selected_name)"
           }
         ''
       }";
