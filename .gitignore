@@ -14,15 +14,12 @@ data/
 
 !*.age
 !*.nix
-!*.nu
 !*.svg
 
 !facter.json
 !flake.lock
 !.gitattributes
 !.gitignore
-!gruber-darker.toml
-!init.scm
 !LICENSE
 !README.md
 !west.yml
