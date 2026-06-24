@@ -89,7 +89,7 @@
 
       topology.self.services.prosody = {
         name = "Prosody XMPP";
-        icon = inputs.self + "/assets/prosody.svg";
+        icon = inputs.self.outPath + "/assets/prosody.svg";
         info = domain;
       };
     };

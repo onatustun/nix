@@ -95,7 +95,7 @@
 
       topology.self.services.bambuddy = {
         name = "BamBuddy";
-        icon = inputs.self + "/assets/bambu.svg";
+        icon = inputs.self.outPath + "/assets/bambu.svg";
         info = domain;
       };
     }

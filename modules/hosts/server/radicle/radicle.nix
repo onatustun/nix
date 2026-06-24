@@ -72,13 +72,13 @@
       topology.self.services = {
         radicle = {
           name = "Radicle Seed Node";
-          icon = inputs.self + "/assets/radicle.svg";
+          icon = inputs.self.outPath + "/assets/radicle.svg";
           info = domain;
         };
 
         radicle-explorer = {
           name = "Radicle Explorer";
-          icon = inputs.self + "/assets/radicle.svg";
+          icon = inputs.self.outPath + "/assets/radicle.svg";
           info = explore;
         };
       };

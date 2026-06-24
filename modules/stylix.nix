@@ -8,9 +8,11 @@
 
       base16 =
         import
-        <| runCommand "base16-to-nix" {
-          nativeBuildInputs = with pkgs; [ yaml2nix ];
-        } "${getExe pkgs.yaml2nix} ${pkgs.base16-schemes + "/share/themes/catppuccin-mocha.yaml"} > $out";
+        <|
+          runCommand "base16-to-nix" { nativeBuildInputs = with pkgs; [ yaml2nix ]; }
+            "${getExe pkgs.yaml2nix} ${
+              pkgs.base16-schemes.outPath + "/share/themes/catppuccin-mocha.yaml"
+            } > $out";
     in
     {
       imports = [ inputs.stylix.nixosModules.stylix ];

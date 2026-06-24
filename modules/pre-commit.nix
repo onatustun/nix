@@ -1,5 +1,5 @@
 { inputs, ... }: {
-  imports = [ (inputs.git-hooks + "/flake-module.nix") ];
+  imports = [ (inputs.git-hooks.outPath + "/flake-module.nix") ];
 
   perSystem = { config, pkgs, ... }: {
     make-shells.default.inputsFrom = [ config.pre-commit.devShell ];

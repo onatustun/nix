@@ -1,5 +1,5 @@
 { inputs, ... }: {
-  imports = [ (inputs.treefmt-nix + "/flake-module.nix") ];
+  imports = [ (inputs.treefmt-nix.outPath + "/flake-module.nix") ];
 
   perSystem = { config, ... }: {
     make-shells.default.inputsFrom = [ config.treefmt.build.devShell ];

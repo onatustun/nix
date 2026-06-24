@@ -1,7 +1,7 @@
 { inputs, ... }: {
   flake.nixosConfigurations.laptop.module = { modulesPath, ... }: {
     imports = [
-      (inputs.nixos-hardware + "/framework/13-inch/7040-amd")
+      (inputs.nixos-hardware.outPath + "/framework/13-inch/7040-amd")
       (modulesPath + "/installer/scan/not-detected.nix")
     ];
 

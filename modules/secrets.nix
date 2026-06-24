@@ -10,7 +10,7 @@
   };
 
   flake = { config, ... }: {
-    keys = import inputs.keys;
+    keys = import inputs.keys.outPath;
 
     modules.nixos.ragenix = {
       imports = [ inputs.ragenix.nixosModules.default ];
