@@ -1,16 +1,11 @@
 {
   flake.modules.nixos.nushell =
-    {
-      lib,
-      username,
-      pkgs,
-      ...
-    }:
+    { lib, pkgs, ... }:
     let
       inherit (lib.lists) singleton;
     in
     {
-      users.users.${username}.shell = pkgs.nushell;
+      users.defaultUserShell = pkgs.nushell;
 
       home-manager.sharedModules = singleton (
         {
@@ -24,8 +19,22 @@
         in
         {
           home = {
-            sessionVariables.SHELL = getExe config.programs.nushell.package;
             shell.enableShellIntegration = true;
+
+            sessionVariables = {
+              NIXPKGS_ALLOW_UNFREE = "1";
+              PROMPT_COMMAND = "";
+              PROMPT_COMMAND_RIGHT = "";
+              PROMPT_INDICATOR_VI_INSERT = "";
+              PROMPT_INDICATOR_VI_NORMAL = "";
+              SHELL = getExe config.programs.nushell.package;
+              TRANSIENT_PROMPT_COMMAND = "";
+              TRANSIENT_PROMPT_COMMAND_RIGHT = "";
+              TRANSIENT_PROMPT_INDICATOR = "";
+              TRANSIENT_PROMPT_INDICATOR_VI_INSERT = "";
+              TRANSIENT_PROMPT_INDICATOR_VI_NORMAL = "";
+              TRANSIENT_PROMPT_MULTILINE_INDICATOR = "";
+            };
           };
 
           programs.nushell = {
@@ -89,26 +98,7 @@
               }
             '';
 
-            environmentVariables = {
-              inherit (config.home.sessionVariables)
-                BROWSER
-                EDITOR
-                SHELL
-                VISUAL
-                ;
-
-              NIXPKGS_ALLOW_UNFREE = "1";
-              PROMPT_COMMAND = "";
-              PROMPT_COMMAND_RIGHT = "";
-              PROMPT_INDICATOR_VI_INSERT = "";
-              PROMPT_INDICATOR_VI_NORMAL = "";
-              TRANSIENT_PROMPT_COMMAND = "";
-              TRANSIENT_PROMPT_COMMAND_RIGHT = "";
-              TRANSIENT_PROMPT_INDICATOR = "";
-              TRANSIENT_PROMPT_INDICATOR_VI_NORMAL = "";
-              TRANSIENT_PROMPT_INDICATOR_VI_INSERT = "";
-              TRANSIENT_PROMPT_MULTILINE_INDICATOR = "";
-            };
+            environmentVariables = config.home.sessionVariables;
           };
         }
       );
