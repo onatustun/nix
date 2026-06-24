@@ -69,6 +69,10 @@
         };
       };
 
+      systemd.services.radicle-node.serviceConfig.BindReadOnlyPaths = [
+        "${config.age.secrets.radicle-private-key.path}:/var/lib/radicle/keys/radicle"
+      ];
+
       topology.self.services = {
         radicle = {
           name = "Radicle Seed Node";
