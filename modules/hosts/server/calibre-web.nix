@@ -19,12 +19,18 @@
       dataDir = "/var/lib/calibre-web";
       package = pkgs.calibre-web;
 
-      finalPackage = package.overrideAttrs (prevAttrs: {
-        propagatedBuildInputs =
-          (prevAttrs.propagatedBuildInputs or [ ])
-          ++ package.optional-dependencies.metadata
-          ++ package.optional-dependencies.kobo;
-      });
+      finalPackage = package.overrideAttrs (
+        {
+          propagatedBuildInputs ? [ ],
+          ...
+        }:
+        {
+          propagatedBuildInputs =
+            propagatedBuildInputs
+            ++ package.optional-dependencies.metadata
+            ++ package.optional-dependencies.kobo;
+        }
+      );
 
       appDb = "${dataDir}/app.db";
       calibreWebCmd = "${getExe finalPackage} -p ${appDb} -g ${dataDir}/gdrive.db";

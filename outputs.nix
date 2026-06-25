@@ -8,7 +8,7 @@ in
 mkFlake { inputs = allInputs |> filterAttrs (n: const <| !hasPrefix "dep_" n); } (
   { lib, ... }:
   let
-    inherit (lib.fileset) toList fileFilter;
+    inherit (lib.fileset) fileFilter toList;
   in
   {
     imports = ./modules |> fileFilter ({ hasExt, ... }: hasExt "nix") |> toList;
