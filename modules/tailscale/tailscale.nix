@@ -14,12 +14,7 @@
     };
 
   flake.modules.nixos.tailscale = { config, ... }: {
-    age.secrets.tailscale-authkey = {
-      file = ./tailscale-authkey.age;
-      owner = "root";
-      group = "root";
-      mode = "0400";
-    };
+    age.secrets.tailscale-authkey.file = ./tailscale-authkey.age;
 
     services = {
       resolved.settings.Resolve.Domains = [ "~." ];

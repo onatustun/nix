@@ -8,12 +8,7 @@
       registryInputs = { inherit (inputs) flake-parts nixpkgs; };
     in
     {
-      age.secrets.github-token = {
-        file = ./github-token.age;
-        owner = "root";
-        group = "root";
-        mode = "0400";
-      };
+      age.secrets.github-token.file = ./github-token.age;
 
       nixpkgs.config = {
         allowBroken = true;

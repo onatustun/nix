@@ -16,9 +16,8 @@
     {
       age.secrets.radicle-private-key = {
         file = ./radicle-private-key.age;
-        owner = "radicle";
-        group = "radicle";
-        mode = "0400";
+        group = config.users.groups.radicle.name;
+        owner = config.users.users.radicle.name;
       };
 
       services = {
