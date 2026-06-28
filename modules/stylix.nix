@@ -43,8 +43,8 @@
         icons = {
           enable = true;
           package = pkgs.adwaita-icon-theme;
-          dark = "Adwaita-Dark";
-          light = "Adwaita-Light";
+          dark = "Adwaita";
+          light = "Adwaita";
         };
       };
 
