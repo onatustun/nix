@@ -162,7 +162,6 @@
         systems.follows = "systems";
         tinted-kitty.follows = "";
         tinted-schemes.follows = "";
-        tinted-tmux.follows = "";
         tinted-zed.follows = "";
       };
     };

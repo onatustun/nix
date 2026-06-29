@@ -1,57 +1,35 @@
 {
-  flake.modules.homeManager.tmux =
-    {
-      lib,
-      pkgs,
-      config,
-      ...
-    }:
-    let
-      inherit (lib.meta) getExe;
-    in
-    {
-      programs.tmux = {
-        enable = true;
-        baseIndex = 1;
-        escapeTime = 0;
-        keyMode = "vi";
-        mouse = true;
-        prefix = "C-b";
+  flake.modules.homeManager.tmux = { config, ... }: {
+    programs.tmux = {
+      enable = true;
+      baseIndex = 1;
+      customPaneNavigationAndResize = true;
+      escapeTime = 0;
+      focusEvents = true;
+      keyMode = "vi";
+      mouse = true;
+      terminal = "tmux-256color";
 
-        extraConfig = ''
-          set -g default-terminal "tmux-256color"
-          set -ag terminal-overrides ",xterm-256color:RGB"
+      extraConfig = /* conf */ ''
+        set -g extended-keys on
+        set -ag terminal-features ",xterm-ghostty:extkeys"
+        set -ag terminal-overrides ",xterm-256color:RGB"
+        set -ag terminal-overrides ",xterm-ghostty:RGB"
 
-          set -g status-position top
-          set -g status-justify absolute-centre
-          set -g status-style "fg=blue bg=default"
-          set -g status-right ""
-          set -g status-left "#S"
-          set -g status-left-style "fg=color8"
-          set -g status-right-length 0
-          set -g status-left-length 100
-          setw -g window-status-current-style "fg=blue bg=default bold"
-          setw -g window-status-current-format "#I:#W "
-          setw -g window-status-style "fg=color8"
+        set -g default-command "${config.home.sessionVariables.SHELL}"
 
-          bind-key h select-pane -L
-          bind-key j select-pane -D
-          bind-key k select-pane -U
-          bind-key l select-pane -R
+        set -g status-position top
+        set -g status-justify absolute-centre
+        set -g status-right ""
+        set -g status-left "#S"
+        setw -g window-status-current-format "#I:#W "
 
-          bind-key -r H resize-pane -L 5
-          bind-key -r J resize-pane -D 5
-          bind-key -r K resize-pane -U 5
-          bind-key -r L resize-pane -R 5
-
-          bind-key g neww -n "jj" -S ${getExe pkgs.jjui}
-          bind-key t display-popup -w 80% -h 80% -d '#{pane_current_path}' ${config.home.sessionVariables.SHELL} --login
-
-          bind-key c new-window -c "#{pane_current_path}"
-          bind-key % split-window -h -c "#{pane_current_path}"
-          bind-key '"' split-window -v -c "#{pane_current_path}"
-          bind-key b set-option status
-        '';
-      };
+        bind-key t display-popup -w 80% -h 80% -d '#{pane_current_path}' ${config.home.sessionVariables.SHELL} --login
+        bind-key b set-option status
+        bind-key c new-window -c "#{pane_current_path}"
+        bind-key % split-window -h -c "#{pane_current_path}"
+        bind-key '"' split-window -v -c "#{pane_current_path}"
+      '';
     };
+  };
 }

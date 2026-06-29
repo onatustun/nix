@@ -55,11 +55,7 @@
 
       home-manager.sharedModules = singleton (
         { config, ... }: {
-          stylix.targets = {
-            helix.enable = false;
-            tmux.enable = false;
-          };
-
+          stylix.targets.helix.enable = false;
           programs.helix.settings.theme = config.stylix.base16Scheme.name;
         }
       );

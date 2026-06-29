@@ -492,7 +492,7 @@
         ],
         "tinted-kitty": [],
         "tinted-schemes": [],
-        "tinted-tmux": [],
+        "tinted-tmux": "tinted-tmux",
         "tinted-zed": []
       },
       "locked": {
@@ -520,6 +520,22 @@
         "type": "path"
       },
       "parent": []
+    },
+    "tinted-tmux": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1782012462,
+        "narHash": "sha256-2iDiD8DQLwS1lGuD9TS8WlvNyDoTs6krWntJbtB2zGo=",
+        "owner": "tinted-theming",
+        "repo": "tinted-tmux",
+        "rev": "8c4e750f738a742bd73377ee41d3dadedebedef4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tinted-theming",
+        "repo": "tinted-tmux",
+        "type": "github"
+      }
     },
     "treefmt-nix": {
       "flake": false,

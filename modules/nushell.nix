@@ -92,9 +92,8 @@
               $env.config.edit_mode = "vi"
               $env.config.buffer_editor = "hx"
 
-              if ($nu.is-interactive and (($env.TMUX? | default "") | str length) == 0) {
-                let session = $env.USER
-                ^${getExe pkgs.tmux} new-session -A -s $session
+              if ($nu.is-interactive and ($env.TMUX? | is-empty) and ($env.NO_TMUX? | is-empty)) {
+                ^${getExe pkgs.tmux} new-session -A -s $env.USER
               }
             '';
 
