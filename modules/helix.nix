@@ -7,6 +7,8 @@
       inherit (lib.meta) getExe;
     in
     {
+      stylix.targets.helix.enable = false;
+
       home.sessionVariables = {
         EDITOR = getExe config.programs.helix.package;
         VISUAL = config.home.sessionVariables.EDITOR;
@@ -16,6 +18,8 @@
         enable = true;
 
         settings = {
+          theme = config.stylix.base16Scheme.name;
+
           editor = {
             true-color = true;
             default-yank-register = "+";

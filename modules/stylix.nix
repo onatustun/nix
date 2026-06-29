@@ -1,10 +1,9 @@
 { inputs, ... }: {
   flake.modules.nixos.stylix =
-    { lib, pkgs, ... }:
+    { pkgs, lib, ... }:
     let
       inherit (pkgs) runCommand;
       inherit (lib.meta) getExe;
-      inherit (lib.lists) singleton;
 
       base16 =
         import
@@ -52,12 +51,5 @@
         font-awesome
         nerd-fonts.symbols-only
       ];
-
-      home-manager.sharedModules = singleton (
-        { config, ... }: {
-          stylix.targets.helix.enable = false;
-          programs.helix.settings.theme = config.stylix.base16Scheme.name;
-        }
-      );
     };
 }
