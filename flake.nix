@@ -243,11 +243,7 @@
       type = "github";
       owner = "niri-wm";
       repo = "niri";
-
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        rust-overlay.follows = "";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 }
