@@ -6,13 +6,13 @@
       inherit (stdenv) mkDerivation;
       inherit (lib.meta) getExe';
 
-      version = "0.2.4.7";
+      version = "0.2.4.8";
 
       src = fetchFromGitHub {
         owner = "maziggy";
         repo = "bambuddy";
         tag = "v${version}";
-        hash = "sha256-7aPCgV+U+5RJwS4xfP5vtfClTAqnqAbNKVPc7WivvbE=";
+        hash = "sha256-6qeIidvi62NUok7I9UQ8DblT0/Wscju4FMnVuPXzMdM=";
       };
 
       frontend = buildNpmPackage {
@@ -20,7 +20,7 @@
         inherit version src;
 
         sourceRoot = "${src.name}/frontend";
-        npmDepsHash = "sha256-vEHtR/6q2UVOkBpIcwrb7fZKvgIsCXmw4PdQxhKt7ag=";
+        npmDepsHash = "sha256-/22FkXus5f3wYivyadZWU6ZKPYFLF8xA8mkVGxvdXm0=";
 
         preBuild = "chmod -R u+w ../static";
 
@@ -50,7 +50,9 @@
           greenlet
           httpx
           ldap3
+          lxml
           matplotlib
+          networkx
           numpy
           opencv4
           openpyxl
@@ -62,6 +64,7 @@
           pydantic-settings
           pyftpdlib
           pyjwt
+          pyopenssl
           pyotp
           python-multipart
           pywebpush
