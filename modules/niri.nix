@@ -37,7 +37,6 @@
             programs.niri.settings = {
               environment = {
                 CLUTTER_BACKEND = "wayland";
-                DISPLAY = ":0";
                 ELECTRON_OZONE_PLATFORM_HINT = "auto";
                 GDK_BACKEND = "wayland,x11";
                 MOZ_ENABLE_WAYLAND = "1";
@@ -45,8 +44,6 @@
                 SDL_VIDEODRIVER = "wayland";
                 QT_QPA_PLATFORM = "wayland";
                 QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-                WLR_NO_HARDWARE_CURSORS = "1";
-                WLR_RENDERER_ALLOW_SOFTWARE = "1";
                 XCURSOR_SIZE = toString config.home.pointerCursor.size;
                 XDG_CURRENT_DESKTOP = "niri";
                 XDG_SESSION_TYPE = "wayland";
