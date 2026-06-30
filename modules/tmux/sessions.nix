@@ -16,8 +16,8 @@
             } else {
               let potential_dirs = [
                 $env.HOME
-                ($env.HOME | path join "code")
                 ($env.HOME | path join "Documents")
+                ($env.HOME | path join "Projects")
               ]
 
               let search_dirs = $potential_dirs | where {|dir| $dir | path exists }
