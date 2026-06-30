@@ -8,11 +8,7 @@
       listen = "127.0.0.1:8081";
     in
     {
-      age.secrets.attic-env = {
-        file = ./attic-env.age;
-        inherit (config.services.atticd) group;
-        owner = config.services.atticd.user;
-      };
+      age.secrets.attic-env.file = ./attic-env.age;
 
       services = {
         nginx.virtualHosts.${domain} = {
