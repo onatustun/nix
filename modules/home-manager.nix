@@ -7,7 +7,7 @@
       useGlobalPkgs = true;
       useUserPackages = true;
       users.${username} = { };
-      sharedModules = [ ({ lib, ... }: { home.stateVersion = lib.trivial.release; }) ];
+      sharedModules = [ ({ osConfig, ... }: { home = { inherit (osConfig.system) stateVersion; }; }) ];
     };
   };
 }

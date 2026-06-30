@@ -3,7 +3,6 @@
     programs = {
       difftastic.enable = true;
       jjui.enable = true;
-      mergiraf.enable = true;
 
       jujutsu = {
         enable = true;

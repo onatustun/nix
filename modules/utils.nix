@@ -3,6 +3,10 @@
     fd.enable = true;
     ripgrep.enable = true;
     skim.enable = true;
-    yazi.enable = true;
+
+    yazi = {
+      enable = true;
+      shellWrapperName = "y";
+    };
   };
 }

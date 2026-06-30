@@ -2,8 +2,8 @@
   flake.modules.nixos.nix =
     { lib, config, ... }:
     let
-      inherit (lib.trivial) release const;
       inherit (lib.attrsets) mapAttrsToList mapAttrs;
+      inherit (lib.trivial) const;
       inherit (lib.lists) singleton;
       registryInputs = { inherit (inputs) flake-parts nixpkgs; };
     in
@@ -15,10 +15,7 @@
         allowUnfree = true;
       };
 
-      system = {
-        disableInstallerTools = true;
-        stateVersion = release;
-      };
+      system.disableInstallerTools = true;
 
       programs.nh = {
         enable = true;
