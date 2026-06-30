@@ -32,6 +32,8 @@
             inherit (lib.lists) singleton;
           in
           {
+            home.packages = with pkgs; [ playerctl ];
+
             programs.niri.settings = {
               environment = {
                 CLUTTER_BACKEND = "wayland";
