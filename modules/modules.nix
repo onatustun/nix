@@ -1,10 +1,9 @@
-{ inputs, ... }: with inputs.flake-parts.flakeModules;
-{
-  imports = [ modules ];
+{ inputs, ... }: {
+  imports = [ (inputs.flake-parts.outPath + "/extras/modules.nix") ];
 
   disabledModules = [
-    apps
-    nixosModules
-    overlays
+    (inputs.flake-parts.outPath + "/modules/apps.nix")
+    (inputs.flake-parts.outPath + "/modules/nixosModules.nix")
+    (inputs.flake-parts.outPath + "/modules/overlays.nix")
   ];
 }
