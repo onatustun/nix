@@ -5,14 +5,12 @@
     extra-substituters = [
       "https://nix-community.cachix.org"
       "https://cache.onatustun.com/zmk"
-      "https://crane.cachix.org"
       "https://niri.cachix.org"
     ];
 
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "zmk:zQgRE8h8eHNmG2btJWg4p6Hl2tuYwhkmfqsaxC5ju6I="
-      "crane.cachix.org-1:8Scfpmn9w+hGdXH/Q9tTLiYAE/2dnJYRJP7kl80GuRk="
       "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
     ];
 
@@ -106,16 +104,16 @@
       };
     };
 
-    ragenix = {
+    agenix = {
       type = "github";
-      owner = "yaxitech";
-      repo = "ragenix";
+      owner = "ryantm";
+      repo = "agenix";
 
       inputs = {
-        agenix.follows = "dep_agenix";
-        flake-utils.follows = "dep_flake-utils";
+        darwin.follows = "";
+        home-manager.follows = "";
         nixpkgs.follows = "nixpkgs";
-        rust-overlay.follows = "dep_rust-overlay";
+        systems.follows = "systems";
       };
     };
 
@@ -217,26 +215,6 @@
       owner = "numtide";
       repo = "flake-utils";
       inputs.systems.follows = "systems";
-    };
-
-    dep_agenix = {
-      type = "github";
-      owner = "ryantm";
-      repo = "agenix";
-
-      inputs = {
-        darwin.follows = "";
-        home-manager.follows = "";
-        nixpkgs.follows = "";
-        systems.follows = "";
-      };
-    };
-
-    dep_rust-overlay = {
-      type = "github";
-      owner = "oxalica";
-      repo = "rust-overlay";
-      inputs.nixpkgs.follows = "";
     };
 
     dep_niri-unstable = {

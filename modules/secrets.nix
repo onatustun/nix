@@ -5,7 +5,7 @@
         export RULES="$(git rev-parse --show-toplevel)/secrets.nix"
       '';
 
-      packages = [ inputs'.ragenix.packages.default ];
+      packages = [ inputs'.agenix.packages.default ];
     };
   };
 
@@ -13,7 +13,7 @@
     keys = import inputs.keys.outPath;
 
     modules.nixos.ragenix = {
-      imports = [ inputs.ragenix.nixosModules.default ];
+      imports = [ (inputs.agenix.outPath + "/modules/age.nix") ];
       _module.args = { inherit (config) keys; };
     };
   };
