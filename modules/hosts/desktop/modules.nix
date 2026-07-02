@@ -11,7 +11,6 @@
         networking
         niri
         nix
-        nushell
         plymouth
         ragenix
         seahorse
@@ -34,6 +33,7 @@
         helix
         jujutsu
         media
+        nushell
         obsidian
         radicle
         starship
