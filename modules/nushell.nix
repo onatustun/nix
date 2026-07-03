@@ -1,11 +1,6 @@
 {
   flake.modules.homeManager.nushell =
-    {
-      lib,
-      config,
-      pkgs,
-      ...
-    }:
+    { lib, config, ... }:
     let
       inherit (lib.meta) getExe;
     in
@@ -31,6 +26,7 @@
 
       programs.nushell = {
         enable = true;
+        environmentVariables = config.home.sessionVariables;
 
         extraConfig = /* nu */ ''
           $env.config.cursor_shape = {
@@ -83,17 +79,7 @@
           $env.config.bracketed_paste = true
           $env.config.edit_mode = "vi"
           $env.config.buffer_editor = "hx"
-
-          if (
-            ($env.TMUX? | is-empty)
-            and ($env.NO_TMUX? | is-empty)
-            and ($env.SSH_CONNECTION? | is-empty)
-          ) {
-            ^${getExe pkgs.tmux} new-session -A -s $env.USER
-          }
         '';
-
-        environmentVariables = config.home.sessionVariables;
       };
     };
 }
