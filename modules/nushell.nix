@@ -28,58 +28,59 @@
         enable = true;
         environmentVariables = config.home.sessionVariables;
 
-        extraConfig = /* nu */ ''
-          $env.config.cursor_shape = {
-            emacs: line
-            vi_insert: line
-            vi_normal: block
-          }
+        settings = {
+          cursor_shape = {
+            emacs = "line";
+            vi_insert = "line";
+            vi_normal = "block";
+          };
 
-          $env.config.show_banner = false
-          $env.config.use_ansi_coloring = true
-          $env.config.error_style = "fancy"
-          $env.config.footer_mode = 25
-          $env.config.float_precision = 2
-          $env.config.render_right_prompt_on_last_line = false
-          $env.config.datetime_format = {}
-          $env.config.rm.always_trash = false
+          show_banner = false;
+          use_ansi_coloring = true;
+          error_style = "fancy";
+          footer_mode = 25;
+          float_precision = 2;
+          render_right_prompt_on_last_line = false;
+          datetime_format = { };
+          rm.always_trash = false;
 
-          $env.config.history = {
-            file_format: sqlite
-            isolation: false
-            max_size: 1_000_000
-            sync_on_enter: true
-          }
+          history = {
+            file_format = "sqlite";
+            isolation = false;
+            max_size = 1000000;
+            sync_on_enter = true;
+          };
 
-          $env.config.completions = {
-            algorithm: substring
-            case_sensitive: false
-            partial: true
-            quick: true
-            sort: smart
-            use_ls_colors: true
-          }
+          completions = {
+            algorithm = "substring";
+            case_sensitive = false;
+            partial = true;
+            quick = true;
+            sort = "smart";
+            use_ls_colors = true;
+          };
 
-          $env.config.ls = {
-            use_ls_colors: true
-            clickable_links: true
-          }
+          ls = {
+            use_ls_colors = true;
+            clickable_links = true;
+          };
 
-          $env.config.use_kitty_protocol = true
-          $env.config.shell_integration = {
-            osc2: false
-            osc7: true
-            osc8: true
-            osc9_9: false
-            osc133: true
-            osc633: true
-            reset_application_mode: true
-          }
+          use_kitty_protocol = true;
 
-          $env.config.bracketed_paste = true
-          $env.config.edit_mode = "vi"
-          $env.config.buffer_editor = "hx"
-        '';
+          shell_integration = {
+            osc2 = false;
+            osc7 = true;
+            osc8 = true;
+            osc9_9 = false;
+            osc133 = true;
+            osc633 = true;
+            reset_application_mode = true;
+          };
+
+          bracketed_paste = true;
+          edit_mode = "vi";
+          buffer_editor = "hx";
+        };
       };
     };
 }
