@@ -6,20 +6,19 @@ data/
 .pre-commit-config.yaml
 
 !assets/
+!assets/*.svg
 
 !modules/
 !modules/**/
+!modules/**/*.age
+!modules/cradio/config/cradio.*
+!modules/cradio/config/west.yml
+!modules/hosts/*/facter/facter.json
 
-!cradio.*
-
-!*.age
 !*.nix
-!*.svg
 
-!facter.json
 !flake.lock
 !.gitattributes
 !.gitignore
 !LICENSE
 !README.md
-!west.yml
