@@ -108,6 +108,17 @@
             };
           };
         };
+
+        languages.language-server.rust-analyzer.config = {
+          cargo.features = "all";
+          check.command = "clippy";
+          completion.callable.snippets = "add_parentheses";
+
+          diagnostics.disabled = [
+            "inactive-code"
+            "unlinked-file"
+          ];
+        };
       };
     };
 }
