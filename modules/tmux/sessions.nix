@@ -1,10 +1,15 @@
 {
   flake.modules.homeManager.tmux =
-    { lib, pkgs, ... }:
+    {
+      lib,
+      pkgs,
+      config,
+      ...
+    }:
     let
       inherit (lib.meta) getExe;
       inherit (pkgs.writers) writeNuBin;
-      tmux = getExe pkgs.tmux;
+      tmux = getExe config.programs.tmux.package;
     in
     {
       programs.tmux.extraConfig = "bind-key f display-popup -w 80% -h 80% -E ${
@@ -24,11 +29,11 @@
 
               if ($search_dirs | is-not-empty) {
                 let selected_relative = $search_dirs
-                | each {|dir| ^${getExe pkgs.fd} --max-depth 1 --type d -H . $dir }
+                | each {|dir| ^${getExe config.programs.fd.package} --max-depth 1 --type d -H . $dir }
                 | flatten
                 | each {|path| $path | str trim --right --char "/" | str replace $"($env.HOME)/" "" }
                 | str join (char newline)
-                | ^${getExe pkgs.skim} --margin 10% --color=bw
+                | ^${getExe config.programs.skim.package} --margin 10% --color=bw
 
                 if ($selected_relative | is-not-empty) {
                   $env.HOME | path join $selected_relative

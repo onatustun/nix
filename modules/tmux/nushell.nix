@@ -1,6 +1,11 @@
 {
   flake.modules.homeManager.tmux =
-    { pkgs, lib, ... }:
+    {
+      pkgs,
+      lib,
+      config,
+      ...
+    }:
     let
       inherit (pkgs.writers) writeText;
       inherit (lib.meta) getExe;
@@ -12,7 +17,7 @@
           and ($env.NO_TMUX? | is-empty)
           and ($env.SSH_CONNECTION? | is-empty)
         ) {
-          ^${getExe pkgs.tmux} new-session -A -s $env.USER
+          ^${getExe config.programs.tmux.package} new-session -A -s $env.USER
         }
       ''}";
     };

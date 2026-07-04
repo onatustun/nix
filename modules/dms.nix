@@ -19,9 +19,9 @@
           { inputs', ... }:
           { lib, ... }:
           let
-            inherit (lib.lists) singleton;
             inherit (lib.meta) getExe;
-            inherit (inputs'.dms.packages) dms-shell;
+            inherit (lib.lists) singleton;
+            dms-shell = getExe inputs'.dms.packages.dms-shell;
           in
           {
             imports = [ inputs.dms.homeModules.dank-material-shell ];
@@ -83,56 +83,56 @@
 
               niri.settings.binds = {
                 "Mod+D".action.spawn = [
-                  (getExe dms-shell)
+                  dms-shell
                   "ipc"
                   "spotlight"
                   "toggle"
                 ];
 
                 XF86AudioMute.action.spawn = [
-                  (getExe dms-shell)
+                  dms-shell
                   "ipc"
                   "audio"
                   "mute"
                 ];
 
                 XF86AudioMicMute.action.spawn = [
-                  (getExe dms-shell)
+                  dms-shell
                   "ipc"
                   "audio"
                   "micmute"
                 ];
 
                 XF86AudioPlay.action.spawn = [
-                  (getExe dms-shell)
+                  dms-shell
                   "ipc"
                   "mpris"
                   "playPause"
                 ];
 
                 XF86AudioStop.action.spawn = [
-                  (getExe dms-shell)
+                  dms-shell
                   "ipc"
                   "mpris"
                   "pause"
                 ];
 
                 XF86AudioPrev.action.spawn = [
-                  (getExe dms-shell)
+                  dms-shell
                   "ipc"
                   "mpris"
                   "previous"
                 ];
 
                 XF86AudioNext.action.spawn = [
-                  (getExe dms-shell)
+                  dms-shell
                   "ipc"
                   "mpris"
                   "next"
                 ];
 
                 XF86AudioRaiseVolume.action.spawn = [
-                  (getExe dms-shell)
+                  dms-shell
                   "ipc"
                   "audio"
                   "increment"
@@ -140,7 +140,7 @@
                 ];
 
                 XF86AudioLowerVolume.action.spawn = [
-                  (getExe dms-shell)
+                  dms-shell
                   "ipc"
                   "audio"
                   "decrement"
