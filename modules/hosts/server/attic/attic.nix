@@ -3,9 +3,7 @@
     { lib, config, ... }:
     let
       inherit (lib.lists) singleton;
-      rootDomain = config.networking.domain;
-      domain = "cache.${rootDomain}";
-      listen = "127.0.0.1:8081";
+      domain = "cache.${config.networking.domain}";
     in
     {
       age.secrets.attic-env.file = ./attic-env.age;
@@ -16,7 +14,7 @@
           forceSSL = true;
 
           locations."/" = {
-            proxyPass = "http://${listen}";
+            proxyPass = "http://${config.services.atticd.settings.listen}";
             extraConfig = "client_max_body_size 0;";
           };
         };
@@ -35,11 +33,11 @@
           environmentFile = config.age.secrets.attic-env.path;
 
           settings = {
-            inherit listen;
             allowed-hosts = [ domain ];
             api-endpoint = "https://${domain}/";
-            database.url = "postgresql:///atticd?host=/run/postgresql";
             compression.type = "zstd";
+            database.url = "postgresql:///atticd?host=/run/postgresql";
+            listen = "127.0.0.1:8081";
 
             garbage-collection = {
               interval = "12 hours";

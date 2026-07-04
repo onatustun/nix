@@ -2,8 +2,7 @@
   flake.nixosConfigurations.server.module =
     { config, ... }:
     let
-      rootDomain = config.networking.domain;
-      domain = "xmpp.${rootDomain}";
+      domain = "xmpp.${config.networking.domain}";
       mucDomain = "conference.${domain}";
       uploadDomain = "upload.${domain}";
 

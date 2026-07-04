@@ -10,8 +10,7 @@
       inherit (lib.meta) getExe getExe';
       inherit (lib.strings) concatStringsSep;
       inherit (pkgs) writeShellScript;
-      rootDomain = config.networking.domain;
-      domain = "books.${rootDomain}";
+      domain = "books.${config.networking.domain}";
       ip = "127.0.0.1";
       port = 8083;
       user = "calibre-web";

@@ -5,8 +5,7 @@
     let
       inherit (lib.lists) singleton;
       inherit (lib.meta) getExe;
-      rootDomain = nixos.config.networking.domain;
-      domain = "bambuddy.${rootDomain}";
+      domain = "bambuddy.${nixos.config.networking.domain}";
       user = "bambuddy";
       group = "bambuddy";
       dataDir = "/var/lib/bambuddy";

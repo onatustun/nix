@@ -3,9 +3,9 @@
     {
       config,
       lib,
-      nixosConfig,
       pkgs,
       monitors,
+      nixosConfig,
       ...
     }:
     let
@@ -13,7 +13,6 @@
       inherit (lib.meta) getExe;
       inherit (lib.attrsets) attrNames;
       inherit (lib.lists) head;
-      inherit (nixosConfig.networking) hostName;
     in
     {
       systemd.user.services.wayvnc = {
@@ -27,7 +26,7 @@
         Service = {
           ExecStart = "${getExe pkgs.wayvnc} -Linfo -o ${
             monitors.main |> attrNames |> head
-          } ${hostName}.tail32e3ea.ts.net 5901";
+          } ${nixosConfig.networking.hostName}.tail32e3ea.ts.net 5901";
           Restart = "on-failure";
           RestartSec = "1m";
         };
