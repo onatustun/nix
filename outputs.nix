@@ -1,11 +1,8 @@
-{ flake-parts, nixpkgs, ... }@allInputs:
+{ flake-parts, ... }@inputs:
 let
   inherit (flake-parts.lib) evalFlakeModule;
-  inherit (nixpkgs.lib.attrsets) filterAttrs;
-  inherit (nixpkgs.lib.trivial) const;
-  inherit (nixpkgs.lib.strings) hasPrefix;
 in
-with evalFlakeModule { inputs = allInputs |> filterAttrs (n: const <| !hasPrefix "dep_" n); } (
+with evalFlakeModule { inherit inputs; } (
   { lib, ... }:
   let
     inherit (lib.fileset) fileFilter toList;

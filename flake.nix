@@ -100,7 +100,7 @@
       inputs = {
         flake-compat.follows = "";
         nixpkgs.follows = "nixpkgs";
-        utils.follows = "dep_flake-utils";
+        utils.inputs.systems.follows = "systems";
       };
     };
 
@@ -164,17 +164,6 @@
       };
     };
 
-    xwayland-satellite = {
-      type = "github";
-      owner = "supreeeme";
-      repo = "xwayland-satellite";
-
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        rust-overlay.follows = "";
-      };
-    };
-
     niri = {
       type = "github";
       owner = "sodiboo";
@@ -182,11 +171,9 @@
 
       inputs = {
         niri-stable.follows = "";
-        niri-unstable.follows = "dep_niri-unstable";
         nixpkgs.follows = "nixpkgs";
         nixpkgs-stable.follows = "";
         xwayland-satellite-stable.follows = "";
-        xwayland-satellite-unstable.follows = "xwayland-satellite";
       };
     };
 
@@ -205,22 +192,6 @@
       type = "github";
       owner = "amaanq";
       repo = "helium-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-  };
-
-  inputs = {
-    dep_flake-utils = {
-      type = "github";
-      owner = "numtide";
-      repo = "flake-utils";
-      inputs.systems.follows = "systems";
-    };
-
-    dep_niri-unstable = {
-      type = "github";
-      owner = "niri-wm";
-      repo = "niri";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

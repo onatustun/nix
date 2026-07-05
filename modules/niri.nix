@@ -165,7 +165,7 @@
 
               xwayland-satellite = {
                 enable = true;
-                path = getExe inputs'.xwayland-satellite.packages.xwayland-satellite;
+                path = getExe inputs'.niri.packages.xwayland-satellite-unstable;
               };
 
               input = {
