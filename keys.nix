@@ -11,7 +11,6 @@ let
     mapAttrs
     filter
     attrNames
-    concatLists
     ;
 
   flip =
@@ -110,11 +109,6 @@ keys
     // deviceKeys
     // {
       __functor = const <| const <| keys.ssh { };
-
-      admins =
-        adminDevices
-        |> map (device: deviceKeys.${device})
-        |> concatLists
-        |> unique;
+      admins = adminDevices |> concatMap (device: deviceKeys.${device}) |> unique;
     };
 }
