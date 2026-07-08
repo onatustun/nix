@@ -1,4 +1,4 @@
-flake-parts: {
+{
   perSystem =
     {
       inputs',
@@ -9,17 +9,19 @@ flake-parts: {
     let
       inherit (inputs'.zmk-nix.legacyPackages) buildSplitKeyboard;
       inherit (lib.fileset) toSource intersection gitTracked;
-      root = ./.;
+      inherit (lib.fixedPoints) fix;
     in
     {
       packages = {
         firmware = buildSplitKeyboard {
           name = "firmware";
 
-          src = toSource {
-            inherit root;
-            fileset = intersection (gitTracked root) (root + /config);
-          };
+          src =
+            toSource
+            <| fix (finalAttrs: {
+              root = ./.;
+              fileset = intersection (gitTracked finalAttrs.root) <| finalAttrs.root + /config;
+            });
 
           board = "nice_nano@2.0.0//zmk";
           shield = "cradio_%PART%";
@@ -28,8 +30,7 @@ flake-parts: {
 
           meta = {
             description = "ZMK firmware";
-            inherit (inputs'.zmk-nix.packages.firmware.meta) license;
-            platforms = flake-parts.config.systems;
+            inherit (inputs'.zmk-nix.packages.firmware.meta) license platforms;
           };
         };
 
