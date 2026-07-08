@@ -34,10 +34,9 @@
           };
         };
 
-        inherit (inputs'.zmk-nix.packages) update;
         flash = inputs'.zmk-nix.packages.flash.override { inherit (config.packages) firmware; };
       };
 
-      checks = { inherit (config.packages) firmware flash update; };
+      checks = { inherit (config.packages) firmware flash; };
     };
 }
