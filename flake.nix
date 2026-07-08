@@ -117,12 +117,6 @@
       };
     };
 
-    keys = {
-      type = "path";
-      path = "./keys.nix";
-      flake = false;
-    };
-
     disko = {
       type = "github";
       owner = "nix-community";

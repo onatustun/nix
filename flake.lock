@@ -207,18 +207,6 @@
         "type": "github"
       }
     },
-    "keys": {
-      "flake": false,
-      "locked": {
-        "path": "./keys.nix",
-        "type": "path"
-      },
-      "original": {
-        "path": "./keys.nix",
-        "type": "path"
-      },
-      "parent": []
-    },
     "make-shell": {
       "flake": false,
       "locked": {
@@ -347,7 +335,6 @@
         "git-hooks": "git-hooks",
         "helium": "helium",
         "home-manager": "home-manager",
-        "keys": "keys",
         "make-shell": "make-shell",
         "niri": "niri",
         "nix-topology": "nix-topology",
