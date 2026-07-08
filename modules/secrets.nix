@@ -5,7 +5,7 @@
         export RULES="$(git rev-parse --show-toplevel)/secrets.nix"
       '';
 
-      packages = [ inputs'.agenix.packages.default ];
+      packages = [ inputs'.agenix.packages.agenix ];
     };
   };
 

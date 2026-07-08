@@ -7,8 +7,8 @@
     in
     {
       home = {
-        sessionVariables.BROWSER = getExe inputs'.helium.packages.default;
-        packages = [ inputs'.helium.packages.default ];
+        sessionVariables.BROWSER = getExe inputs'.helium.packages.helium;
+        packages = [ inputs'.helium.packages.helium ];
       };
     }
   );

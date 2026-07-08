@@ -1,6 +1,6 @@
 { inputs, ... }: {
   flake.modules.nixos.home-manager = { keys, username, ... }: {
-    imports = [ (inputs.home-manager.outPath + "/nixos") ];
+    imports = [ (inputs.home-manager.outPath + "/nixos/default.nix") ];
 
     home-manager = {
       extraSpecialArgs = { inherit keys username; };
