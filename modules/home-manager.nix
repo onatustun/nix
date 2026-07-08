@@ -13,7 +13,6 @@
         useGlobalPkgs = true;
         useUserPackages = true;
         users.${username} = { };
-        sharedModules = [ ({ osConfig, ... }: { home = { inherit (osConfig.system) stateVersion; }; }) ];
       };
     };
 }
