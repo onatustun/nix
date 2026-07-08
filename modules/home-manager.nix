@@ -6,7 +6,7 @@
       ...
     }:
     {
-      imports = [ (inputs.home-manager.outPath + "/nixos/default.nix") ];
+      imports = [ (inputs.home-manager.sourceInfo.outPath + "/nixos/default.nix") ];
 
       home-manager = {
         extraSpecialArgs = { inherit keys username; };

@@ -165,7 +165,7 @@
 
       topology.self.services.calibre-web = {
         name = "Calibre Web";
-        icon = inputs.self.outPath + "/assets/calibre.svg";
+        icon = inputs.self.sourceInfo.outPath + "/assets/calibre.svg";
         info = domain;
       };
     };

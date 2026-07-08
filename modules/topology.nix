@@ -1,5 +1,5 @@
 { inputs, config, ... }: {
-  imports = [ (inputs.nix-topology.outPath + "/flake-module.nix") ];
+  imports = [ (inputs.nix-topology.sourceInfo.outPath + "/flake-module.nix") ];
 
   perSystem =
     { lib, ... }:

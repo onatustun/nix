@@ -5,7 +5,7 @@
       inherit (config.lib.topology) mkConnection;
     in
     {
-      imports = [ (inputs.nix-topology.outPath + "/nixos/module.nix") ];
+      imports = [ (inputs.nix-topology.sourceInfo.outPath + "/nixos/module.nix") ];
 
       topology.self.interfaces.eno1 = {
         network = "home";

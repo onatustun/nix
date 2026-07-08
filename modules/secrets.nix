@@ -10,10 +10,10 @@
   };
 
   flake = { config, ... }: {
-    keys = import <| inputs.self.outPath + "/keys.nix";
+    keys = import <| inputs.self.sourceInfo.outPath + "/keys.nix";
 
     modules.nixos.ragenix = {
-      imports = [ (inputs.agenix.outPath + "/modules/age.nix") ];
+      imports = [ (inputs.agenix.sourceInfo.outPath + "/modules/age.nix") ];
       _module.args = { inherit (config) keys; };
     };
   };

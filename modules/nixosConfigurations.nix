@@ -1,5 +1,5 @@
 { inputs, ... }: {
-  disabledModules = [ (inputs.flake-parts.outPath + "/modules/nixosConfigurations.nix") ];
+  disabledModules = [ (inputs.flake-parts.sourceInfo.outPath + "/modules/nixosConfigurations.nix") ];
 
   flake =
     { lib, ... }:

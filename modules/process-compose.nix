@@ -1,1 +1,3 @@
-{ inputs, ... }: { imports = [ (inputs.process-compose-flake.outPath + "/nix/flake-module.nix") ]; }
+{ inputs, ... }: {
+  imports = [ (inputs.process-compose-flake.sourceInfo.outPath + "/nix/flake-module.nix") ];
+}

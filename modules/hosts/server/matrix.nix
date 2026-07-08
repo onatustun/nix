@@ -72,7 +72,7 @@
 
       topology.self.services.tuwunel = {
         name = "Tuwunel Matrix";
-        icon = inputs.self.outPath + "/assets/matrix.svg";
+        icon = inputs.self.sourceInfo.outPath + "/assets/matrix.svg";
         info = matrixDomain;
       };
     };

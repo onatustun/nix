@@ -14,7 +14,7 @@
     in
     {
       process-compose.bambuddy-dev = { config, ... }: {
-        imports = [ (inputs.services-flake.outPath + "/nix/process-compose/default.nix") ];
+        imports = [ (inputs.services-flake.sourceInfo.outPath + "/nix/process-compose/default.nix") ];
 
         services.postgres.pg = {
           enable = true;
