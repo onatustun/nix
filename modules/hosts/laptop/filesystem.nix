@@ -17,6 +17,7 @@
       };
     };
 
+    zramSwap.enable = true;
     swapDevices = [ { device = "/dev/disk/by-uuid/f2ce709b-e968-4dbd-b4ce-f8b6f8b81afd"; } ];
   };
 }
