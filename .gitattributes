@@ -1,4 +1,5 @@
-*.age binary
-*.json linguist-generated
-*.lock linguist-generated
-*.svg linguist-generated
+flake.lock linguist-generated
+assets/*.svg linguist-generated
+modules/hosts/*/facter/facter.json linguist-generated
+
+modules/**/*.age binary
