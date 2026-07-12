@@ -5,6 +5,7 @@
       inherit (pkgs) stdenv fetchFromGitHub buildNpmPackage;
       inherit (stdenv) mkDerivation;
       inherit (lib.meta) getExe';
+      inherit (lib.strings) makeBinPath;
 
       version = "0.2.4.8";
 
@@ -101,7 +102,7 @@
           makeWrapper ${getExe' python "uvicorn"} $out/bin/bambuddy \
             --chdir "$out/lib/bambuddy" \
             --prefix PYTHONPATH : "$out/lib/bambuddy" \
-            --prefix PATH : ${pkgs.ffmpeg}/bin \
+            --prefix PATH : ${makeBinPath [ pkgs.ffmpeg.outPath ]} \
             --add-flags "backend.app.main:app"
 
           runHook postInstall

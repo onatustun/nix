@@ -8,7 +8,7 @@
     }:
     let
       inherit (lib.meta) getExe getExe';
-      inherit (lib.strings) concatStringsSep;
+      inherit (lib.strings) concatStringsSep makeBinPath;
       inherit (pkgs) writeShellScript;
       domain = "books.${config.networking.domain}";
       ip = "127.0.0.1";
@@ -94,7 +94,7 @@
               __RUN_MIGRATIONS_AND_EXIT=1 ${calibreWebCmd}
               ${getExe pkgs.sqlite} ${appDb} "update settings set ${
                 concatStringsSep ", " [
-                  "config_binariesdir = '${calibrePackage}/bin/'"
+                  "config_binariesdir = '${makeBinPath [ calibrePackage.outPath ]}'"
                   "config_calibre_dir = '${calibreLibrary}'"
                   "config_converterpath = '${getExe' calibrePackage "ebook-convert"}'"
                   "config_external_port = 443"
