@@ -9,19 +9,17 @@
     let
       inherit (inputs'.zmk-nix.legacyPackages) buildSplitKeyboard;
       inherit (lib.fileset) toSource intersection gitTracked;
-      inherit (lib.fixedPoints) fix;
+      root = ./.;
     in
     {
       packages = {
         firmware = buildSplitKeyboard {
           name = "firmware";
 
-          src =
-            toSource
-            <| fix (finalAttrs: {
-              root = ./.;
-              fileset = intersection (gitTracked finalAttrs.root) <| finalAttrs.root + /config;
-            });
+          src = toSource {
+            inherit root;
+            fileset = intersection (gitTracked root) <| root + /config;
+          };
 
           board = "nice_nano@2.0.0//zmk";
           shield = "cradio_%PART%";
