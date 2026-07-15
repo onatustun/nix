@@ -37,12 +37,6 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
-    systems = {
-      type = "path";
-      path = "./systems.nix";
-      flake = false;
-    };
-
     treefmt-nix = {
       type = "github";
       owner = "numtide";
@@ -100,7 +94,7 @@
       inputs = {
         flake-compat.follows = "";
         nixpkgs.follows = "nixpkgs";
-        utils.inputs.systems.follows = "systems";
+        utils.inputs.systems.follows = "dep_systems";
       };
     };
 
@@ -113,7 +107,7 @@
         darwin.follows = "";
         home-manager.follows = "";
         nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
+        systems.follows = "dep_systems";
       };
     };
 
@@ -151,7 +145,7 @@
         flake-parts.follows = "flake-parts";
         nixpkgs.follows = "nixpkgs";
         nur.follows = "";
-        systems.follows = "systems";
+        systems.follows = "dep_systems";
         tinted-kitty.follows = "";
         tinted-schemes.follows = "";
         tinted-zed.follows = "";
@@ -188,5 +182,11 @@
       repo = "helium-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+  };
+
+  inputs.dep_systems = {
+    type = "path";
+    path = "./systems.nix";
+    flake = false;
   };
 }
