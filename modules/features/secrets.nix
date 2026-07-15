@@ -38,6 +38,7 @@
   flake =
     { lib, config, ... }:
     let
+      inherit (lib.options) mkOption;
       inherit (lib.types)
         lazyAttrsOf
         submodule
@@ -46,7 +47,21 @@
         either
         listOf
         ;
-      inherit (lib.options) mkOption;
+      inherit (lib.trivial) flip const;
+      inherit (lib.attrsets)
+        attrValues
+        isAttrs
+        mapAttrs
+        attrNames
+        genAttrs
+        ;
+      inherit (lib.lists)
+        concatMap
+        isList
+        filter
+        unique
+        ;
+      inherit (lib.strings) isString;
     in
     {
       options.secrets = mkOption {
@@ -65,29 +80,6 @@
       config = {
         keys =
           let
-            inherit (builtins)
-              listToAttrs
-              foldl'
-              elem
-              attrValues
-              concatMap
-              isList
-              isAttrs
-              isString
-              mapAttrs
-              filter
-              attrNames
-              ;
-
-            flip =
-              f: a: b:
-              f b a;
-
-            const = x: _: x;
-            genAttrs' = xs: f: map f xs |> listToAttrs;
-            nameValuePair = name: value: { inherit name value; };
-            genAttrs = names: f: genAttrs' names (n: nameValuePair n <| f n);
-            unique = foldl' (acc: e: if elem e acc then acc else acc ++ [ e ]) [ ];
             dropFunctor = flip removeAttrs [ "__functor" ];
 
             flattenTree =
@@ -114,7 +106,7 @@
                 __functor = self: const <| flattenTree self;
               };
 
-            keys = mkTree {
+            rawKeys = mkTree {
               ssh = {
                 hosts = {
                   desktop = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOkTg+eQtVPavIgeaEig6kz6uRVxkRxm1VTc4Bg/Z0lt host/nixos/desktop";
@@ -136,7 +128,7 @@
               radicle.server = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ43Y56T1aCI1maMsRbe+z8xLzxijMDwgyA4ZPzhEv3R radicle";
             };
 
-            types = keys.ssh |> dropFunctor;
+            sshTypes = rawKeys.ssh |> dropFunctor;
 
             adminDevices = [
               "desktop"
@@ -144,7 +136,7 @@
             ];
 
             typeKeys =
-              types
+              sshTypes
               |> mapAttrs (
                 const (
                   type:
@@ -156,25 +148,24 @@
                 )
               );
 
-            allDevices =
-              types
+            deviceKeys =
+              sshTypes
               |> attrValues
               |> concatMap (type: type |> dropFunctor |> attrNames)
-              |> unique;
-
-            deviceKeys = genAttrs allDevices (
-              device:
-              types |> attrValues |> concatMap (type: if type ? ${device} then [ type.${device} ] else [ ])
-            );
+              |> unique
+              |> flip genAttrs (
+                device:
+                sshTypes |> attrValues |> concatMap (type: if type ? ${device} then [ type.${device} ] else [ ])
+              );
           in
-          keys
+          rawKeys
           // {
             ssh =
-              keys.ssh
+              rawKeys.ssh
               // typeKeys
               // deviceKeys
               // {
-                __functor = const <| const <| keys.ssh { };
+                __functor = const <| const <| rawKeys.ssh { };
                 admins = adminDevices |> concatMap (device: deviceKeys.${device}) |> unique;
               };
           };
