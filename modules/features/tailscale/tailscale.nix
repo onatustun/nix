@@ -13,28 +13,35 @@
       };
     };
 
-  flake.modules.nixos.tailscale = { config, ... }: {
-    age.secrets.tailscale-authkey.file = ./tailscale-authkey.age;
-
-    services = {
-      resolved.settings.Resolve.Domains = [ "~." ];
-
-      tailscale = {
-        enable = true;
-        authKeyFile = config.age.secrets.tailscale-authkey.path;
-        useRoutingFeatures = "both";
-        openFirewall = true;
-        extraUpFlags = [ "--ssh" ];
-        extraSetFlags = [ "--advertise-exit-node" ];
-      };
+  flake = flake: {
+    secrets.tailscale-authkey = {
+      file = ./tailscale-authkey.age;
+      publicKeys = flake.config.keys.ssh.hosts { };
     };
 
-    networking.firewall.trustedInterfaces = [ config.services.tailscale.interfaceName ];
+    modules.nixos.tailscale = { config, ... }: {
+      age.secrets.tailscale-authkey = { inherit (flake.config.secrets.tailscale-authkey) file; };
 
-    topology.self.interfaces.tailscale0 = {
-      type = "wireguard";
-      network = "tailscale";
-      virtual = true;
+      services = {
+        resolved.settings.Resolve.Domains = [ "~." ];
+
+        tailscale = {
+          enable = true;
+          authKeyFile = config.age.secrets.tailscale-authkey.path;
+          useRoutingFeatures = "both";
+          openFirewall = true;
+          extraUpFlags = [ "--ssh" ];
+          extraSetFlags = [ "--advertise-exit-node" ];
+        };
+      };
+
+      networking.firewall.trustedInterfaces = [ config.services.tailscale.interfaceName ];
+
+      topology.self.interfaces.tailscale0 = {
+        type = "wireguard";
+        network = "tailscale";
+        virtual = true;
+      };
     };
   };
 }
