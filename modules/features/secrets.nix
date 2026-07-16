@@ -42,9 +42,9 @@
       inherit (lib.types)
         lazyAttrsOf
         submodule
-        str
         path
         either
+        str
         listOf
         ;
       inherit (lib.trivial) flip const;
