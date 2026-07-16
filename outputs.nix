@@ -5,7 +5,7 @@ let
   inherit (nixpkgs.lib.trivial) const;
   inherit (nixpkgs.lib.strings) hasPrefix;
 in
-with evalFlakeModule { inputs = allInputs |> filterAttrs (n: const <| !hasPrefix "dep_" n); } (
+evalFlakeModule { inputs = allInputs |> filterAttrs (n: const <| !hasPrefix "dep_" n); } (
   { lib, ... }:
   let
     inherit (lib.fileset) fileFilter toList;
@@ -13,5 +13,5 @@ with evalFlakeModule { inputs = allInputs |> filterAttrs (n: const <| !hasPrefix
   {
     imports = ./modules |> fileFilter ({ hasExt, ... }: hasExt "nix") |> toList;
   }
-);
-config.processedFlake // { inherit graph; }
+)
+|> ({ config, graph, ... }: config.processedFlake // { inherit graph; })
