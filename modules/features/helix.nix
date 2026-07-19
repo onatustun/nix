@@ -21,24 +21,15 @@
           theme = config.stylix.base16Scheme.name;
 
           editor = {
-            true-color = true;
-            default-yank-register = "+";
-            middle-click-paste = false;
-            line-number = "relative";
-            cursorline = true;
-            continue-comments = false;
             auto-format = false;
-            idle-timeout = 0;
-            completion-replace = true;
             bufferline = "multiple";
             color-modes = true;
-            end-of-line-diagnostics = "warning";
-            lsp.display-inlay-hints = true;
+            cursorline = true;
             cursor-shape.insert = "bar";
+            end-of-line-diagnostics = "warning";
             file-picker.hidden = false;
-            auto-save = false;
-            inline-diagnostics.cursor-line = "warning";
-            jump-label-alphabet = "jkl;hfdsagbceimnopqrtuvwxyz";
+            idle-timeout = 0;
+            line-number = "relative";
 
             shell = [
               config.home.sessionVariables.SHELL
@@ -62,27 +53,13 @@
             };
 
             whitespace = {
-              characters = {
-                tab = "→";
-                space = "·";
-              };
-
-              render = {
-                space = "all";
-                tab = "all";
-              };
+              character.tab = "→";
+              render.tab = "all";
             };
 
-            gutters = {
-              layout = [
-                "diagnostics"
-                "spacer"
-                "line-numbers"
-                "spacer"
-                "diff"
-              ];
-
-              line-numbers.min-width = 1;
+            indent-guides = {
+              character = "▏";
+              render = true;
             };
           };
 

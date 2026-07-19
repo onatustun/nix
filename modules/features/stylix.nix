@@ -10,7 +10,7 @@
         <|
           runCommand "base16-to-nix" { nativeBuildInputs = with pkgs; [ yaml2nix ]; }
             "${getExe pkgs.yaml2nix} ${
-              pkgs.base16-schemes.outPath + "/share/themes/catppuccin-mocha.yaml"
+              pkgs.base16-schemes.outPath + "/share/themes/gruvbox-dark-hard.yaml"
             } > $out";
     in
     {
@@ -21,7 +21,7 @@
         polarity = base16.variant;
 
         base16Scheme = base16.palette // {
-          name = "catppuccin_mocha";
+          name = "gruvbox_dark_hard";
         };
 
         fonts = {
