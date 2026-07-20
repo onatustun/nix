@@ -53,7 +53,7 @@
 
             let selected_name = $selected
             | path basename
-            | str downcase
+            | str lowercase
             | str replace --regex --all "[ .]+" "_"
             | str replace --regex --all "_{2,}" "_"
             | str trim --right --char "_"

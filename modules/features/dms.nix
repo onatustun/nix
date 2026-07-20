@@ -5,10 +5,9 @@
       inherit (lib.lists) singleton;
     in
     {
-      imports = [ inputs.dms.nixosModules.greeter ];
       security.pam.services.dms-greeter.enableGnomeKeyring = true;
 
-      programs.dank-material-shell.greeter = {
+      services.displayManager.dms-greeter = {
         enable = true;
         compositor.name = "niri";
       };
