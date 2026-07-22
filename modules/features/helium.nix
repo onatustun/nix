@@ -1,6 +1,6 @@
 { moduleWithSystem, ... }: {
   flake.modules.homeManager.helium = moduleWithSystem (
-    { inputs', ... }:
+    { inputs' }:
     { lib, ... }:
     let
       inherit (lib.meta) getExe;

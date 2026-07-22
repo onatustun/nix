@@ -15,7 +15,7 @@
       home-manager.sharedModules =
         singleton
         <| moduleWithSystem (
-          { inputs', ... }:
+          { inputs' }:
           { lib, ... }:
           let
             inherit (lib.meta) getExe;

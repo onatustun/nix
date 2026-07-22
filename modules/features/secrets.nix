@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{ inputs, config, ... }: {
   perSystem =
     {
       pkgs,
@@ -23,10 +23,10 @@
                 { file, publicKeys }:
                 ''
                   "${
-                    removePrefix (inputs.self.sourceInfo.outPath + "/") <| toString file
+                    file |> toString |> removePrefix (inputs.self.sourceInfo.outPath + "/")
                   }".publicKeys = ${toPretty { } publicKeys};
                 ''
-              )) inputs.self.outputs.secrets
+              )) config.flake.secrets
             }
           }
         '';

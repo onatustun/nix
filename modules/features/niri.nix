@@ -1,6 +1,6 @@
 { moduleWithSystem, inputs, ... }: {
   flake.modules.nixos.niri = moduleWithSystem (
-    { inputs', ... }:
+    { inputs' }:
     { lib, ... }:
     let
       inherit (lib.lists) singleton;
@@ -18,7 +18,7 @@
       home-manager.sharedModules =
         singleton
         <| moduleWithSystem (
-          { inputs', ... }:
+          { inputs' }:
           {
             lib,
             config,

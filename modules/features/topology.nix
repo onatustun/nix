@@ -11,9 +11,9 @@
         inherit (config.flake) nixosConfigurations;
 
         modules = singleton (
-          { config, ... }:
+          { lib, ... }:
           let
-            inherit (config.lib.topology) mkInternet mkConnection mkRouter;
+            inherit (lib.topology) mkInternet mkConnection mkRouter;
           in
           {
             nodes = {

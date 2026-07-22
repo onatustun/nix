@@ -1,6 +1,6 @@
 { moduleWithSystem, inputs, ... }: {
   flake.nixosConfigurations.server.module = moduleWithSystem (
-    { config, ... }:
+    { config }:
     { lib, ... }@nixos:
     let
       inherit (lib.lists) singleton;
