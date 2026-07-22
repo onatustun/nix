@@ -8,12 +8,16 @@
       };
 
       modules.nixos.nix =
-        { lib, config, ... }:
+        {
+          lib,
+          pkgs,
+          config,
+          ...
+        }:
         let
           inherit (lib.attrsets) mapAttrsToList mapAttrs;
           inherit (lib.trivial) const;
           inherit (lib.lists) singleton;
-          registryInputs = { inherit (inputs) flake-parts nixpkgs; };
         in
         {
           age.secrets.github-token = { inherit (flake.config.secrets.github-token) file; };
@@ -35,11 +39,12 @@
           };
 
           nix = {
+            package = pkgs.nixVersions.latest;
             channel.enable = false;
-            nixPath = registryInputs |> mapAttrsToList (name: flake: "${name}=${flake}");
+            nixPath = config.nix.registry |> mapAttrsToList (name: const "${name}=flake:${name}");
 
             registry =
-              registryInputs
+              inputs
               |> mapAttrs (
                 const (flake: {
                   inherit flake;
@@ -47,6 +52,7 @@
               );
 
             extraOptions = "!include ${config.age.secrets.github-token.path}";
+            optimise.automatic = true;
 
             settings = {
               auto-optimise-store = true;
@@ -55,6 +61,7 @@
               flake-registry = "/etc/nix/registry.json";
               keep-outputs = true;
               show-trace = true;
+              trusted-users = [ "@wheel" ];
               use-cgroups = true;
               warn-dirty = false;
 
@@ -63,11 +70,6 @@
                 "flakes"
                 "nix-command"
                 "pipe-operators"
-              ];
-
-              trusted-users = [
-                "root"
-                "@wheel"
               ];
             };
           };

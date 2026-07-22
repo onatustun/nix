@@ -15,7 +15,6 @@
     ];
 
     extra-experimental-features = [
-      "cgroups"
       "flakes"
       "nix-command"
       "pipe-operators"
