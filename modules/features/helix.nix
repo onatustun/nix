@@ -29,6 +29,7 @@
             end-of-line-diagnostics = "warning";
             file-picker.hidden = false;
             idle-timeout = 0;
+            inline-diagnostics.cursor-line = "warning";
             line-number = "relative";
 
             shell = [
