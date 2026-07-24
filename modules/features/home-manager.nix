@@ -9,10 +9,11 @@
       imports = [ (inputs.home-manager.sourceInfo.outPath + "/nixos/default.nix") ];
 
       home-manager = {
+        backupFileExtension = "hmBackup";
         extraSpecialArgs = { inherit keys username; };
         useGlobalPkgs = true;
-        useUserPackages = true;
         users.${username} = { };
+        useUserPackages = true;
       };
     };
 }
