@@ -26,7 +26,7 @@
   inputs = {
     nixpkgs = {
       type = "tarball";
-      url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
+      url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst";
     };
 
     flake-parts = {
