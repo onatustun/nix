@@ -44,7 +44,7 @@
                 allowed-hosts = [ domain ];
                 api-endpoint = "https://${domain}/";
                 compression.type = "zstd";
-                database.url = "postgresql:///atticd?host=/run/postgresql";
+                database.url = "postgresql://atticd@localhost/atticd?host=/run/postgresql";
                 listen = "127.0.0.1:8081";
 
                 garbage-collection = {
