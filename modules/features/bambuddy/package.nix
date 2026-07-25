@@ -7,13 +7,13 @@
       inherit (lib.meta) getExe';
       inherit (lib.strings) makeBinPath;
 
-      version = "0.2.4.8";
+      version = "1.2.5";
 
       src = fetchFromGitHub {
         owner = "maziggy";
         repo = "bambuddy";
         tag = "v${version}";
-        hash = "sha256-6qeIidvi62NUok7I9UQ8DblT0/Wscju4FMnVuPXzMdM=";
+        hash = "sha256-zl9K/lwAaqHAF3mQmRIBTYw+AIKKS777vvhX54vYkFU=";
       };
 
       frontend = buildNpmPackage {
@@ -21,7 +21,7 @@
         inherit version src;
 
         sourceRoot = "${src.name}/frontend";
-        npmDepsHash = "sha256-/22FkXus5f3wYivyadZWU6ZKPYFLF8xA8mkVGxvdXm0=";
+        npmDepsHash = "sha256-Cr0w+njH+KIZJOxfjCXcPyyIIOe48SR2vzV9UWkVvOI=";
 
         preBuild = "chmod -R u+w ../static";
 
@@ -43,6 +43,7 @@
           asyncpg
           asyncssh
           bcrypt
+          certifi
           cryptography
           curl-cffi
           defusedxml
