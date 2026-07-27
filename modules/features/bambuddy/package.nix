@@ -7,13 +7,13 @@
       inherit (lib.meta) getExe';
       inherit (lib.strings) makeBinPath;
 
-      version = "1.2.5";
+      version = "1.2.5.1";
 
       src = fetchFromGitHub {
         owner = "maziggy";
         repo = "bambuddy";
         tag = "v${version}";
-        hash = "sha256-zl9K/lwAaqHAF3mQmRIBTYw+AIKKS777vvhX54vYkFU=";
+        hash = "sha256-cYDl1QbIMECqE0zkKL92Vnoh1M6PIpVdsb3tGJHYPJ8=";
       };
 
       frontend = buildNpmPackage {
@@ -21,7 +21,7 @@
         inherit version src;
 
         sourceRoot = "${src.name}/frontend";
-        npmDepsHash = "sha256-Cr0w+njH+KIZJOxfjCXcPyyIIOe48SR2vzV9UWkVvOI=";
+        npmDepsHash = "sha256-v8ejfkuMxnybhdc9CD4Y/UmGCxUDGtVr9KAEQ5a6ca4=";
 
         preBuild = "chmod -R u+w ../static";
 
