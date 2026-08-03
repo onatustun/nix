@@ -28,8 +28,13 @@
           sizes.terminal = 14;
 
           monospace = {
-            package = pkgs.nerd-fonts.jetbrains-mono;
             name = "JetBrainsMono Nerd Font Mono";
+            package = pkgs.nerd-fonts.jetbrains-mono;
+          };
+
+          serif = {
+            name = "IBM Plex Serif";
+            package = pkgs.ibm-plex;
           };
         };
 
