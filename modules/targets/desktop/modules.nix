@@ -7,6 +7,7 @@
         boot
         home-manager
         locale
+        ly
         networking
         niri
         nix
