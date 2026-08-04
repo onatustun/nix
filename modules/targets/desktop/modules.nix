@@ -24,7 +24,6 @@
 
       home-manager.sharedModules = with config.modules.homeManager; [
         attic
-        cursor
         direnv
         ghostty
         git
