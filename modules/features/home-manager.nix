@@ -11,6 +11,7 @@
       home-manager = {
         backupFileExtension = "hmBackup";
         extraSpecialArgs = { inherit keys username; };
+        overwriteBackup = true;
         useGlobalPkgs = true;
         users.${username} = { };
         useUserPackages = true;
