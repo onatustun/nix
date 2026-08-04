@@ -10,127 +10,125 @@
     {
       imports = [ inputs.dms.homeModules.dank-material-shell ];
 
-      programs = {
-        dank-material-shell = {
-          enable = true;
-          systemd.enable = true;
+      programs.dank-material-shell = {
+        enable = true;
+        systemd.enable = true;
 
-          settings = {
-            dockAutoHide = true;
-            dockGroupByApp = true;
-            dockIsolateDisplays = true;
-            dockOpenOnOverview = true;
-            launcherLogoMode = "os";
-            launcherStyle = "spotlight";
-            nightModeEnabled = true;
-            notificationCompactMode = true;
-            notificationFocusedMonitor = true;
-            screenPreferences.wallpaper = [ ];
-            showDock = true;
-            showOccupiedWorkspacesOnly = true;
-            useAutoLocation = true;
+        settings = {
+          dockAutoHide = true;
+          dockGroupByApp = true;
+          dockIsolateDisplays = true;
+          dockOpenOnOverview = true;
+          launcherLogoMode = "os";
+          launcherStyle = "spotlight";
+          nightModeEnabled = true;
+          notificationCompactMode = true;
+          notificationFocusedMonitor = true;
+          screenPreferences.wallpaper = [ ];
+          showDock = true;
+          showOccupiedWorkspacesOnly = true;
+          useAutoLocation = true;
 
-            barConfigs = singleton {
-              id = "default";
-              name = "Main Bar";
-              enabled = true;
-              position = 2;
-              scrollEnabled = false;
-              spacing = 0;
-              squareCorners = true;
+          barConfigs = singleton {
+            id = "default";
+            name = "Main Bar";
+            enabled = true;
+            position = 2;
+            scrollEnabled = false;
+            spacing = 0;
+            squareCorners = true;
 
-              leftWidgets = [
-                {
-                  id = "launcherButton";
-                  enabled = true;
-                }
-                {
-                  id = "workspaceSwitcher";
-                  enabled = true;
-                }
-              ];
+            leftWidgets = [
+              {
+                id = "launcherButton";
+                enabled = true;
+              }
+              {
+                id = "workspaceSwitcher";
+                enabled = true;
+              }
+            ];
 
-              centerWidgets = [ "clock" ];
+            centerWidgets = [ "clock" ];
 
-              rightWidgets = [
-                "systemTray"
-                "clipboard"
-                "cpuUsage"
-                "memUsage"
-                "notificationButton"
-                "battery"
-                "controlCenterButton"
-              ];
-            };
+            rightWidgets = [
+              "systemTray"
+              "clipboard"
+              "cpuUsage"
+              "memUsage"
+              "notificationButton"
+              "battery"
+              "controlCenterButton"
+            ];
           };
         };
+      };
 
-        niri.settings.binds = {
-          "Mod+D".action.spawn = [
-            dms-shell
-            "ipc"
-            "spotlight"
-            "toggle"
-          ];
+      wayland.windowManager.niri.settings.binds = {
+        "Mod+D".spawn = [
+          dms-shell
+          "ipc"
+          "spotlight"
+          "toggle"
+        ];
 
-          XF86AudioMute.action.spawn = [
-            dms-shell
-            "ipc"
-            "audio"
-            "mute"
-          ];
+        XF86AudioMute.spawn = [
+          dms-shell
+          "ipc"
+          "audio"
+          "mute"
+        ];
 
-          XF86AudioMicMute.action.spawn = [
-            dms-shell
-            "ipc"
-            "audio"
-            "micmute"
-          ];
+        XF86AudioMicMute.spawn = [
+          dms-shell
+          "ipc"
+          "audio"
+          "micmute"
+        ];
 
-          XF86AudioPlay.action.spawn = [
-            dms-shell
-            "ipc"
-            "mpris"
-            "playPause"
-          ];
+        XF86AudioPlay.spawn = [
+          dms-shell
+          "ipc"
+          "mpris"
+          "playPause"
+        ];
 
-          XF86AudioStop.action.spawn = [
-            dms-shell
-            "ipc"
-            "mpris"
-            "pause"
-          ];
+        XF86AudioStop.spawn = [
+          dms-shell
+          "ipc"
+          "mpris"
+          "pause"
+        ];
 
-          XF86AudioPrev.action.spawn = [
-            dms-shell
-            "ipc"
-            "mpris"
-            "previous"
-          ];
+        XF86AudioPrev.spawn = [
+          dms-shell
+          "ipc"
+          "mpris"
+          "previous"
+        ];
 
-          XF86AudioNext.action.spawn = [
-            dms-shell
-            "ipc"
-            "mpris"
-            "next"
-          ];
+        XF86AudioNext.spawn = [
+          dms-shell
+          "ipc"
+          "mpris"
+          "next"
+        ];
 
-          XF86AudioRaiseVolume.action.spawn = [
-            dms-shell
-            "ipc"
-            "audio"
-            "increment"
-            "5"
-          ];
+        XF86AudioRaiseVolume.spawn = [
+          dms-shell
+          "ipc"
+          "audio"
+          "increment"
+          "5"
+        ];
 
-          XF86AudioLowerVolume.action.spawn = [
-            dms-shell
-            "ipc"
-            "audio"
-            "decrement"
-            "5"
-          ];
-        };
+        XF86AudioLowerVolume.spawn = [
+          dms-shell
+          "ipc"
+          "audio"
+          "decrement"
+          "5"
+        ];
       };
     }
   );

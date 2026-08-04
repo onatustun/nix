@@ -2,16 +2,11 @@
   flake.nixosConfigurations.desktop.module.home-manager.extraSpecialArgs.monitors = {
     # Koorui
     main.DP-2 = {
-      focus-at-startup = true;
+      focus-at-startup = { };
       scale = 1;
+      mode = "1920x1080@240.299";
 
-      mode = {
-        width = 1920;
-        height = 1080;
-        refresh = 240.299;
-      };
-
-      position = {
+      position._props = {
         x = 1080;
         y = 350;
       };
@@ -20,16 +15,10 @@
     # Alienware
     HDMI-A-1 = {
       scale = 1;
+      mode = "1920x1080@239.761";
+      transform = "90";
 
-      mode = {
-        width = 1920;
-        height = 1080;
-        refresh = 239.761;
-      };
-
-      transform.rotation = 90;
-
-      position = {
+      position._props = {
         x = 0;
         y = 0;
       };

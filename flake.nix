@@ -5,13 +5,11 @@
     extra-substituters = [
       "https://nix-community.cachix.org"
       "https://cache.onatustun.com/zmk"
-      "https://niri.cachix.org"
     ];
 
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "zmk:zQgRE8h8eHNmG2btJWg4p6Hl2tuYwhkmfqsaxC5ju6I="
-      "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
     ];
 
     extra-experimental-features = [
@@ -148,19 +146,6 @@
         tinted-kitty.follows = "";
         tinted-schemes.follows = "";
         tinted-zed.follows = "";
-      };
-    };
-
-    niri = {
-      type = "github";
-      owner = "sodiboo";
-      repo = "niri-flake";
-
-      inputs = {
-        niri-stable.follows = "";
-        nixpkgs.follows = "nixpkgs";
-        nixpkgs-stable.follows = "";
-        xwayland-satellite-stable.follows = "";
       };
     };
 

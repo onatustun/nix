@@ -1,5 +1,5 @@
 flake.lock linguist-generated
 assets/*.svg linguist-generated
-modules/hosts/*/facter/facter.json linguist-generated
+modules/targets/*/facter/facter.json linguist-generated
 
 modules/**/*.age binary
