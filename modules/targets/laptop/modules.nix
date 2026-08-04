@@ -5,7 +5,6 @@
         audio
         bluetooth
         boot
-        dms
         home-manager
         locale
         networking
@@ -25,6 +24,7 @@
       home-manager.sharedModules = with config.modules.homeManager; [
         attic
         direnv
+        dms
         ghostty
         git
         github
