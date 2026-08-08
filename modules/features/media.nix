@@ -9,8 +9,12 @@
       home.packages = with pkgs; [
         ffmpeg-full
         haruna
-        imv
       ];
+
+      programs = {
+        imv.enable = true;
+        zathura.enable = true;
+      };
 
       xdg.mimeApps.defaultApplications = flip genAttrs (const "imv.desktop") [
         "image/gif"
