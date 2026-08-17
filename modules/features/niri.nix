@@ -72,8 +72,9 @@
               overview.backdrop-color = config.stylix.base16Scheme.base01;
 
               cursor = {
-                xcursor-theme = config.stylix.cursor.name;
+                hide-after-inactive-ms = 1000;
                 xcursor-size = config.stylix.cursor.size;
+                xcursor-theme = config.stylix.cursor.name;
               };
 
               layout = {
