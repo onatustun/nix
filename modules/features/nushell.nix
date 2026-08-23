@@ -32,16 +32,16 @@
         settings = {
           bracketed_paste = true;
           completions.algorithm = "substring";
-          edit_mode = "vi";
+          edit_mode = "helix";
           error_style = "fancy";
           show_banner = false;
           use_ansi_coloring = true;
           use_kitty_protocol = true;
 
           cursor_shape = {
-            emacs = "line";
-            vi_insert = "line";
-            vi_normal = "block";
+            helix_insert = "line";
+            helix_normal = "block";
+            helix_select = "block";
           };
 
           history = {
