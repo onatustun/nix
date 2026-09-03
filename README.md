@@ -1,2 +1,3 @@
 ![nix topology](./assets/main.svg)
-![cradio keymap](./assets/keymap.svg)
+![klotz keymap](./assets/klotz-keymap.svg)
+![cradio keymap](./assets/cradio-keymap.svg)
