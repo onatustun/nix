@@ -238,6 +238,22 @@
         "type": "github"
       }
     },
+    "klotz": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1673794425,
+        "narHash": "sha256-8ruUQDkbRyK+iLJVubbI3/z9HtjGQB7uWvG4e2sv+Rg=",
+        "owner": "geigeigeist",
+        "repo": "zmk-config-klotz",
+        "rev": "3965baff9f48955a82a1a5d692325943e4b59ee3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "geigeigeist",
+        "repo": "zmk-config-klotz",
+        "type": "github"
+      }
+    },
     "make-shell": {
       "flake": false,
       "locked": {
@@ -326,6 +342,7 @@
         "git-hooks": "git-hooks",
         "helium": "helium",
         "home-manager": "home-manager",
+        "klotz": "klotz",
         "make-shell": "make-shell",
         "nix-topology": "nix-topology",
         "nixos-hardware": "nixos-hardware",

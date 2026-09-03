@@ -83,6 +83,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    klotz = {
+      type = "github";
+      owner = "geigeigeist";
+      repo = "zmk-config-klotz";
+      flake = false;
+    };
+
     deploy-rs = {
       type = "github";
       owner = "serokell";

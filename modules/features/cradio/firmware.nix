@@ -13,8 +13,8 @@
     in
     {
       packages = {
-        firmware = buildSplitKeyboard {
-          name = "firmware";
+        cradio-firmware = buildSplitKeyboard {
+          name = "cradio firmware";
 
           src = toSource {
             inherit root;
@@ -27,14 +27,16 @@
           zephyrDepsHash = "sha256-777sDty25V5VbWgXjYKpy1NEW/rWJEihU7DRdqfk30I=";
 
           meta = {
-            description = "ZMK firmware";
+            description = "ZMK firmware for cradio";
             inherit (inputs'.zmk-nix.packages.firmware.meta) license platforms;
           };
         };
 
-        flash = inputs'.zmk-nix.packages.flash.override { inherit (config.packages) firmware; };
+        cradio-flash = inputs'.zmk-nix.packages.flash.override {
+          firmware = config.packages.cradio-firmware;
+        };
       };
 
-      checks = { inherit (config.packages) firmware flash; };
+      checks = { inherit (config.packages) cradio-firmware cradio-flash; };
     };
 }

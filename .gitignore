@@ -11,8 +11,9 @@ data/
 !modules/
 !modules/**/
 !modules/**/*.age
+!modules/features/*/config/*.yml
 !modules/features/cradio/config/cradio.*
-!modules/features/cradio/config/west.yml
+!modules/features/klotz/config/klotz.*
 !modules/targets/*/facter/facter.json
 
 !*.nix
