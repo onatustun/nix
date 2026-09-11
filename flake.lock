@@ -8,7 +8,7 @@
           "nixpkgs"
         ],
         "systems": [
-          "dep_systems"
+          "systems"
         ]
       },
       "locked": {
@@ -58,18 +58,6 @@
         "repo": "dank-qml-common",
         "type": "github"
       }
-    },
-    "dep_systems": {
-      "flake": false,
-      "locked": {
-        "path": "./systems.nix",
-        "type": "path"
-      },
-      "original": {
-        "path": "./systems.nix",
-        "type": "path"
-      },
-      "parent": []
     },
     "deploy-rs": {
       "inputs": {
@@ -334,7 +322,6 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
-        "dep_systems": "dep_systems",
         "deploy-rs": "deploy-rs",
         "disko": "disko",
         "dms": "dms",
@@ -350,6 +337,7 @@
         "process-compose-flake": "process-compose-flake",
         "services-flake": "services-flake",
         "stylix": "stylix",
+        "systems": "systems",
         "treefmt-nix": "treefmt-nix",
         "zmk-nix": "zmk-nix"
       }
@@ -386,7 +374,7 @@
         ],
         "nur": [],
         "systems": [
-          "dep_systems"
+          "systems"
         ],
         "tinted-kitty": [],
         "tinted-schemes": [],
@@ -406,6 +394,18 @@
         "repo": "stylix",
         "type": "github"
       }
+    },
+    "systems": {
+      "flake": false,
+      "locked": {
+        "path": "./systems.nix",
+        "type": "path"
+      },
+      "original": {
+        "path": "./systems.nix",
+        "type": "path"
+      },
+      "parent": []
     },
     "tinted-tmux": {
       "flake": false,
@@ -442,7 +442,7 @@
     "utils": {
       "inputs": {
         "systems": [
-          "dep_systems"
+          "systems"
         ]
       },
       "locked": {
