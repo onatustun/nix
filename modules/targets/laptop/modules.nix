@@ -5,9 +5,9 @@
         audio
         bluetooth
         boot
+        gdm
         home-manager
         locale
-        ly
         networking
         niri
         nix
