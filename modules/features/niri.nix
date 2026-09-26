@@ -78,10 +78,7 @@
               };
 
               layout = {
-                always-center-single-column = { };
                 background-color = config.stylix.base16Scheme.base00;
-                center-focused-column = "on-overflow";
-                default-column-width.proportion = 0.5;
                 focus-ring.off = { };
 
                 border = {
