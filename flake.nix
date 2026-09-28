@@ -5,11 +5,13 @@
     extra-substituters = [
       "https://nix-community.cachix.org"
       "https://cache.onatustun.com/zmk"
+      "https://helix.cachix.org"
     ];
 
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "zmk:zQgRE8h8eHNmG2btJWg4p6Hl2tuYwhkmfqsaxC5ju6I="
+      "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
     ];
 
     extra-experimental-features = [
@@ -162,6 +164,17 @@
       };
     };
 
+    helix = {
+      type = "github";
+      owner = "helix-editor";
+      repo = "helix";
+
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        rust-overlay.follows = "dep_rust-overlay";
+      };
+    };
+
     dms = {
       type = "github";
       owner = "avengemedia";
@@ -179,5 +192,12 @@
       repo = "helium-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+  };
+
+  inputs.dep_rust-overlay = {
+    type = "github";
+    owner = "oxalica";
+    repo = "rust-overlay";
+    flake = false;
   };
 }
