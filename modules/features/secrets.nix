@@ -170,7 +170,7 @@
               };
           };
 
-        modules.nixos.ragenix = {
+        modules.nixos.agenix = {
           imports = [ (inputs.agenix.sourceInfo.outPath + "/modules/age.nix") ];
           _module.args = { inherit (config) keys; };
         };

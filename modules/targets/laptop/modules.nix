@@ -2,6 +2,7 @@
   flake = { config, ... }: {
     nixosConfigurations.laptop.module = {
       imports = with config.modules.nixos; [
+        agenix
         audio
         bluetooth
         boot
@@ -12,7 +13,6 @@
         niri
         nix
         plymouth
-        ragenix
         seahorse
         ssh
         stylix

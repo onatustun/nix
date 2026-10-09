@@ -114,13 +114,7 @@
       type = "github";
       owner = "ryantm";
       repo = "agenix";
-
-      inputs = {
-        darwin.follows = "";
-        home-manager.follows = "";
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     disko = {

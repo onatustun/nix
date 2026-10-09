@@ -2,21 +2,16 @@
   "nodes": {
     "agenix": {
       "inputs": {
-        "darwin": [],
-        "home-manager": [],
         "nixpkgs": [
           "nixpkgs"
-        ],
-        "systems": [
-          "systems"
         ]
       },
       "locked": {
-        "lastModified": 1770165109,
-        "narHash": "sha256-9VnK6Oqai65puVJ4WYtCTvlJeXxMzAp/69HhQuTdl/I=",
+        "lastModified": 1790734419,
+        "narHash": "sha256-n7wew722m1OTBT9DOIMxNX/NF4zfsSUABAO5eW3wikE=",
         "owner": "ryantm",
         "repo": "agenix",
-        "rev": "b027ee29d959fda4b60b57566d64c98a202e0feb",
+        "rev": "3daa710894355fa2fad8243380af373a2b4046ef",
         "type": "github"
       },
       "original": {
@@ -213,11 +208,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790262736,
-        "narHash": "sha256-2mkmw6gwssQTXpDHStOE/xa9iDBOroH8reHGv+B2QRk=",
+        "lastModified": 1791487923,
+        "narHash": "sha256-/WOixrXGYmF6eNnlYmBaacNL6ZkbEw0XFOsjm5Wq2x0=",
         "owner": "amaanq",
         "repo": "helium-flake",
-        "rev": "1ef59c8e91ee66d0468c32fdeec290391c42a829",
+        "rev": "b440bd74a91266609ab8236607f91be3d7c532e4",
         "type": "github"
       },
       "original": {
