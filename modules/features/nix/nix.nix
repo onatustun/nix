@@ -25,6 +25,7 @@
           nixpkgs.config = {
             allowBroken = true;
             allowUnfree = true;
+            permittedInsecurePackages = [ "radicle-node-1.10.3" ];
           };
 
           system.disableInstallerTools = true;

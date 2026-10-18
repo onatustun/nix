@@ -5,13 +5,13 @@
     extra-substituters = [
       "https://nix-community.cachix.org"
       "https://cache.onatustun.com/zmk"
-      "https://helix.cachix.org"
+      "https://attic.xuyh0120.win/lantian"
     ];
 
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "zmk:zQgRE8h8eHNmG2btJWg4p6Hl2tuYwhkmfqsaxC5ju6I="
-      "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
+      "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
     ];
 
     extra-experimental-features = [
@@ -19,8 +19,6 @@
       "nix-command"
       "pipe-operators"
     ];
-
-    flake-registry = "";
   };
 
   inputs = {
@@ -131,6 +129,19 @@
       flake = false;
     };
 
+    cachyos-kernel = {
+      type = "github";
+      owner = "xddxdd";
+      repo = "nix-cachyos-kernel";
+      ref = "release";
+
+      inputs = {
+        flake-compat.follows = "";
+        flake-parts.follows = "flake-parts";
+        # Use upstream nixpkgs pin for binary cache hits
+      };
+    };
+
     home-manager = {
       type = "github";
       owner = "nix-community";
@@ -158,17 +169,6 @@
       };
     };
 
-    helix = {
-      type = "github";
-      owner = "helix-editor";
-      repo = "helix";
-
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        rust-overlay.follows = "dep_rust-overlay";
-      };
-    };
-
     dms = {
       type = "github";
       owner = "avengemedia";
@@ -186,12 +186,5 @@
       repo = "helium-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-  };
-
-  inputs.dep_rust-overlay = {
-    type = "github";
-    owner = "oxalica";
-    repo = "rust-overlay";
-    flake = false;
   };
 }

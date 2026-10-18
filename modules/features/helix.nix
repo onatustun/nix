@@ -1,8 +1,7 @@
-{ moduleWithSystem, ... }: {
+{
   perSystem = { pkgs, ... }: { make-shells.default.packages = with pkgs; [ nixd ]; };
 
-  flake.modules.homeManager.helix = moduleWithSystem (
-    { inputs' }:
+  flake.modules.homeManager.helix =
     { lib, config, ... }:
     let
       inherit (lib.meta) getExe;
@@ -17,7 +16,6 @@
 
       programs.helix = {
         enable = true;
-        package = inputs'.helix.packages.default;
 
         settings = {
           theme = config.stylix.base16Scheme.name;
@@ -100,6 +98,5 @@
           ];
         };
       };
-    }
-  );
+    };
 }
