@@ -5,13 +5,13 @@
     extra-substituters = [
       "https://nix-community.cachix.org"
       "https://cache.onatustun.com/zmk"
-      "https://attic.xuyh0120.win/lantian"
+      "https://nyx-cache.chaotic.cx/"
     ];
 
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "zmk:zQgRE8h8eHNmG2btJWg4p6Hl2tuYwhkmfqsaxC5ju6I="
-      "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
+      "nyx-cache.chaotic.cx:dJxTrgMC3V3cFfyIiBQDQorG6k1LsqurH/srpMSq7qk="
     ];
 
     extra-experimental-features = [
@@ -129,16 +129,15 @@
       flake = false;
     };
 
-    cachyos-kernel = {
+    chaotic = {
       type = "github";
-      owner = "xddxdd";
-      repo = "nix-cachyos-kernel";
-      ref = "release";
+      owner = "chaotic-cx";
+      repo = "nyx";
+      ref = "nyxpkgs-unstable";
 
       inputs = {
-        flake-compat.follows = "";
-        flake-parts.follows = "flake-parts";
-        # Use upstream nixpkgs pin for binary cache hits
+        home-manager.follows = "";
+        nixpkgs.follows = "nixpkgs";
       };
     };
 
