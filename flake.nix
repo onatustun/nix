@@ -136,8 +136,11 @@
       ref = "nyxpkgs-unstable";
 
       inputs = {
+        flake-schemas.follows = "";
         home-manager.follows = "";
-        nixpkgs.follows = "nixpkgs";
+
+        # Use upstream nixpkgs pins for binary cache hits
+        # nixpkgs.follows = "nixpkgs";
       };
     };
 
@@ -170,8 +173,9 @@
 
     dms = {
       type = "github";
-      owner = "avengemedia";
-      repo = "dankmaterialshell";
+      owner = "duxlabs-dev";
+      repo = "dux-shell";
+      ref = "stable";
 
       inputs = {
         flake-compat.follows = "";
