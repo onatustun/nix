@@ -1,11 +1,10 @@
-{ inputs, moduleWithSystem, ... }: {
-  flake.modules.homeManager.dms = moduleWithSystem (
-    { inputs' }:
-    { lib, ... }:
+{ inputs, ... }: {
+  flake.modules.homeManager.dms =
+    { lib, config, ... }:
     let
       inherit (lib.meta) getExe;
       inherit (lib.lists) singleton;
-      dms-shell = getExe inputs'.dms.packages.dms-shell;
+      dms-shell = getExe config.programs.dank-material-shell.package;
     in
     {
       imports = [ inputs.dms.homeModules.dank-material-shell ];
@@ -130,6 +129,5 @@
           "5"
         ];
       };
-    }
-  );
+    };
 }

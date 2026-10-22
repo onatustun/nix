@@ -5,7 +5,7 @@
     extra-substituters = [
       "https://nix-community.cachix.org"
       "https://cache.onatustun.com/zmk"
-      "https://nyx-cache.chaotic.cx/"
+      "https://nyx-cache.chaotic.cx"
     ];
 
     extra-trusted-public-keys = [
