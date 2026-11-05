@@ -14,18 +14,9 @@
         systemd.enable = true;
 
         settings = {
-          dockAutoHide = true;
-          dockGroupByApp = true;
-          dockIsolateDisplays = true;
-          dockOpenOnOverview = true;
-          launcherLogoMode = "os";
-          launcherStyle = "spotlight";
-          nightModeEnabled = true;
           notificationCompactMode = true;
           notificationFocusedMonitor = true;
           screenPreferences.wallpaper = [ ];
-          showDock = true;
-          showOccupiedWorkspacesOnly = true;
           useAutoLocation = true;
 
           barConfigs = singleton {
@@ -41,10 +32,12 @@
               {
                 id = "launcherButton";
                 enabled = true;
+                launcherLogoMode = "os";
               }
               {
                 id = "workspaceSwitcher";
                 enabled = true;
+                showOccupiedWorkspacesOnly = true;
               }
             ];
 
